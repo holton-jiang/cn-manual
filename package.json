@@ -10,7 +10,7 @@
   },
   "author": "holtonjiang",
   "license": "Apache License 2.0",
-  "repository": "holton-jiang.github.io/manual/docs",
+  "repository": "holton-jiang.github.io/cn-manual/docs",
   "devDependencies": {
     "vitepress": "^1.0.0-alpha.71",
     "vue": "^3.2.47"
