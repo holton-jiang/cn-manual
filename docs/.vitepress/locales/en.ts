@@ -13,7 +13,7 @@ export const themeConfig: DefaultTheme.Config = {
   editLink: {
     //转跳到对应的源文本。
     pattern:
-      "https://github.com/holton-jiang/manual/edit/main/docs/:path",
+      "https://github.com/holton-jiang/cn-manual/edit/main/docs/:path",
     //翻译编辑页面的控件。
     text: "在 GitHub 中改进此页面的内容",
   }, //编辑内容的控件代码结束。
