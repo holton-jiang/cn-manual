@@ -1,5 +1,5 @@
 {
-  "name": "manual",
+  "name": "cn-manual",
   "version": "1.0.0",
   "description": "openSUSE 中文手册",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
-  "author": "holtonjiang",
+  "author": "holton-jiang",
   "license": "Apache License 2.0",
   "repository": "holton-jiang.github.io/cn-manual/docs",
   "devDependencies": {
