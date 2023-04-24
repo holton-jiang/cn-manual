@@ -7,7 +7,7 @@ import {en} from './locales/en'
 //下拉列表中显示的语言名称,仅在主题配置项 locales 内部有效。
 //自定义配置
 export default defineConfig({
-  base: '/manual/', //GitHub部署需要设置该项目的名称(目录)。
+  base: '/cn-manual/', //GitHub部署需要设置该项目的名称(目录)。
   lastUpdated: true, //页面底部显示最后更新时间。
   contributors: true, //页面底部显示文档贡献者列表。
 
