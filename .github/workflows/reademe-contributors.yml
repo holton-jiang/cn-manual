@@ -14,6 +14,6 @@ jobs:
     name: A job to automate contrib in readme 
     steps: 
      - name: Contribute List 
-       uses: holton-jiang/contributors-readme-action@v2.3.4
+       uses: holton-jiang/cn-manual@v2.3.4
        env:
          GITHUB_TOKEN: ${{ secrets.CONTRIBUTORS_TOKEN }}
