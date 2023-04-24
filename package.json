@@ -1,5 +1,5 @@
 {
-  "name": "manual",
+  "name": "cn-manual",
   "version": "1.0.0",
   "description": "openSUSE 中文手册",
   "main": "index.js",
