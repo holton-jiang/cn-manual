@@ -8,7 +8,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
-  "author": "holton-jiang",
+  "author": "holtonjiang",
   "license": "Apache License 2.0",
   "repository": "holton-jiang.github.io/cn-manual/docs",
   "devDependencies": {
