@@ -1,4 +1,4 @@
-# 监听 master 分支
+# 监听 main 分支
 on:
     push:
         branches:
@@ -10,6 +10,6 @@ jobs:
         name: A job to automate contrib in readme
         steps:
             - name: Contribute List
-              uses: akhilmhdh/contributors-readme-action@v2.3.6
+              uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
               env:
                   GITHUB_TOKEN: ${{ secrets.CONTRIBUTORS_TOKEN }}
