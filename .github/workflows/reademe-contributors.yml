@@ -9,7 +9,15 @@ jobs:
         runs-on: ubuntu-latest
         name: A job to automate contrib in readme
         steps:
+            - name: Checkout from repository
+              uses: actions/checkout@v3
             - name: Contribute List
               uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
               env:
                   GITHUB_TOKEN: ${{ secrets.CONTRIBUTORS_TOKEN }}
+              with:
+                  source_file: "."
+                  destination_repo: "holton-jiang/cn-manual"
+                  destination_folder: "docs"
+                  user_name: "${{ github.event.pusher.name }}"
+                  user_email: "${{ github.event.pusher.email }}"
