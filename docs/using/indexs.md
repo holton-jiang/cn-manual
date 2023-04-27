@@ -13,7 +13,7 @@ openSUSE 默认使用 [MirrorBrain](https://zh.opensuse.org/MirrorBrain) 技术�
 
 由于使用 MirrorBrain 需要从位于德国的 openSUSE 主服务器上获取元信息，所以若在使用默认软件源时获取元信息较慢，可以使用 NJU 镜像软件源替换默认软件源。
 
-### openSUSE Leap 15.2 或更新版本使用方法
+### openSUSE Leap 15.5 或更新版本使用方法
 
 禁用官方软件源
 
@@ -33,7 +33,7 @@ sudo zypper ar -cfg 'https://mirror.nju.edu.cn/opensuse/update/leap/$releasever/
 sudo zypper ar -cfg 'https://mirror.nju.edu.cn/opensuse/update/leap/$releasever/non-oss/' nju-update-non-oss
 ```
 
-Leap 15.3 用户还需添加 sle 和 backports 源
+Leap 15.5 用户还需添加 sle 和 backports 源
 
 ```bash
 sudo zypper ar -cfg 'https://mirror.nju.edu.cn/opensuse/update/leap/$releasever/sle/' nju-sle-update
