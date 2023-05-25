@@ -37,9 +37,9 @@ export const themeConfig: DefaultTheme.Config = {
   
   //侧边栏代码开始
   sidebar: [
-      //目录1
+      //发行说明
       {
-        text: "测试页面 0",
+        text: "发行说明",
         //collapsible: true, //隐藏和显示子菜单。
         //collapsed: true, //初始页面加载时关闭。
         items: [
@@ -47,14 +47,56 @@ export const themeConfig: DefaultTheme.Config = {
           { text: "测试页面0_1", link: "/using/indexs" },
         ],
       },
-      //目录2
+
       {
-        text: "测试页面 1",
+        text: "入门指南",
         items: [
-          { text: "测试页面1_1", link: "/development/index0" },
-          { text: "测试页面1_2", link: "/development/index1" },
+        // { text: "入门指南", link: "/using/index10" },
         ],
       },
+      
+      {
+        text: "GNOME 用户指南",
+        items: [
+        // { text: "GNOME 用户指南", link: "/using/index0" },
+        ],
+      },
+      
+      {
+        text: "参考指南",
+        items: [
+        //  { text: "参考指南", link: "/using/index0" },
+        ],
+      },
+      
+      {
+        text: "安全指南",
+        items: [
+        //  { text: "安全指南", link: "/using/index0" },
+        ],
+      },
+      
+      {
+        text: "优化指南",
+        items: [
+        //  { text: "优化指南", link: "/using/index0" },
+        ],
+      },
+      
+      {
+        text: "虚拟化指南",
+        items: [
+        //  { text: "虚拟化指南", link: "/using/index0" },
+        ],
+      },
+      
+      {
+        text: "AutoYaST 指南",
+        items: [
+        //  { text: "AutoYaST 指南", link: "/using/index0" },
+        ],
+      },
+
       //关于
       {
         text: "关于",
