@@ -10,6 +10,9 @@ export default defineConfig({
   base: '/cn-manual/', //GitHub部署需要设置该项目的名称(目录)。
   lastUpdated: true, //页面底部显示最后更新时间。
   contributors: true, //页面底部显示文档贡献者列表。
+  contributorsText: '贡献者',
+  selectLanguageText: '选择语言',
+  selectLanguageAriaLabel: '选择语言',
   colorModeSwitch: true,
   // custom containers
         tip: '小提示',
