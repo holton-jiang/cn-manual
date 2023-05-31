@@ -27,11 +27,6 @@ export const themeConfig: DefaultTheme.Config = {
   docFooter: { prev: '上一页', next: '下一页', },
   outlineTitle: '此页的章节',
 
-  // custom containers
-  tip: '小提示',
-  warning: '请注意',
-  danger: '警告',
-  
   //脚注内容
   footer: {
       message: '由 Apache 许可证 2.0 发布。',
@@ -48,6 +43,7 @@ export const themeConfig: DefaultTheme.Config = {
         items: [
           { text: "测试页面0_0", link: "/using/indexs0" },
           { text: "测试页面0_1", link: "/using/indexs" },
+          { text: "错误链接测试", link: "/using/ind" },
         ],
       },
 
