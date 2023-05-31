@@ -26,6 +26,11 @@ export const themeConfig: DefaultTheme.Config = {
   //翻译上下页控件
   docFooter: { prev: '上一页', next: '下一页', },
   outlineTitle: '此页的章节',
+
+  // custom containers
+  tip: '小提示',
+  warning: '请注意',
+  danger: '警告',
   
   //脚注内容
   footer: {
