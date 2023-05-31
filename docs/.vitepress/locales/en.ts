@@ -22,8 +22,6 @@ export const themeConfig: DefaultTheme.Config = {
   sidebarMenuLabel: '目录',
   returnToTopLabel: '回到顶部',
 
-  contributorsText: '贡献者',
-  //toggleSidebar: '全目录',
   lastUpdatedText: '最后更新时间',
   //翻译上下页控件
   docFooter: { prev: '上一页', next: '下一页', },
