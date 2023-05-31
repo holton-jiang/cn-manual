@@ -3,7 +3,7 @@
 
 ### openSUSE 中文手册 测试网站
 
-::: tip 小提示
+::: tip
 等到 openSUSE Leap 15.5 发布后，以 openSUSE 官方 https://doc.opensuse.org/zh-CN/ 的手册翻译。
 :::
 
