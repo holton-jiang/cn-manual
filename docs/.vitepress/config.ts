@@ -11,6 +11,23 @@ export default defineConfig({
   lastUpdated: true, //页面底部显示最后更新时间。
   contributors: true, //页面底部显示文档贡献者列表。
 
+  // custom containers
+        tip: '小提示',
+        warning: '请注意',
+        danger: '警告',
+  // 404 page
+        notFound: [
+          '这里什么都没有',
+          '我们怎么到这来了？',
+          '这是一个 404 页面',
+          '看起来我们进入了错误的链接',
+        ],
+        backToHome: '返回首页',
+        // a11y
+        openInNewWindow: '在新窗口打开',
+        toggleColorMode: '切换颜色模式',
+        toggleSidebar: '切换侧边栏',
+
   //显示代码块的行数
   markdown: {
     lineNumbers: true,
