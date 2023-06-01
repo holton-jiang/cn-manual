@@ -70,8 +70,3 @@ sudo zypper ref
 ```
 
 Tumbleweed 注： Tumbleweed 安装后默认会启用 oss, non-oss, update, 3 个官方软件源， 其中 oss 及 non-oss 源用于发布 Tumbleweed 的每日构建快照，快照中已包含系统所需的全部软件包及更新。 update 源仅用于推送临时安全补丁，如当日快照已发布但仍有临时安全补丁时，会首先推送至 update 源，并在次日合入下一版快照。 由于 update 源存在较强的时效性，上游镜像并未同步 update 源， NJU 亦无法提供该源的镜像。 禁用 update 源并不会使系统缺失任何功能或安全更新，仅会导致极少数更新晚些推送，如有需求可以重新启用官方 update 源。
-
-
-::: tip
-等到 openSUSE Leap 15.5 发布后，以 openSUSE 官方 https://doc.opensuse.org/zh-CN/ 的手册翻译。
-:::
