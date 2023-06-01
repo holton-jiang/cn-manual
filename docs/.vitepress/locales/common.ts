@@ -9,9 +9,11 @@ export const themeConfig = {
 
   //社交媒体图标和相关链接
   socialLinks: [
-    {icon: 'github', link: 'https://github.com/holton-jiang'},
-    {icon: 'twitter', link: 'https://twitter.com/holton_jiang'},
-    {icon: 'facebook', link: 'https://www.facebook.com/Holton.Jiang'},
+    //{icon: 'github', link: 'https://github.com/holton-jiang'},
+    //{icon: 'facebook', link: 'https://www.facebook.com/Holton.Jiang'},
+    //{icon: 'twitter', link: 'https://twitter.com/holton_jiang'},
+    {icon: 'github', link: 'https://github.com/openSUSE-zh'},
+    {icon: 'facebook', link: 'https://www.facebook.com/opensuse.manual.cn'},
     {icon: 'discord', link: 'https://discord.gg/bgXGBngNCV'},
     {icon: 'mastodon',link: 'https://pkm.social/@openSUSE_CN_Manual'}
   ]
