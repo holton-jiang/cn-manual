@@ -14,10 +14,8 @@ const members = [
     title: ' openSUSE 中文手册项目创建者',
     links: [
       { icon: 'github', link: 'https://github.com/holton-jiang' },
-      { icon: 'twitter', link: 'https://twitter.com/holton_jiang' }
-      { icon: 'github', link: 'https://github.com/holton-jiang'},
       { icon: 'facebook', link: 'https://www.facebook.com/Holton.Jiang'},
-      { icon: 'twitter', link: 'https://twitter.com/holton_jiang'},
+      { icon: 'twitter', link: 'https://twitter.com/holton_jiang'}
     ]
   },
 ]
