@@ -16,9 +16,9 @@ openSUSE Leap 是一款免费的基于 Linux 的操作系统，适用于您的 P
 
 本节包含与安装相关的说明。有关详细的安装说明，请参阅 [https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/part-basics.html](https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/part-basics.html) 上的文档。
 
-### 1.1 对系统角色事务服务器使用原子更新 #
+### 1.1 使用原子对操作系统事务服务器更新
 
- 安装程序支持系统角色事务服务器。此系统角色具有一个更新系统，该系统以原子方式应用更新（作为单个操作）并使它们在必要时易于恢复。这些功能基于所有其他 SUSE 和 openSUSE 发行版也依赖的包管理工具。这意味着绝大多数与 openSUSE Leap 15.5 的其他系统角色一起工作的 RPM 包也与系统角色 Transactional Server 一起工作。
+安装程序支持操作系统事务服务器。此系统角色具有一个更新系统，该系统以原子方式应用更新（作为单个操作）并使它们在必要时易于恢复。这些功能基于所有其他 SUSE 和 openSUSE 发行版也依赖的包管理工具。这意味着绝大多数与 openSUSE Leap 15.5 的其他系统角色一起工作的 RPM 包也与系统角色 Transactional Server 一起工作。
 
 ::: info 注意：不兼容的包
 某些软件包在其 RPM `%post` 脚本中修改了 `/var` 或 `/srv` 的内容。这些软件包不兼容。如果您找到这样的包，请提交错误报告。
