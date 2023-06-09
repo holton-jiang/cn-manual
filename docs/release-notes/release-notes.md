@@ -62,7 +62,7 @@ systemctl disable --now transactional-update.timer rebootmgr.service
 
 在使用 UEFI（统一可扩展固件接口）引导的系统上安装 openSUSE 之前，强烈建议您检查硬件供应商推荐的任何固件更新，如果可用，安装此类更新。预安装 Windows 8 或更高版本表明您的系统使用 UEFI 启动。
 
-_背后原因:_ 某些 UEFI 固件存在错误，如果向 UEFI 存储区域写入过多数据，这些错误会导致固件崩溃。但是，没有明确的数据表明多少是“太多”。
+_背后的原因:_ 某些 UEFI 固件存在错误，如果向 UEFI 存储区域写入过多数据，这些错误会导致固件崩溃。但是，没有明确的数据表明多少是“太多”。
 
 openSUSE 通过不编写超过启动操作系统所需的最低限度的内容来最大限度地降低风险。最小值意味着告诉 UEFI 固件关于 openSUSE 引导装载程序的位置。使用 UEFI 存储区域存储引导和崩溃信息 ( `pstore` ) 的上游 Linux 内核功能已默认禁用。尽管如此，还是建议安装硬件供应商推荐的任何固件更新。
 
@@ -97,13 +97,13 @@ openSUSE 通过不编写超过启动操作系统所需的最低限度的内容�
 zypper lifecycle
 ```
 
-### 3.2 删除的包
+### 3.2 删除的软件包
 
 删除的包不再作为分发的一部分运送。
 
 * gnome-todo：gnome-todo 已被 Endeavour 包取代。  
 msgpack：msgpack 被 msgpack-c 和 msgpack-cxx 取代。  
-nodejs-electron：这个旧版本的 Electron 已经停产，由于频繁的 ABI 中断，我们无法在 Leap 的整个生命周期内支持这个运行时。当前版本的 Electron 仍然可以从 OBS 上的 devel:languages:nodejs 存储库中获得。
+nodejs-electron：这个旧版本的 Electron 已经停更，由于频繁的 ABI 中断，我们无法在 Leap 的整个生命周期内支持。当前版本的 Electron 仍然可以从 OBS 上的 devel:languages:nodejs 存储库中获得。
 
 ## 4 驱动程序和硬件
 
@@ -121,7 +121,6 @@ nodejs-electron：这个旧版本的 Electron 已经停产，由于频繁的 ABI
 
 ### 4.2 网络安装映像在 Raspberry Pi 4 上启动时挂起
 
- Booting the network install image from USB stick on Raspberry Pi 4 hangs on boot. To resolve this issue, add the `console=tty` boot parameter. See details in the known issues section of our [Raspberry Pi 4 Hardware Compatibility List](https://en.opensuse.org/HCL:Raspberry%5FPi4#Boot%5Ffrom%5FUSB%5Fin%5FNet%5Finstall%5Fimage%5Fof%5FLeap%5F15.4%5Fhangs%5Fon%5Fboot).  
 从 Raspberry Pi 4 上的 USB 记忆棒引导网络安装映像在引导时挂起。要解决此问题，请添加 `console=tty` 引导参数。请参阅我们的 [Raspberry Pi 4 硬件兼容性列表](https://en.opensuse.org/HCL:Raspberry_Pi4#Boot_from_USB_in_Net_install_image_of_Leap_15.4_hangs_on_boot) 的已知问题部分中的详细信息。
 
 ## 5 桌面
