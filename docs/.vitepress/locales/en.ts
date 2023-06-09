@@ -41,7 +41,7 @@ export const themeConfig: DefaultTheme.Config = {
         //collapsible: true, //隐藏和显示子菜单。
         //collapsed: true, //初始页面加载时关闭。
         items: [
-          { text: "测试页面0_1", link: "/using/indexs" },
+          { text: "发行说明", link: "/release-notes/release-notes" },
         ],
       },
 
