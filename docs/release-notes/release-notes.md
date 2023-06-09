@@ -121,7 +121,7 @@ nodejs-electron：这个旧版本的 Electron 已经停更，由于频繁的 ABI
 
 ### 4.2 网络安装映像在 Raspberry Pi 4 上启动时挂起
 
-从 Raspberry Pi 4 上的 USB 记忆棒引导网络安装映像在引导时挂起。要解决此问题，请添加 `console=tty` 引导参数。请参阅我们的 [Raspberry Pi 4 硬件兼容性列表](https://en.opensuse.org/HCL:Raspberry_Pi4#Boot_from_USB_in_Net_install_image_of_Leap_15.4_hangs_on_boot) 的已知问题部分中的详细信息。
+从 Raspberry Pi 4 上的 存储卡引导网络安装映像在引导时挂起。要解决此问题，请添加 `console=tty` 引导参数。请参阅我们的 [Raspberry Pi 4 硬件兼容性列表](https://en.opensuse.org/HCL:Raspberry_Pi4#Boot_from_USB_in_Net_install_image_of_Leap_15.4_hangs_on_boot) 的已知问题部分中的详细信息。
 
 ## 5 桌面
 
