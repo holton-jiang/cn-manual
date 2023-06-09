@@ -41,16 +41,19 @@ export const themeConfig: DefaultTheme.Config = {
         //collapsible: true, //隐藏和显示子菜单。
         //collapsed: true, //初始页面加载时关闭。
         items: [
-          { text: "测试页面0_0", link: "/using/indexs0" },
           { text: "测试页面0_1", link: "/using/indexs" },
-          { text: "错误链接测试", link: "/using/ind" },
         ],
       },
 
       {
         text: "入门指南",
         items: [
-        // { text: "入门指南", link: "/using/index10" },
+          { text: "入门指南", link: "/start-up/start-up" },
+          { text: "关于本手册", link: "/start-up/about-this-guide" },
+          { text: "可用文档", link: "/start-up/available-documentation" },
+          { text: "改进文档", link: "/start-up/improving-the-documentation" },
+          { text: "文档规定", link: "/start-up/documentation-conventions" },
+          { text: "源代码与致谢", link: "/start-up/source-code" },
         ],
       },
       
