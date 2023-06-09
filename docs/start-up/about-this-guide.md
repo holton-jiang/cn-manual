@@ -103,7 +103,7 @@ For offline use, find documentation in your installed system under /usr/share/do
 在继续之前您应该了解的重要信息。
 :::
 
-::: details 注意事项
+::: info 注意事项
 附加信息，例如有关软件版本差异的信息。
 :::
 
