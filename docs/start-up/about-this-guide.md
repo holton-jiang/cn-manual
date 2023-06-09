@@ -30,15 +30,13 @@
 
 我们的文档可在 https://doc.opensuse.org 在线获取。浏览或下载各种格式的电子文档。
 
-::: details 最新更新
+::: info 最新更新
 本文档的英文版本通常提供最新更新。
 :::
 
-###### 在你的系统中
+###### 在您的操作系统中
 
-For offline use, find documentation in your installed system under /usr/share/doc. Many commands are also described in detail in their _manual pages_. To view them, run **man**, followed by a specific command name. If the **man** command is not installed on your system, install it with **sudo zypper install man**.  
-
-对于脱机使用，请在 /usr/share/doc 目录下的已安装系统中查找文档。许多命令在其手册页中也有详细描述。要查看它们，请运行 **man**，然后是特定的命令名称。如果您的系统上没有安装 **man** 命令，请使用 **sudo zypper install man** 安装它。
+对于脱机使用，请在 /usr/share/doc 目录下的已安装的操作系统中查找文档。许多命令在其手册页中也有详细描述。要查看它们，请运行 **man**，然后是特定的命令名称。如果您的系统上没有安装 **man** 命令，请使用 **sudo zypper install man** 安装它。
 
 ## 改进文档
 
@@ -76,13 +74,13 @@ For offline use, find documentation in your installed system under /usr/share/do
 - /etc/passwd ：目录名和文件名
 - PLACEHOLDER ：将 *PLACEHOLDER* 替换为实际值
 - PATH ：一个环境变量
-- **ls**， --help ：命令、选项和参数
+- **ls**, --help ：命令、选项和参数
 - user ：用户名或组名
 - package_name：软件包名称
 - `Alt`、`Alt–F1`：要按的键或组合键。按键在键盘上以大写形式显示。
-- File, File › Save As: 菜单项、按钮
+- 文件, 文件 › 另存为：菜单项、按钮
 - *第 1 章*， *“示例章节”*：对本手册中另一章的交叉引用。
-- 必须以 `root` 权限运行的命令。通常，您还可以在这些命令前加上 **sudo** 命令，以便以非特权用户身份运行它们。
+- 必须以 `root` 管理员权限运行的命令。通常，您还可以在这些命令前加上 **sudo** 命令，以便以非特权用户身份运行它们。
 ```
 # command
 > sudo
