@@ -24,7 +24,6 @@
 
 概述在何处可以找到帮助和其他文档，以备您需要更多信息或想要使用您的系统执行特定任务时使用。还可以找到最常见问题和烦恼的汇编，并学习如何自行解决这些问题。
 
-<br>
 ## 可用文档
 
 ##### 在线文档
@@ -40,7 +39,7 @@
 For offline use, find documentation in your installed system under /usr/share/doc. Many commands are also described in detail in their _manual pages_. To view them, run **man**, followed by a specific command name. If the **man** command is not installed on your system, install it with **sudo zypper install man**.  
 
 对于脱机使用，请在 /usr/share/doc 目录下的已安装系统中查找文档。许多命令在其手册页中也有详细描述。要查看它们，请运行 **man**，然后是特定的命令名称。如果您的系统上没有安装 **man** 命令，请使用 **sudo zypper install man** 安装它。
-<br>
+
 ## 改进文档
 
 欢迎您对本文档提供反馈和贡献。提供以下反馈渠道：
@@ -70,7 +69,6 @@ For offline use, find documentation in your installed system under /usr/share/do
 
 如果您需要有关 openSUSE Leap 的更多帮助，请参阅 https://en.opensuse.org/Portal:Support 。
 
-<br>
 ## 文档规定
 
 本手册中使用了以下注意事项和排版规定：
@@ -118,11 +116,11 @@ For offline use, find documentation in your installed system under /usr/share/do
 **笔记**  附加信息，例如有关软件版本差异的信息。
 <br>
 **提示**  有用的信息，例如手册或实用建议。
-<br>
+
 ## 源代码
 
 openSUSE Leap 的源代码是公开的。有关下载链接和更多信息，请参阅 https://en.opensuse.org/Source_code 。
-<br>
+
 ## 致谢
 
 Linux 的开发者在全球范围内通过自愿的合作，以促进 Linux 的发展。我们感谢他们的努力——没有他们就没有这个发行版。当然，要特别感谢 Linus Torvalds。
