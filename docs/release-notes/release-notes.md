@@ -10,7 +10,7 @@ openSUSE Leap 是一款免费的基于 Linux 的操作系统，适用于您的 P
 
 此公开 Beta 测试是 openSUSE 项目的一部分。有关该项目的信息，请访问 [https://www.opensuse.org](https://www.opensuse.org/) 。
 
-在 openSUSE Bugzilla 中报告您使用 openSUSE Leap 15.5 预发行版遇到的所有错误。有关详细信息，请参阅 [https://en.opensuse.org/Submitting_Bug_Reports](https://en.opensuse.org/Submitting_Bug_Reports)。如果您希望看到任何添加到发行说明中的​​内容，请针对组件“发行说明”提交错误报告。
+在 openSUSE Bugzilla 中报告您使用 openSUSE Leap 15.5 预发行版遇到的所有错误。有关详细信息，请参阅 [https://en.opensuse.org/Submitting_Bug_Reports](https://en.opensuse.org/Submitting_Bug_Reports) 。如果您希望看到任何添加到发行说明中的内容，请针对组件“发行说明”提交错误报告。
 
 ## 1 安装
 
@@ -20,7 +20,7 @@ openSUSE Leap 是一款免费的基于 Linux 的操作系统，适用于您的 P
 
  安装程序支持系统角色事务服务器。此系统角色具有一个更新系统，该系统以原子方式应用更新（作为单个操作）并使它们在必要时易于恢复。这些功能基于所有其他 SUSE 和 openSUSE 发行版也依赖的包管理工具。这意味着绝大多数与 openSUSE Leap 15.5 的其他系统角色一起工作的 RPM 包也与系统角色 Transactional Server 一起工作。
 
-::: details 注意：不兼容的包
+::: info 注意：不兼容的包
 某些软件包在其 RPM `%post` 脚本中修改了 `/var` 或 `/srv` 的内容。这些软件包不兼容。如果您找到这样的包，请提交错误报告。
 :::
 
@@ -31,11 +31,11 @@ openSUSE Leap 是一款免费的基于 Linux 的操作系统，适用于您的 P
 * 一个只读的根文件系统。为避免更新引起的问题和数据丢失，不得以其他方式写入根文件系统。因此，根文件系统在正常操作期间以只读方式挂载。  
     为了使这个设置工作，需要对文件系统进行两个额外的更改：为了允许在 `/etc` 中写入用户配置，该目录自动配置为使用 OverlayFS。 `/var` 现在是一个单独的子卷，可以由进程写入。
 
-::: 重要：事务服务器至少需要 12 GB 的磁盘空间
+::: warning 重要：事务服务器至少需要 12 GB 的磁盘空间
 系统角色 Transactional Server 需要至少 12 GB 的磁盘大小来容纳 Btrfs 快照。
 :::
 
-::: 重要：YaST 不工作事务模式
+::: warning 重要：YaST 不工作事务模式
 目前，YaST 不支持事务性更新。这是因为 YaST 会立即执行操作，而且它无法编辑只读文件系统。
 :::
 
@@ -62,7 +62,7 @@ systemctl disable --now transactional-update.timer rebootmgr.service
 
 在使用 UEFI（统一可扩展固件接口）引导的系统上安装 openSUSE 之前，强烈建议您检查硬件供应商推荐的任何固件更新，如果可用，安装此类更新。预安装 Windows 8 或更高版本表明您的系统使用 UEFI 启动。
 
-_Background:_ 某些 UEFI 固件存在错误，如果向 UEFI 存储区域写入过多数据，这些错误会导致固件崩溃。但是，没有明确的数据表明多少是“太多”。
+_背后原因:_ 某些 UEFI 固件存在错误，如果向 UEFI 存储区域写入过多数据，这些错误会导致固件崩溃。但是，没有明确的数据表明多少是“太多”。
 
 openSUSE 通过不编写超过启动操作系统所需的最低限度的内容来最大限度地降低风险。最小值意味着告诉 UEFI 固件关于 openSUSE 引导装载程序的位置。使用 UEFI 存储区域存储引导和崩溃信息 ( `pstore` ) 的上游 Linux 内核功能已默认禁用。尽管如此，还是建议安装硬件供应商推荐的任何固件更新。
 
@@ -75,6 +75,7 @@ openSUSE 通过不编写超过启动操作系统所需的最低限度的内容�
 现代固件有一个垃圾收集器，可以收集已删除的条目并释放为旧条目保留的内存。当有故障的固件不收集和释放这些条目时，就会出现问题。这可能会导致系统无法启动。
 
 要解决此问题，请将旧版 MBR 分区转换为 GPT。
+
 ## 2 系统升级
 本节列出了与系统升级相关的注意事项。有关支持的方案和详细的升级说明，请参阅以下的文档链接：
 - [https://en.opensuse.org/SDB:System_upgrade](https://en.opensuse.org/SDB:System_upgrade)
