@@ -48,12 +48,8 @@ export const themeConfig: DefaultTheme.Config = {
       {
         text: "入门指南",
         items: [
-          { text: "入门指南", link: "/start-up/start-up" },
+          { text: "入门", link: "/start-up/start-up" },
           { text: "关于本手册", link: "/start-up/about-this-guide" },
-          { text: "可用文档", link: "/start-up/available-documentation" },
-          { text: "改进文档", link: "/start-up/improving-the-documentation" },
-          { text: "文档规定", link: "/start-up/documentation-conventions" },
-          { text: "源代码与致谢", link: "/start-up/source-code" },
         ],
       },
       
