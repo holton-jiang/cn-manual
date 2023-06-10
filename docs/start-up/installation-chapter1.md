@@ -1,5 +1,7 @@
 # 第 1 部分 安装
 
+[[toc]]
+
 ## 第 1 章 安装快速入门
 
 摘要
@@ -42,7 +44,7 @@
 
 插入包含 openSUSE Leap 安装映像的 DVD 或可引导 U 盘，然后重新启动计算机以启动安装程序。在具有传统 BIOS 的计算机上，您将看到如下所示的图形引导屏幕。在配备 UEFI 的计算机上，使用的引导屏幕略有不同。支持 UEFI 计算机上的安全启动。
 
-![[install_boot_osuse.png]]
+![[install_boot_osuse.png]](./install_boot_osuse.png)
 
 在 BIOS 计算机上，使用 **F2** 更改安装程序的语言。会自动选择相应的键盘布局。有关更改引导参数的更多信息，请参阅 “[具有传统 BIOS 的计算机上的引导屏幕](https://doc.opensuse.org/documentation/leap/startup/html/book-startup/cha-boot-parameters.html#sec-boot-parameters-screen)” 或 “[配备 UEFI 的计算机上的引导屏幕](https://doc.opensuse.org/documentation/leap/startup/html/book-startup/cha-boot-parameters.html#sec-boot-parameters-uefi)” 部分。在 UEFI 计算机上，在“下一步”中调整语言和键盘设置。
 
@@ -50,7 +52,7 @@
 
 ##### 1.3.2 语言、键盘和许可协议
 
-![[install_welcome_upgrade_osuse.png]]
+![[install_welcome_upgrade_osuse.png]](./install_welcome_upgrade_osuse.png)
 
 在具有传统 BIOS 的系统上，语言和键盘布局设置使用您在引导屏幕上选择的语言进行初始化。如果您没有更改默认值，或者使用的是 UEFI 计算机，它将是英语（美国）。如有必要，更改此处的设置。使用 *键盘测试* 文本框来测试布局。
 
@@ -58,7 +60,7 @@
 
 ##### 1.3.3 网络设置
 
-![[install_network_osuse.png]]
+![[install_network_osuse.png]](./install_network_osuse.png)
 
 如果无法自动配置网络，则会打开“网络设置”对话框。从列表中选择一个网络接口并使用编辑对其进行配置。或者，手动添加接口。有关更多信息，请参阅名为“网络设置”和“使用 YaST 配置网络连接”的部分（“基本网络”部分，↑参考 "参考指南",Chapter 13）。如果您更喜欢在没有网络访问的情况下进行安装，请跳过此步骤而不做任何更改并继续“下一步”。
 
@@ -66,7 +68,7 @@
 
 执行系统分析，其中安装程序探测存储设备，并尝试查找其他已安装的系统。如果可以访问 Internet 的网络连接可用，您将被要求激活在线存储库。回答是继续。如果您无法访问 Internet，将跳过此步骤。
 
-![[install_onlinerepos_ask_osuse.png]]
+![[install_onlinerepos_ask_osuse.png]](./install_onlinerepos_ask_osuse.png)
 
 在线存储库是官方的 openSUSE 包源。他们不仅提供安装介质中未包含的附加软件包，还提供包含安全性和错误修复的更新存储库。建议使用默认选择。至少添加主更新存储库，因为它确保系统安装了最新的安全补丁。
 
@@ -86,7 +88,7 @@
 
 ##### 1.3.5 系统角色
 
-![[install_ui_osuse.png]]
+![[install_ui_osuse.png]](./install_ui_osuse.png)
 
 通过选择桌面或服务器配置，通过此步骤选择通用软件和系统配置。
 
@@ -102,7 +104,7 @@
 
 ##### 1.3.6 建议分区
 
-![[install_partitioner_osuse.png]]
+![[install_partitioner_osuse.png]](./install_partitioner_osuse.png)
 
 在此步骤中为 openSUSE Leap 定义分区设置。查看系统建议的分区设置。如有必要，请更改它。您有以下选择：
 
@@ -126,13 +128,13 @@
 
 ##### 1.3.7 时钟和时区
 
-![[install_timezone_osuse.png]]
+![[install_timezone_osuse.png]](./install_timezone_osuse.png)
 
 选择要在您的系统中使用的时钟和时区。要手动调整时间或配置 NTP 服务器进行时间同步，请选择其他设置。有关详细信息，请参阅名为“时钟和时区”的部分。继续“下一步”。
 
 ##### 1.3.8 本地用户
 
-![[install_user_osuse.png]]
+![[install_user_osuse.png]](./install_user_osuse.png)
 
 要创建本地用户，请在“用户全名”字段中输入名字和姓氏，在“用户名”字段中输入登录名，并在“密码”字段中输入密码。
 
@@ -148,7 +150,7 @@
 
 ##### 1.3.9 系统管理员“root”的身份验证
 
-![[install_root_osuse.png]]
+![[install_root_osuse.png]](./install_root_osuse.png)
 
 为系统管理员帐户（称为 root 用户）提供密码。
 
@@ -168,7 +170,7 @@
 您可以在此处进行更改，也可以稍后随时从已安装的系统进行更改。但是，如果您需要在安装后直接进行远程访问，则必须调整安全设置。
 :::
 
-![[install_summary_osuse.png]]
+![[install_summary_osuse.png]](./install_summary_osuse.png)
 
 ##### 启动
 
@@ -200,13 +202,13 @@ CPU 缓解措施是指已部署以防止 CPU 侧信道攻击的软件缓解措�
 
 ##### 1.3.11 开始安装
 
-![[upgrade_confirm_osuse.png]]
+![[upgrade_confirm_osuse.png]](./upgrade_confirm_osuse.png)
 
 在安装设置屏幕上完成系统配置后，单击安装。根据您选择的软件，您可能需要在安装确认屏幕弹出之前同意许可协议。到目前为止，尚未对您的系统进行任何更改。第二次单击“安装”后，安装过程开始。
 
 ##### 1.3.12 安装过程
 
-![[install_perform_osuse.png]]
+![[install_perform_osuse.png]](./install_perform_osuse.png)
 
 安装期间，详细信息选项卡上会详细显示进度。 openSUSE Leap 发布说明标签页显示重要信息；建议阅读它们。
 
