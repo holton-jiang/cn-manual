@@ -8,14 +8,14 @@
 :::
 
 openSUSE 中文手册初衷是希望能够助帮到更多的计算机初学者了解与使用 openSUSE Linux 发行版，体验折腾计算机带来的乐趣。
-
-<!-- readme: collaborators,contributors -start -->
-<!-- readme: collaborators,contributors -end -->
-
+<p align="center">
+ <a href="holton-jiang.github.io/manual/">openSUSE 中文手册测试版本 </a>
+</p>
 ### 本站 Vi 设计
 ![[favicon]](./public/favicon.svg)
+来自对拍立得始祖：宝丽来的喜爱，选用彩虹条元素，彰显个性活力，仅此而已。
 
-<p align="center">
-<img src="[open](https://holton-jiang.github.io/cn-manual/favicon.svg)" height="300">
-</p>
-来自对拍立得始祖：宝丽来的喜爱，选用彩虹条设计，仅此而已。
+---
+
+![[favicon]](./public/openSUSE-Light.png)
+舞厅设计风格。
