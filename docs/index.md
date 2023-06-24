@@ -18,5 +18,5 @@ openSUSE 中文手册初衷是希望能够助帮到更多的计算机初学者�
 
 ---
 
-![[openSUSE-Light]](./public/openSUSE-Light.png)
+![[openSUSE-Light]](./public/favicon-light.svg)
 舞厅设计风格。
