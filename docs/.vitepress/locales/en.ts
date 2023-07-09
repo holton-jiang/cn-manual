@@ -51,6 +51,7 @@ export const themeConfig: DefaultTheme.Config = {
           { text: "入门", link: "/start-up/start-up" },
           { text: "关于本手册", link: "/start-up/about-this-guide" },
           { text: "第 1 部分 安装", link: "/start-up/installation-chapter1" },
+          { text: "第 1 部分 启动参数", link: "/start-up/boot-parameters" },
         ],
       },
       
