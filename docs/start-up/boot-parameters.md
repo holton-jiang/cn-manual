@@ -37,7 +37,7 @@ openSUSE Leap 允许在引导期间设置多个参数，例如选择安装数据
 ###### 更多 > 内存测试
 使用重复的读写周期测试您的系统 RAM。通过重新启动来终止测试。有关详细信息，请参阅《第4.4章节 引导失败》的部分。
 
-![[install_boot_osuse.png](./image/install_boot_osuse.png)
+![[install_boot_osuse.png]](./image/install_boot_osuse.png)
 
 <center>图2.1 传统 BIOS 的电脑上启动</center>
 
@@ -92,7 +92,7 @@ UEFI（Unified Extensible Firmware Interface）是一种新的行业标准，它
 **更多 > 查看安装介质**:
 	仅当您从下载的 ISO 创建的媒体进行安装时，此选项才可用。在这种情况下，建议检查安装介质的完整性。此选项会在自动检查媒体之前启动安装系统。如果检查成功，则正常安装程序开始。如果检测到损坏的媒体，则安装过程中止。
 
-![[install_boot_uefi_osuse.png](./image/install_boot_uefi_osuse.png)
+![[install_boot_uefi_osuse.png]](./image/install_boot_uefi_osuse.png)
 
 <center>图2.2：带有 UEFI 的电脑上引导</center>
 
@@ -295,7 +295,7 @@ proxy=https://USER:PASSWORD@proxy.example.com:PORT
 
 结果将类似于以下内容：
 
-![[grub_cmdline_proxy_osuse.png](./image/grub_cmdline_proxy_osuse.png)
+![[grub_cmdline_proxy_osuse.png]](./image/grub_cmdline_proxy_osuse.png)
 
 <center>图 2.3：GRUB 选项编辑器</center>
 
