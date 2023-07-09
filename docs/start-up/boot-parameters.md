@@ -38,30 +38,31 @@ openSUSE Leap 允许在引导期间设置多个参数，例如选择安装数据
 使用重复的读写周期测试您的系统 RAM。通过重新启动来终止测试。有关详细信息，请参阅《第4.4章节 引导失败》的部分。
 
 ![[install_boot_osuse.png](./image/install_boot_osuse.png)
-<center>图2.1 传统 BIOS 的电脑上启动
-</center>
+
+<center>图2.1 传统 BIOS 的电脑上启动</center>
+
 使用屏幕底部显示的功能键更改语言、屏幕分辨率、安装源或添加硬件供应商提供的额外驱动程序：
 
-**F1 帮助**
-	获取启动屏幕活动元素的上下文相关帮助。使用箭头键进行导航，使用 `Enter` 跟随链接，使用 `Esc` 离开帮助屏幕。
+**F1 帮助**:
+	 获取启动屏幕活动元素的上下文相关帮助。使用箭头键进行导航，使用 `Enter` 跟随链接，使用 `Esc` 离开帮助屏幕。
 
-**F2 语言**
-	为安装选择显示语言和相应的键盘布局。默认语言为英语（美国）。
+**F2 语言**:
+	 为安装选择显示语言和相应的键盘布局。默认语言为英语（美国）。
 
-**F3 视频模式**
-	为安装选择各种图形显示模式。默认情况下，视频分辨率是使用 KMS（“内核模式设置”）自动确定的。如果此设置在您的系统上不起作用，请选择“无 KMS”，并且可以选择在引导命令行上指定 vga=ask 以提示输入视频分辨率。如果图形安装导致问题，请选择文本模式。
+**F3 视频模式**:
+	 为安装选择各种图形显示模式。默认情况下，视频分辨率是使用 KMS（“内核模式设置”）自动确定的。如果此设置在您的系统上不起作用，请选择“无 KMS”，并且可以选择在引导命令行上指定 vga=ask 以提示输入视频分辨率。如果图形安装导致问题，请选择文本模式。
 
-**F4 安装软件源**
-	通常，安装是从插入的安装介质执行的。在这里，选择其他来源，如 FTP 或 NFS 服务器，或配置代理服务器。
+**F4 安装软件源**:
+	 通常，安装是从插入的安装介质执行的。在这里，选择其他来源，如 FTP 或 NFS 服务器，或配置代理服务器。
 
-**F5 内核**
+**F5 内核**:
 	如果您在常规安装中遇到问题，此菜单会提供禁用一些可能有问题的功能。如果您的硬件不支持 ACPI（高级配置和电源接口），请选择无 ACPI 以在没有 ACPI 支持的情况下进行安装。没有本地 APIC 会禁用对 APIC（高级可编程中断控制器）的支持，这可能会导致某些硬件出现问题。安全设置在 DMA 模式（用于 CD/DVD-ROM 驱动器）和禁用电源管理功能的情况下引导系统。
 	如果您不确定，请先尝试以下选项：安装——禁用ACPI 或 安装——安全设置。专家也可以使用命令行（Boot Options）输入或更改内核参数。
 
-**F6 驱动**
+**F6 驱动**:
 	按此键通知系统您有一个可选的 openSUSE Leap 驱动程序更新。使用文件或 URL，在安装开始前直接加载驱动程序。如果选择是，系统会提示您在安装过程中的适当位置插入更新磁盘。
 
-##### 2.2.2 配备 **UEFI** 的计算机上的启动屏幕
+##### 2.2.2 配备 UEFI 的计算机上的启动屏幕
 UEFI（Unified Extensible Firmware Interface）是一种新的行业标准，它替代和扩展了传统的 BIOS。最新的 UEFI 实现包含“安全引导”扩展，它通过只允许执行签名的引导加载程序来防止引导恶意代码。
 
 用于引导具有传统 BIOS 的机器的引导管理器 GRUB 2 不支持 UEFI，因此 GRUB 2 被替换为 GRUB 2 for EFI。如果启用了安全启动，YaST 将自动选择 GRUB 2 for EFI 进行安装。从管理和用户的角度来看，两种引导管理器实现的行为相同，在下文中称为 **GRUB 2** 。
@@ -76,22 +77,23 @@ UEFI（Unified Extensible Firmware Interface）是一种新的行业标准，它
 
 引导屏幕显示安装过程的几个选项。使用箭头键更改所选选项，然后按 `Enter` 键启动它。相关选项是：
 
-**安装**
+**安装**:
 	正常安装模式。启用所有现代硬件功能。如果安装失败，请参阅 F5 内核，以获取禁用可能有问题的功能的引导参数。
 
-**升级**
+**升级**:
 	执行系统升级。
 
-**更多 > 救援系统**
+**更多 > 救援系统**:
 	启动没有图形用户界面的最小 Linux 系统。有关详细信息，请参阅此选项在 Live CD 上不可用。
 
-**更多 > Boot Linux System**
+**更多 > Boot Linux System**:
 	引导已安装的 Linux 系统。系统将询问您从哪个分区引导系统。
 
-**更多 > 查看安装介质**
+**更多 > 查看安装介质**:
 	仅当您从下载的 ISO 创建的媒体进行安装时，此选项才可用。在这种情况下，建议检查安装介质的完整性。此选项会在自动检查媒体之前启动安装系统。如果检查成功，则正常安装程序开始。如果检测到损坏的媒体，则安装过程中止。
 
 ![[install_boot_uefi_osuse.png](./image/install_boot_uefi_osuse.png)
+
 <center>图2.2：带有 UEFI 的电脑上引导</center>
 
 openSUSE Leap 上用于 EFI 的 GRUB 2 不支持用于添加引导参数的引导提示或功能键。默认情况下，安装将以美国英语和引导媒体作为安装源启动。将执行 DHCP 查找以配置网络。要更改这些默认值或添加引导参数，您需要编辑相应的引导条目。使用箭头键突出显示它并按 `E`。请参阅屏幕上的帮助以获取编辑提示（请注意，现在只有英文键盘可用）。安装条目将类似于以下内容：
@@ -112,38 +114,38 @@ setparams 'Installation'
 本节包含一些重要的引导参数。
 
 ###### 2.3.1 一般启动参数
-**autoyast=_URL_**
+**autoyast=_URL_**:
 	**autoyast** 参数指定用于自动安装的 **autoinst.xml** 控制文件的位置。
 
-**manual=<0|1>**
+**manual=<0|1>**:
 	**manual** 参数控制其他参数是否只是仍必须由用户确认的默认值。如果应接受所有值且不询问任何问题，则将此参数设置为 **0** 。设置 **autoyast** 意味着将 **manual** 设置为 **0** 。
 
-**Info= _URL_**
+**Info= _URL_**:
 	指定从中读取附加选项的文件的位置。
 
-**upgrade=<0|1>**
+**upgrade=<0|1>**:
 	要升级 openSUSE Leap，请指定 **Upgrade=1** 。
 
-**dud= _URL_**
-	从 URL 加载驱动程序更新。
+**dud= _URL_**:
+	从 URL 加载驱动程序更新。<br>
 	设置 dud=ftp://ftp.example.com/PATH_TO_DRIVER 或 dud=http://www.example.com/PATH_TO_DRIVER  以从 URL 加载驱动程序。当 **dud=1** 时，系统会在引导期间要求您提供 URL。
 
-**language= _LANGUAGE_**
+**language= _LANGUAGE_**:
 	设置安装语言。一些支持的值是 **cs_CZ** 、 **de_DE** 、 **es_ES** 、 **fr_FR** 、 **ja_JP** 、 **pt_BR** 、 **pt_PT** 、 **ru_RU** 、 **zh_CN** 和 **zh_TW** 。
 
-**acpi=off**
+**acpi=off**:
 	禁用 ACPI 支持。
 
-**noapic**
+**noapic**:
 	无逻辑 APIC。
 
-**nomodeset**
+**nomodeset**:
 	禁用 KMS。
 
-**textmode=1**
+**textmode=1**:
 	以文本模式启动安装程序。
 
-**console=SERIAL_DEVICE[,MODE]**
+**console=SERIAL_DEVICE[,MODE]**:
 	SERIAL_DEVICE 可以是实际的串行或并行设备（例如 ttyS0 ）或虚拟终端（例如 tty1 ）。 MODE 是波特率、奇偶校验和停止位（例如 9600n8 ）。此设置的默认值由主板固件设置。如果您在显示器上看不到输出，请尝试设置 console=tty1 。可以定义多个设备。
 
 ###### 2.3.2 配置网络接口
@@ -153,10 +155,10 @@ setparams 'Installation'
 
 只有在安装过程中需要时才会配置网络。要强制配置网络，请使用 **netsetup** 或 **ifcfg** 参数。
 
-**netsetup=_VALUE_**
+**netsetup=_VALUE_**:
 	**netsetup=dhcp** 通过 DHCP 自动配置。使用引导参数 **hostip** 、 **gateway** 和 **nameserver** 配置网络时设置 **netsetup=-dhcp** 。使用选项**netsetup=hostip,netmask,gateway,nameserver** ，安装程序会在引导期间询问网络设置。
 
-**ifcfg=INTERFACE[.VLAN]=[.try,]SETTINGS**
+**ifcfg=INTERFACE[.VLAN]=[.try,]SETTINGS**:
 **INTERFACE** 可以是 * 以匹配所有接口，或者例如 <u>eth*</u> 以匹配以 **eth** 开头的所有接口。也可以使用 MAC 地址作为值。
 
 （可选）可以在接口名称后面设置一个 VLAN，以句点分隔。
@@ -177,34 +179,36 @@ ifcfg=*="10.0.0.10/24,10.0.0.1,10.0.0.1 10.0.0.2,example.com"
 ```
 
 ::: tip 提示：其他网络参数
-**ifcfg** 引导参数非常强大，几乎可以设置所有网络参数。除了上面提到的参数之外，您还可以为 **/etc/sysconfig/network/ifcfg.template**  和 **/etc/sysconfig/network/config** 中的所有配置选项（以逗号分隔）设置值。以下示例在通过 DHCP 配置的接口上设置自定义 MTU 大小：
+**ifcfg**: 引导参数非常强大，几乎可以设置所有网络参数。除了上面提到的参数之外，您还可以为 **/etc/sysconfig/network/ifcfg.template**  和 **/etc/sysconfig/network/config**: 中的所有配置选项（以逗号分隔）设置值。以下示例在通过 DHCP 配置的接口上设置自定义 MTU 大小：
+
 ```
 ifcfg=eth0=dhcp,MTU=1500
 ```
+
 :::
 
-**hostname=host.example.com**
+**hostname=host.example.com**:
 	输入标准主机名。
 
-**domain=example.com**
+**domain=example.com**:
 	DNS 的域搜索路径。允许您使用短主机名而不是完全限定的主机名。
 
-**hostip=192.168.1.2[/24]**
+**hostip=192.168.1.2[/24]**:
 	输入要配置的接口的 IP 地址。 IP 可以包含子网掩码，例如 **hostip=192.168.1.2/24** 。只有在安装过程中需要网络时才会评估此设置。
 
-**gateway=192.168.1.3**
+**gateway=192.168.1.3**:
 	指定要使用的网关。只有在安装过程中需要网络时才会评估此设置。
 
-**nameserver=192.168.1.4**
+**nameserver=192.168.1.4**:
 	指定负责的 DNS 服务器。只有在安装过程中需要网络时才会评估此设置。
 
-**domain=example.com**
+**domain=example.com**:
 	域搜索路径。只有在安装过程中需要网络时才会评估此设置。
 
 ###### 2.3.3 指定安装源
 如果您不使用 DVD 或 USB 闪存驱动器进行安装，请指定替代安装源。
 
-**install=SOURCE**
+**install=SOURCE**:
 	指定要使用的安装源的位置。可能的协议是 **cd** 、 **hd** 、 **slp** 、 **nfs** 、 **smb** (Samba/CIFS)、 **ftp** 、 **tftp** 、 **http** 和 **https** 。默认选项是 **cd** 。
 	要通过加密连接安装，请使用 **https** URL。如果无法验证证书，请使用 **sslcerts=0** 引导参数禁用证书检查。
 	如果提供了 **http** 、 **https** 、 **ftp** 、 **tftp** 或 **smb** URL，您可以通过使用 URL 指定用户名和密码来进行身份验证。例子：
@@ -237,16 +241,16 @@ Display_IP 使安装系统尝试连接到给定地址的 X 服务器。
 X Window System 的直接安装依赖于基于主机名的原始身份验证机制。当前的 openSUSE Leap 版本禁用了该机制。首选使用 SSH 或 VNC 安装。
 :::
 
-vnc=1
+**vnc=1**:
 	在安装期间启用 VNC 服务器。
 
-vncpassword= PASSWORD
+**vncpassword= PASSWORD**:
 	设置 VNC 服务器的密码。
 
-ssh=1
+**ssh=1**:
 	ssh 启用 SSH 安装。
 
-ssh.password= PASSWORD
+**ssh.password= PASSWORD**:
 	在安装期间为 root 用户指定 SSH 密码。
 
 ## 2.4 高级设置
@@ -292,7 +296,9 @@ proxy=https://USER:PASSWORD@proxy.example.com:PORT
 结果将类似于以下内容：
 
 ![[grub_cmdline_proxy_osuse.png](./image/grub_cmdline_proxy_osuse.png)
+
 <center>图 2.3：GRUB 选项编辑器</center>
+
 3. 按 `F10` 以使用新的代理设置启动。
 
 ###### 2.4.3 启用 SELinux 支持
