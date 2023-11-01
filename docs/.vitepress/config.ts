@@ -40,7 +40,7 @@ export default defineConfig({
 			provider: 'local',
 			options: {
 				locales: {
-					zh: {
+					en: {
 						translations: {
 							button: {
 								buttonText: '搜索文档',
