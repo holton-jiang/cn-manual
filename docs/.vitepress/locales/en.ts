@@ -9,6 +9,10 @@ export const themeConfig: DefaultTheme.Config = {
   //衔接配置好的common主题
   ...common.themeConfig,
 
+  search: {
+			provider: 'local',
+		},
+
   //显示编辑内容的控件。
   editLink: {
     //转跳到对应的源文本。
