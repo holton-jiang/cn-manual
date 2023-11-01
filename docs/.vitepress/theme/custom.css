@@ -1,0 +1,58 @@
+/* @import 'lxgw-wenkai-lite-webfont/style.css'; */
+/* @import 'lxgw-wenkai-screen-webfont/style.css'; */
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/style.min.css');
+/* @import url("https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.6.0/style.min.css"); */
+
+/* .vitepress/theme/custom.css */
+/* @font-face {
+	font-family: 'LXGW WenKai Screen';
+	src: url('./LXGWWenKaiLite-Regular.ttf');
+	src: url('./LXGWWenKaiGBScreenR.ttf');
+} */
+
+/* :root {
+	--vp-font-family-base: 'LXGW WenKai Screen', 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	--vp-font-family-mono: 'LXGW WenKai Screen', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+} */
+:root {
+	--vp-font-family-base: 'LXGW WenKai Lite', 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	--vp-font-family-mono: 'LXGW WenKai Lite', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/**
+* 标题颜色
+*/
+:root {
+	--vp-home-hero-name-color: transparent;
+	--vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+}
+
+/**
+* Component: Home
+* -------------------------------------------------------------------------- */
+
+/* .VPHomeHero .name,
+.VPHomeHero .image {
+	background-image: none;
+	transition: background-image 0.8s;
+} */
+:root {
+	--vp-home-hero-name-color: transparent;
+	--vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+	--vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #4c09b9 50%);
+	--vp-home-hero-image-filter: blur(70px);
+}
+
+@media (min-width: 640px) {
+	:root {
+		--vp-home-hero-image-filter: blur(80px);
+	}
+}
+
+@media (min-width: 960px) {
+	:root {
+		--vp-home-hero-image-filter: blur(100px);
+	}
+}
