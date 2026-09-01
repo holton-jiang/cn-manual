@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Configuring log visualization</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"/></head><body><div class="sect1"><div class="titlepage"><div><div><h1 class="title"><a id="sec-audit-viz"/>Configuring log visualization</h1></div></div></div><p>
+   Using the scripts <span class="command"><strong>mkbar</strong></span> and <span class="command"><strong>mkgraph</strong></span>
+   you can illustrate your audit statistics with various graphs and charts.
+   As with any other <span class="command"><strong>aureport</strong></span> command, the plotting
+   commands are scriptable and can easily be configured to run as cron jobs.
+  </p><p><span class="command"><strong>mkbar</strong></span> and <span class="command"><strong>mkgraph</strong></span> were created by
+   Steve Grubb at Red Hat. They are available from
+   <a class="link" href="https://people.redhat.com/sgrubb/audit/visualize/">https://people.redhat.com/sgrubb/audit/visualize/</a>.
+   Because the current version of audit in <span class="productname"><span class="phrase">openSUSE Leap</span></span> does not ship
+   with these scripts, proceed as follows to make them available on your
+   system:
+  </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Downloaded content is dangerous</h3><p>
+    Use <span class="command"><strong>mkbar</strong></span> and <span class="command"><strong>mkgraph</strong></span> at your own
+    risk. Any content downloaded from the Web is potentially dangerous
+    to your system, even more so when run with <code class="systemitem">root</code> privileges.
+   </p></div><div class="procedure"><ol class="procedure"><li class="step"><p>
+     Download the scripts to <code class="systemitem">root</code>'s <code class="filename">~/bin</code>
+     directory:
+    </p><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> wget http://people.redhat.com/sgrubb/audit/visualize/mkbar -O ~/bin/mkbar
+<code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> wget http://people.redhat.com/sgrubb/audit/visualize/mkgraph -O ~/bin/mkgraph</pre></li><li class="step"><p>
+     Adjust the file permissions to read, write, and execute for
+     <code class="systemitem">root</code>:
+    </p><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> chmod 744 ~/bin/mk{bar,graph}</pre></li></ol></div><p>
+   To plot summary reports, such as the ones discussed in
+   <a class="xref" href="ch41s05.html" title="Configuring audit reports">the section called “Configuring audit reports”</a>, use the script
+   <span class="command"><strong>mkbar</strong></span>. Some example commands could look like the
+   following:
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Create a summary of events</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> aureport -e -i --summary | mkbar events</pre></dd><dt><span class="term">Create a summary of file events</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> aureport -f -i --summary | mkbar files</pre></dd><dt><span class="term">Create a summary of login events</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> aureport -l -i --summary | mkbar login</pre></dd><dt><span class="term">Create a summary of user events</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> aureport -u -i --summary | mkbar users</pre></dd><dt><span class="term">Create a summary of system call events</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> aureport -s -i --summary | mkbar syscalls</pre></dd></dl></div><p>
+   To create a summary chart of failed events of any of the above event
+   types, add the <code class="option">--failed</code> option to the respective
+   <span class="command"><strong>aureport</strong></span> command. To cover a certain period of time,
+   use the <code class="option">-ts</code> and <code class="option">-te</code> options on
+   aureport. Any of these commands can be tweaked further by narrowing down
+   its scope using grep or egrep and regular expressions. See the comments
+   in the <span class="command"><strong>mkbar</strong></span> script for an example. Any of the above
+   commands produces a PNG file containing a bar chart of the requested
+   data.
+  </p><p>
+   To illustrate the relationship between different kinds of audit objects,
+   such as users and system calls, use the script
+   <span class="command"><strong>mkgraph</strong></span>. Some example commands could look like the
+   following:
+  </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Users versus executables</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> LC_ALL=C aureport -u -i | awk '/^[0-9]/ { print $4" "$7 }' | sort | uniq | mkgraph users_vs_exec</pre></dd><dt><span class="term">Users versus files</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> LC_ALL=C aureport -f -i | awk '/^[0-9]/ { print $8" "$4 }' | sort | uniq | mkgraph users_vs_files</pre></dd><dt><span class="term">System calls versus commands</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> LC_ALL=C aureport -s -i | awk '/^[0-9]/ { print $4" "$6 }' | sort | uniq | mkgraph syscall_vs_com</pre></dd><dt><span class="term">System calls versus files</span></dt><dd><pre class="screen"><code class="prompt">&gt; </code><span class="command"><strong>sudo</strong></span> LC_ALL=C aureport -s -i | awk '/^[0-9]/ { print $5" "$4 }' | sort | uniq | mkgraph | syscall_vs_file</pre></dd></dl></div><p>
+   Graphs can also be combined to illustrate complex relationships. See the
+   comments in the <span class="command"><strong>mkgraph</strong></span> script for further information
+   and an example. The graphs produced by this script are created in
+   PostScript format by default, but you can change the output format by
+   changing the <code class="envar">EXT</code> variable in the script from
+   <code class="literal">ps</code> to <code class="literal">png</code> or
+   <code class="literal">jpg</code>.
+  </p></div></body></html>

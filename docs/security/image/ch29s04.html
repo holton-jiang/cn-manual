@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Immunizing network applications</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"/></head><body><div class="sect1"><div class="titlepage"><div><div><h1 class="title"><a id="sec-apparmor-concept-network"/>Immunizing network applications</h1></div></div></div><p>
+   An automated method for finding network server daemons that should be
+   profiled is to use the <span class="command"><strong>aa-unconfined</strong></span> tool.
+
+  </p><p>
+   The <span class="command"><strong>aa-unconfined</strong></span> tool uses the command
+   <span class="command"><strong>netstat -nlp</strong></span> to inspect open ports from inside your
+   computer, detect the programs associated with those ports, and inspect
+   the set of <span class="phrase">AppArmor</span> profiles that you have loaded.
+   <span class="command"><strong>aa-unconfined</strong></span> then reports these programs along with
+   the <span class="phrase">AppArmor</span> profile associated with each program, or reports
+   <span class="quote">“<span class="quote">none</span>”</span> (if the program is not confined).
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+    If you create a new profile, you must restart the program that has been
+    profiled to have it be effectively confined by <span class="phrase">AppArmor</span>.
+   </p></div><p>
+   Below is a sample <span class="command"><strong>aa-unconfined</strong></span> output:
+  </p><pre class="screen">
+3702<a id="co-apparmor-concept-network-id"/><span><img src="static/callouts/1.png" alt="1"/></span> /usr/sbin/sshd<a id="co-apparmor-concept-network-string"/><span><img src="static/callouts/2.png" alt="2"/></span> confined
+   by '/usr/sbin/sshd<a id="co-apparmor-concept-network-confine"/><span><img src="static/callouts/3.png" alt="3"/></span> (enforce)'
+4040 /usr/sbin/smbd confined by '/usr/sbin/smbd (enforce)'
+4373 /usr/lib/postfix/master confined by '/usr/lib/postfix/master (enforce)'
+4505 /usr/sbin/httpd2-prefork confined by '/usr/sbin/httpd2-prefork (enforce)'
+646 /usr/lib/wicked/bin/wickedd-dhcp4 not confined
+647 /usr/lib/wicked/bin/wickedd-dhcp6 not confined
+5592 /usr/bin/ssh not confined
+7146 /usr/sbin/cupsd confined by '/usr/sbin/cupsd (complain)'</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td valign="top" align="left"><p><a href="#co-apparmor-concept-network-id"><span><img src="static/callouts/1.png" alt="1"/></span></a> </p></td><td valign="top" align="left"><p>
+     The first portion is a number. This number is the process ID number
+     (PID) of the listening program.
+    </p></td></tr><tr><td valign="top" align="left"><p><a href="#co-apparmor-concept-network-string"><span><img src="static/callouts/2.png" alt="2"/></span></a> </p></td><td valign="top" align="left"><p>
+     The second portion is a string that represents the absolute path of the
+     listening program
+    </p></td></tr><tr><td valign="top" align="left"><p><a href="#co-apparmor-concept-network-confine"><span><img src="static/callouts/3.png" alt="3"/></span></a> </p></td><td valign="top" align="left"><p>
+     The final portion indicates the profile confining the program, if any.
+    </p></td></tr></table></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p><span class="command"><strong>aa-unconfined</strong></span> requires <code class="systemitem">root</code> privileges and
+    should not be run from a shell that is confined by an <span class="phrase">AppArmor</span> profile.
+   </p></div><p><span class="command"><strong>aa-unconfined</strong></span> does not distinguish between one network
+   interface and another, so it reports all unconfined processes, even those
+   that might be listening to an internal LAN interface.
+  </p><p>
+   Finding user network client applications is dependent on your user
+   preferences. The <span class="command"><strong>aa-unconfined</strong></span> tool detects and
+   reports network ports opened by client applications, but only those
+   client applications that are running at the time the
+   <span class="command"><strong>aa-unconfined</strong></span> analysis is performed. This is a problem
+   because network services run all the time, while network
+   client applications run when the user is interested in them.
+  </p><p>
+   Applying <span class="phrase">AppArmor</span> profiles to user network client applications is also
+   dependent on user preferences. Therefore, we leave the profiling of user
+   network client applications as an exercise for the user.
+  </p><p>
+   To aggressively confine desktop applications, the
+   <span class="command"><strong>aa-unconfined</strong></span> command supports a
+   <code class="option">--paranoid</code> option, which reports all processes running
+   and the corresponding <span class="phrase">AppArmor</span> profiles that might or might not be
+   associated with each process. The user can then decide whether each of
+   these programs needs an <span class="phrase">AppArmor</span> profile.
+  </p><p>
+   If you have new or modified profiles, you can submit them to the
+   <code class="email">&lt;<a class="email" href="mailto:apparmor@lists.ubuntu.com">apparmor@lists.ubuntu.com</a>&gt;</code> mailing list along with a use
+   case for the application behavior that you exercised. The <span class="phrase">AppArmor</span> team
+   reviews and may submit the work into <span class="productname"><span class="phrase">openSUSE Leap</span></span>. We cannot
+   guarantee that every profile is included, but we make a sincere
+   effort to include as much as possible.
+  </p><div class="sect2"><div class="titlepage"><div><div><h2 class="title"><a id="sec-apparmor-concept-network-web"/>Immunizing web applications</h2></div></div></div><p>
+    To find Web applications, investigate your Web server configuration. The
+    Apache Web server is highly configurable and Web applications can be
+    stored in many directories, depending on your local configuration.
+    <span class="productname"><span class="phrase">openSUSE Leap</span></span>, by default, stores Web applications in
+    <code class="filename">/srv/www/cgi-bin/</code>. To the maximum extent possible,
+    each Web application should have an <span class="phrase">AppArmor</span> profile.
+   </p><p>
+    Once you find these programs, you can use the
+    <span class="command"><strong>aa-genprof</strong></span> and <span class="command"><strong>aa-logprof</strong></span> tools to
+    create or update their <span class="phrase">AppArmor</span> profiles.
+   </p><p>
+    Because CGI programs are executed by the Apache Web server, the profile
+    for Apache itself, <code class="filename">usr.sbin.httpd2-prefork</code> for
+    Apache2 on <span class="productname"><span class="phrase">openSUSE Leap</span></span>, must be modified to add execute permissions
+    to each of these programs. For example, adding the line
+    <code class="literal">/srv/www/cgi-bin/my_hit_counter.pl rPx</code> grants Apache
+    permission to execute the Perl script
+    <code class="filename">my_hit_counter.pl</code> and requires that there be a
+    dedicated profile for <code class="filename">my_hit_counter.pl</code>. If
+    <code class="filename">my_hit_counter.pl</code> does not have a dedicated profile
+    associated with it, the rule should say
+    <code class="literal">/srv/www/cgi-bin/my_hit_counter.pl rix</code> to cause
+    <code class="filename">my_hit_counter.pl</code> to inherit the
+    <code class="filename">usr.sbin.httpd2-prefork</code> profile.
+   </p><p>
+    Some users might find it inconvenient to specify execute permission for
+    every CGI script that Apache might invoke. Instead, the administrator
+    can grant controlled access to collections of CGI scripts. For example,
+    adding the line <code class="literal">/srv/www/cgi-bin/*.{pl,py,pyc} rix</code>
+    allows Apache to execute all files in
+    <code class="literal">/srv/www/cgi-bin/</code> ending in <code class="filename">.pl</code>
+    (Perl scripts) and <code class="filename">.py</code> or <code class="filename">.pyc</code>
+    (Python scripts). As above, the <code class="literal">ix</code> part of the rule
+    causes Python scripts to inherit the Apache profile, which is
+    appropriate if you do not want to write individual profiles for each CGI
+    script.
+   </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+     If you want the subprocess confinement module
+     (<code class="filename">apache2-mod-apparmor</code>) functionality when Web
+     applications handle Apache modules (<code class="filename">mod_perl</code> and
+     <code class="filename">mod_php</code>), use the ChangeHat features when you add
+     a profile in YaST or at the command line. To take advantage of the
+     subprocess confinement, refer to
+     <a class="xref" href="ch34s02.html" title="Managing ChangeHat-aware applications">the section called “Managing ChangeHat-aware applications”</a>.
+    </p></div><p>
+    Profiling Web applications that use <code class="filename">mod_perl</code> and
+    <code class="filename">mod_php</code> requires slightly different handling. In
+    this case, the <span class="quote">“<span class="quote">program</span>”</span> is a script interpreted directly
+    by the module within the Apache process, so no exec happens. Instead,
+    the <span class="phrase">AppArmor</span> version of Apache calls <span class="command"><strong>change_hat()</strong></span>
+    using a subprofile (a <span class="quote">“<span class="quote">hat</span>”</span>) corresponding to the name of
+    the URI requested.
+   </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+     The name presented for the script to execute might not be the URI,
+     depending on how Apache has been configured for where to look for
+     module scripts. If you have configured your Apache to place scripts in
+     a different place, the different names appear in the log file when
+     <span class="phrase">AppArmor</span> complains about access violations. See
+     <a class="xref" href="ch36.html" title="Chapter 36. Managing profiled applications">Chapter 36, <em>Managing profiled applications</em></a>.
+    </p></div><p>
+    For <code class="filename">mod_perl</code> and <code class="filename">mod_php</code>
+    scripts, this is the name of the Perl script or the PHP page requested.
+    For example, adding this subprofile allows the
+    <code class="filename">localtime.php</code> page to execute and access to the
+    local system time and locale files:
+   </p><pre class="screen">/usr/bin/httpd2-prefork {
+  # ...
+  ^/cgi-bin/localtime.php {
+    /etc/localtime                  r,
+    /srv/www/cgi-bin/localtime.php  r,
+    /usr/lib/locale/**              r,
+  }
+}
+</pre><p>
+    If no subprofile has been defined, the <span class="phrase">AppArmor</span> version of Apache applies
+    the <code class="systemitem">DEFAULT_URI</code> hat. This subprofile is
+    sufficient to display a Web page. The
+    <code class="systemitem">DEFAULT_URI</code> hat that <span class="phrase">AppArmor</span> provides by
+    default is the following:
+   </p><pre class="screen">^DEFAULT_URI {
+    /usr/sbin/suexec2                  mixr,
+    /var/log/apache2/**                rwl,
+    @{HOME}/public_html                r,
+    @{HOME}/public_html/**             r,
+    /srv/www/htdocs                    r,
+    /srv/www/htdocs/**                 r,
+    /srv/www/icons/*.{gif,jpg,png}     r,
+    /srv/www/vhosts                    r,
+    /srv/www/vhosts/**                 r,
+    /usr/share/apache2/**              r,
+    /var/lib/php/sess_*                rwl
+}
+    </pre><p>
+    To use a single <span class="phrase">AppArmor</span> profile for all Web pages and CGI scripts served
+    by Apache, a good approach is to edit the
+    <code class="systemitem">DEFAULT_URI</code> subprofile. For more information on
+    confining Web applications with Apache, see
+    <a class="xref" href="ch34.html" title="Chapter 34. Profiling your Web applications using ChangeHat">Chapter 34, <em>Profiling your Web applications using ChangeHat</em></a>.
+   </p></div><div class="sect2"><div class="titlepage"><div><div><h2 class="title"><a id="sec-apparmor-concept-network-agents"/>Immunizing network agents</h2></div></div></div><p>
+    To find network server daemons and network clients (such as
+    <span class="command"><strong>fetchmail</strong></span> or Firefox) that need to be profiled,
+    you should inspect the open ports on your machine. Also, consider
+    the programs that are answering on those ports, and provide profiles
+    for as many of those programs as possible. If you provide profiles
+    for all programs with open network ports, an attacker cannot get to
+    the file system on your machine without passing through an <span class="phrase">AppArmor</span>
+    profile policy.
+   </p><p>
+    Scan your server for open network ports manually from outside the
+    machine using a scanner (such as nmap), or from inside the machine using
+    the <span class="command"><strong>netstat --inet -n -p</strong></span> command as <code class="systemitem">root</code>.
+    Then, inspect the machine to determine which programs are answering on
+    the discovered open ports.
+   </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+     Refer to the man page of the <span class="command"><strong>netstat</strong></span> command for a
+     detailed reference of all possible options.
+    </p></div></div></div></body></html>

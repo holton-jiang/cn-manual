@@ -104,10 +104,8 @@ export const themeConfig: DefaultTheme.Config = {
       {
         text: "入门指南",
         items: [
-          { text: "入门", link: "/start-up/start-up" },
-          { text: "关于本手册", link: "/start-up/about-this-guide" },
-          { text: "第 1 部分 安装", link: "/start-up/installation-chapter1" },
-          { text: "第 1 部分 启动参数", link: "/start-up/boot-parameters" },
+          { text: "关于本手册", link: "/start-up/start-up" },
+          { text: "入门指南", link: "/start-up/installation-chapter1" },
         ],
       },
       
@@ -121,28 +119,28 @@ export const themeConfig: DefaultTheme.Config = {
       {
         text: "参考指南",
         items: [
-        //  { text: "参考指南", link: "/using/index0" },
+          { text: "参考指南", link: "/reference/reference" },
         ],
       },
       
       {
         text: "安全指南",
         items: [
-        //  { text: "安全指南", link: "/using/index0" },
+          { text: "安全指南", link: "/security/security" },
         ],
       },
       
       {
         text: "优化指南",
         items: [
-        //  { text: "优化指南", link: "/using/index0" },
+          { text: "系统分析与调优指南", link: "/tuning/tuning" },
         ],
       },
       
       {
         text: "虚拟化指南",
         items: [
-        //  { text: "虚拟化指南", link: "/using/index0" },
+          { text: "虚拟化指南", link: "/virtualization/virtualization" },
         ],
       },
       
