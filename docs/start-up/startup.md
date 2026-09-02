@@ -134,9 +134,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 您也可以手动选择系统的软件配置。选择自定义，然后选择下一步以进入软件选择和系统任务对话框。选择一个或多个模式进行安装。通过单击详细信息，您可以选择单个软件包。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：发行说明
+![Tip](./image/icon-tip.svg "Tip") **提示**：发行说明
 
 从现在开始，可以在安装过程中的任何屏幕上通过选择发行说明来查看发行说明。
 
@@ -156,9 +154,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 打开专家分区，如参考手册，第 5 章“专家分区”，第 5.1 节“使用专家分区”中所述。这使您可以完全控制分区设置并创建自定义设置。此选项面向专家。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：单独的主分区
+![Note](./image/icon-note.svg "Note") **注意**：单独的主分区
 
 默认建议不再建议为 `/home` 创建单独的分区。`/home` 目录包含用户的数据和个人配置文件。将其放在单独的目录中可以更轻松地在未来重建系统，或者允许您在同一机器上与不同的 Linux 安装共享它。
 
@@ -196,9 +192,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 您永远不应该忘记 `root` 密码！输入后，无法检索密码。有关更多信息，请参阅[第 3.10 节，“系统管理员 `root` 的身份验证”](#sec-yast-install-user-root "3.10. 系统管理员 root 的身份验证")。使用下一步继续。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：密码和键盘布局
+![Tip](./image/icon-tip.svg "Tip") **提示**：密码和键盘布局
 
 建议仅使用 US ASCII 字符。如果发生系统错误或需要在救援模式下启动系统，则键盘可能未本地化。
 
@@ -210,9 +204,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 使用安装设置屏幕查看并—如果必要—更改几个建议的安装设置。为每个设置列出了当前配置。要更改它，请单击标题。可以通过单击相应的链接直接更改某些设置，例如防火墙或 SSH。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：远程访问
+![Important](./image/icon-important.svg "Important") **重要**：远程访问
 
 您可以在稍后从已安装的系统随时进行此处所做的更改。但是，如果您需要在安装后立即进行远程访问，则必须调整安全性设置。
 
@@ -279,9 +271,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 启动系统的具体方式取决于架构—例如，PC (AMD64/Intel 64) 或大型机。如果您将 openSUSE Leap 安装为 KVM 或 Xen 超visor 上的 VM 来宾，请遵循 AMD64/Intel 64 架构的说明。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：启动选项和启动参数
+![Note](./image/icon-note.svg "Note") **注意**：启动选项和启动参数
 
 术语_启动参数_和_启动选项_通常可以互换使用。在本文档中，我们主要使用术语_启动参数_。
 
@@ -365,9 +355,7 @@ UEFI（统一可扩展固件接口）是一种新的行业标准，它取代并�
 
 用于启动具有传统 BIOS 的机器的启动管理器 GRUB 2 不支持 UEFI，因此 GRUB 2 已被 GRUB 2 for EFI 取代。如果启用了安全启动，YaST 将自动选择 GRUB 2 for EFI 进行安装。从管理和用户角度来看，这两种启动管理器实现的行为相同，在以下内容中称为 `GRUB 2`。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：使用安全启动时的附加驱动程序
+![Tip](./image/icon-tip.svg "Tip") **提示**：使用安全启动时的附加驱动程序
 
 在启用安全启动的情况下安装时，您无法加载未随 openSUSE Leap 提供的驱动程序。即使通过 SolidDriver 提供的驱动程序也是如此，因为它们的签名密钥默认情况下不受信任。
 
@@ -475,9 +463,7 @@ _SERIAL\_DEVICE_ 可以是实际的串行或并行设备（例如 `ttyS0`）或�
 
 ### 2.3.2 配置网络接口
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：配置网络接口
+![Important](./image/icon-important.svg "Important") **重要**：配置网络接口
 
 本节讨论的设置仅适用于安装期间使用的网络接口。按照 参考手册，第 13 章“基本网络”，第 13.6 节“手动配置网络连接” 中的说明配置已安装系统中的其他网络接口。
 
@@ -509,9 +495,7 @@ ifcfg=\*="_IPS\_NETMASK_,_GATEWAYS_,_NAMESERVERS_,_DOMAINS_"
 ifcfg=\*="_10.0.0.10/24_,_10.0.0.1_,_10.0.0.1 10.0.0.2_,_example.com_"
 ```
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：其他网络参数
+![Tip](./image/icon-tip.svg "Tip") **提示**：其他网络参数
 
 `ifcfg` 启动参数功能非常强大，允许您设置几乎所有网络参数。 除了上述参数之外，您还可以设置 `/etc/sysconfig/network/ifcfg.template` 和 `/etc/sysconfig/network/config` 中的所有配置选项（逗号分隔）。 以下示例在通过 DHCP 配置的接口上设置自定义 MTU 大小
 
@@ -581,9 +565,7 @@ install=slp:/
 
 `Display_IP` 使安装系统尝试连接到给定地址的 X 服务器。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：X 身份验证机制
+![Important](./image/icon-important.svg "Important") **重要提示**：X 身份验证机制
 
 使用 X Window System 的直接安装依赖于基于主机名的原始身份验证机制。 此机制在当前的 openSUSE Leap 版本中已禁用。 建议使用 SSH 或 VNC 进行安装。
 
@@ -753,9 +735,7 @@ YAST\_LUKS2\_AVAILABLE
 
 如果您是 openSUSE Leap 的首次用户，您应该在大部分情况下遵循 YaST 的默认建议，但您也可以根据您的偏好调整设置，如本文所述。 单击 帮助 可获取每个安装步骤的帮助。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：无鼠标安装
+![Tip](./image/icon-tip.svg "Tip") **提示**：无鼠标安装
 
 如果安装程序未正确检测到您的鼠标，请使用 →| 进行导航，使用箭头键滚动，并使用 Enter 确认选择。 各种按钮或选择字段包含带有下划线的字母。 使用 Alt–字母 直接选择按钮或选择，而不是使用 →| 进行导航。
 
@@ -792,17 +772,13 @@ YAST\_LUKS2\_AVAILABLE
 
 在安装和升级过程中，YaST 可能会更新自身，以解决在发布后发现的安装程序中的错误。默认情况下，此功能已启用；要禁用它，请将启动参数 `self_update` 设置为 `0`。有关更多信息，请参阅 [第 2.4.4 节，“启用安装程序自更新”](#sec-boot-parameters-advanced-self-update "2.4.4. 启用安装程序自更新")。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：自更新期间的网络
+![Important](./image/icon-important.svg "Important") **重要提示**：自更新期间的网络
 
 要下载安装程序更新，YaST 需要网络访问权限。默认情况下，它尝试在所有网络接口上使用 DHCP。如果网络中有一个 DHCP 服务器，它将自动工作。
 
 如果您需要静态 IP 设置，可以使用 `ifcfg` 启动参数。有关更多详细信息，请参阅 linuxrc 文档，网址为 [https://en.opensuse.net.cn/Linuxrc](https://en.opensuse.net.cn/Linuxrc)。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：语言选择
+![Tip](./image/icon-tip.svg "Tip") **提示**：语言选择
 
 安装程序自更新在语言选择步骤之前运行。这意味着在此过程中发生的所有进度和错误默认情况下都将以英语显示。
 
@@ -823,9 +799,7 @@ YAST\_LUKS2\_AVAILABLE
 
 安装程序自更新作为常规 RPM 包通过专用仓库分发，因此第一步是找到仓库 URL。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：仅安装程序自更新仓库
+![Important](./image/icon-important.svg "Important") **重要提示**：仅安装程序自更新仓库
 
 无论您使用以下哪种选项，都只期望安装程序自更新仓库 URL，例如
 
@@ -850,9 +824,7 @@ YaST 将尝试以下信息来源
 
 最后，YaST 会重新启动并显示欢迎屏幕。如果没有可用的更新，则安装将继续，而不会重新启动 YaST。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：更新完整性
+![Note](./image/icon-note.svg "Note") **注意**：更新完整性
 
 将检查更新签名以确保完整性和作者身份。如果缺少签名或签名无效，系统会询问您是否要应用更新。
 
@@ -891,9 +863,7 @@ YaST 可以使用用户定义的仓库而不是官方仓库，方法是通过 `s
 *   软件包中的文件会覆盖原始安装介质中的文件。这意味着更新软件包可能不需要包含所有文件，只需包含已更改的文件。省略未更改的文件以节省内存和下载带宽。
     
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：仅一个仓库
+![Note](./image/icon-note.svg "Note") **注意**：仅一个仓库
 
 当前，不可能使用多个仓库作为安装程序自更新的来源。
 
@@ -910,9 +880,7 @@ YaST 可以使用用户定义的仓库而不是官方仓库，方法是通过 `s
 
 阅读许可协议。它以您选择的语言显示。可以通过 许可语言 下拉框获取翻译版本。如果您同意条款和条件，请使用 下一步 继续。如果您不同意，请单击 中止 以终止安装。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：浅色和高对比度主题
+![Tip](./image/icon-tip.svg "Tip") **提示**：浅色和高对比度主题
 
 如果您难以阅读安装程序中的标签，可以更改小部件颜色和主题。
 
@@ -933,15 +901,11 @@ Shift–F4 切换到为视力障碍用户设计的配色方案。再次按按钮
 
 如果 DHCP 在安装设置期间已成功配置，您也可以通过单击 网络配置 在 安装设置 步骤中访问此对话框。它允许您更改自动提供的设置。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：通过启动参数进行网络配置
+![Note](./image/icon-note.svg "Note") **注意**：通过启动参数进行网络配置
 
 如果至少一个网络接口已通过启动参数配置（请参阅 [第 2.3.2 节，“配置网络接口”](#sec-boot-parameters-list-network "2.3.2. 配置网络接口")），则禁用自动 DHCP 配置并导入和使用启动参数配置。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：访问网络存储或本地 RAID
+![Tip](./image/icon-tip.svg "Tip") **提示**：访问网络存储或本地 RAID
 
 要在安装过程中访问 SAN 或本地 RAID，可以使用 libstorage 命令行客户端来实现此目的
 
@@ -1033,9 +997,7 @@ Xfce桌面
 
 ### 3.7.1 重要信息
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：请仔细阅读本节
+![Warning](./image/icon-warning.svg "Warning") **警告**：请仔细阅读本节
 
 在继续 [第3.7.2节，“建议分区”](#sec-yast-install-partitioning-suggested "3.7.2. 建议分区") 之前，请仔细阅读本节。
 
@@ -1061,9 +1023,7 @@ openSUSE Leap 使用Snapper与Btrfs结合使用此功能。Btrfs需要为根分�
 
 有关详细信息，请参见 “参考”手册，第3章“使用Snapper进行系统恢复和快照管理”。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：Btrfs快照和根分区大小
+![Important](./image/icon-important.svg "Important") **重要**：Btrfs快照和根分区大小
 
 快照可能会占用大量的存储空间。通常，快照越旧或覆盖的更改集越大，快照占用的存储空间就越多。并且您保留的快照越多，您需要的磁盘空间就越多。
 
@@ -1137,9 +1097,7 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 您还可以使用 专家分区程序 设置逻辑卷管理（LVM）、配置软件RAID和设备映射（DM）、加密分区、挂载NFS共享和管理tmpfs卷。要微调每个Btrfs分区的子卷和快照处理设置，请选择 Btrfs。有关自定义分区和配置高级功能的更多信息，请参阅 “参考”手册，第5章“专家分区程序”，第5.1节“使用 专家分区程序”。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：磁盘空间单位
+![Warning](./image/icon-warning.svg "Warning") **警告**：磁盘空间单位
 
 请注意，为了分区目的，磁盘空间以二进制单位而不是十进制单位来衡量。例如，如果您输入 `1GB`、`1GiB` 或 `1G` 大小，它们都表示1 GiB（Gibibyte），而不是1 GB（Gigabyte）。
 
@@ -1168,9 +1126,7 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 要设置时钟，请选择 硬件时钟设置为UTC。如果您在机器上运行另一个操作系统，例如Microsoft Windows，则您的系统可能使用本地时间。如果您在机器上运行Linux，请将硬件时钟设置为UTC，并让系统自动执行从标准时间到夏令时的切换。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：将硬件时钟设置为UTC
+![Important](./image/icon-important.svg "Important") **重要**：将硬件时钟设置为UTC
 
 只有当硬件时钟（CMOS时钟）设置为UTC时，才能自动执行从标准时间到夏令时的切换（反之亦然）。这也适用于您使用NTP自动时间同步时，因为自动同步仅在硬件和系统时钟之间的时差小于15分钟时才执行。
 
@@ -1209,9 +1165,7 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 此选项会在系统启动时自动登录当前用户。这主要适用于仅由一个用户操作的计算机。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：自动登录
+![Warning](./image/icon-warning.svg "Warning") **警告**：自动登录
 
 启用自动登录后，系统将直接进入您的桌面，无需身份验证。如果您在系统上存储敏感数据，如果计算机也可以被他人访问，则不应启用此选项。
 
@@ -1228,17 +1182,13 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 输入系统管理员 `root` 的密码。为了验证目的，`root` 的密码必须输入两次。请勿忘记密码，因为以后无法恢复。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：密码和键盘布局
+![Tip](./image/icon-tip.svg "Tip") **提示**：密码和键盘布局
 
 建议仅使用 US ASCII 字符。如果发生系统错误或需要在救援模式下启动系统，则键盘可能未本地化。
 
 要在安装的系统中稍后更改 `root` 密码，请运行 YaST 并启动 安全与用户 › 用户和组管理。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：`root` 用户
+![Important](./image/icon-important.svg "Important") **重要**：`root` 用户
 
 `root` 是系统管理员或超级用户的名称。其用户 ID (uid) 为 `0`。与普通用户不同，`root` 帐户具有无限权限。
 
@@ -1302,9 +1252,7 @@ openSUSE Leap 包含用于各种应用程序目的的几个软件模式。可用
 
 默认情况下，openSUSE Leap 使用 Wayland 显示服务器协议。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：添加辅助语言
+![Tip](./image/icon-tip.svg "Tip") **提示**：添加辅助语言
 
 您在安装的第一个步骤中选择的语言将用作系统的首选（默认）语言。您可以从 软件 对话框中通过选择 详细信息 › 视图 › 语言 添加辅助语言。
 
@@ -1312,9 +1260,7 @@ openSUSE Leap 包含用于各种应用程序目的的几个软件模式。可用
 
 安装程序为您的系统建议启动配置。在计算机上找到的其他操作系统，例如 Microsoft Windows 或其他 Linux 安装，将自动检测并添加到引导加载程序中。但是，openSUSE Leap 将默认启动。通常，您可以保持这些设置不变。如果您需要自定义设置，请根据需要修改建议。有关信息，请参阅 “参考”一书，第 12 章“引导加载程序 GRUB 2”，第 12.3 节“使用 YaST 配置引导加载程序”。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：软件 RAID 1
+![Important](./image/icon-important.svg "Important") **重要**：软件 RAID 1
 
 支持启动 `/boot` 位于软件 RAID 1 设备上的配置，但它需要将引导加载程序安装到 MBR（引导加载程序位置 › 从主引导记录启动）。将 `/boot` 放在 RAID 级别为 RAID 1 以外的软件 RAID 设备上不受支持。
 
@@ -1324,17 +1270,13 @@ CPU 缓解措施 指的是用于防止 CPU 侧信道攻击的软件缓解措施�
 
 默认情况下，在所有配置的网络接口上启用 防火墙。要完全禁用 `firewalld`，请单击 禁用（不建议）。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：防火墙设置
+![Note](./image/icon-note.svg "Note") **注意**：防火墙设置
 
 激活防火墙时，所有接口都分配给 `public` 区域，默认情况下所有端口都关闭，从而确保最大安全性。您可以在安装过程中打开的唯一端口是端口 22 (SSH)，以允许远程访问。需要网络访问的其他服务（例如 FTP、Samba、Web 服务器等）只有在调整了防火墙设置后才能工作。有关配置详细信息，请参阅 “安全和加固指南”一书，第 23 章“伪装和防火墙”。
 
 默认情况下启用 SSH 服务，但其端口 (22) 在防火墙中关闭。单击 打开 以打开端口或 禁用 以禁用该服务。请注意，如果禁用 SSH，将无法进行远程登录。有关更多信息，请参阅 “安全和加固指南”一书，第 22 章“使用 OpenSSH 保护网络操作”。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：现有的 SSH 主机密钥
+![Tip](./image/icon-tip.svg "Tip") **提示**：现有的 SSH 主机密钥
 
 如果您在具有现有 Linux 安装的机器上安装 openSUSE Leap，则安装例程会导入 SSH 主机密钥。默认情况下，它选择具有最新访问时间的密钥。
 
@@ -1497,9 +1439,7 @@ USB 闪存驱动器
 
 如果这两个选项都失败，请使用启动参数提示指定内核参数以启用正在使用的硬件的支持。有关作为启动参数可用的参数的更多信息，请参阅位于 `/usr/src/linux/Documentation/kernel-parameters.txt` 中的内核文档。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：获取内核文档
+![Tip](./image/icon-tip.svg "Tip") **提示**：获取内核文档
 
 安装 `kernel-source` 包以查看内核文档。
 
@@ -1715,9 +1655,7 @@ FUSE 是 _用户空间文件系统_ 的缩写。这意味着您可以将文件�
 
 YaST 允许您创建、修改、删除或临时禁用用户帐户。除非您是经验丰富的用户或管理员，否则请勿修改用户帐户。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：更改现有用户的用户 ID
+![Note](./image/icon-note.svg "Note") **注意**：更改现有用户的用户 ID
 
 文件所有权与用户名而非用户 ID 相关联。更改用户 ID 后，用户主目录中的文件将自动调整以反映此更改。但是，在更改 ID 后，用户不再拥有他们在文件系统中其他位置创建的文件，除非手动修改这些文件的文件所有权。
 
@@ -1752,9 +1690,7 @@ YaST 允许您创建、修改、删除或临时禁用用户帐户。除非您是
     或者，要保存所有更改而不退出 用户和组管理 对话框，请单击 专家选项 › 立即写入更改。
     
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：请勿重命名 `root` 帐户
+![Warning](./image/icon-warning.svg "Warning") **警告**：请勿重命名 `root` 帐户
 
 虽然从技术上来说可以重命名 `root` 帐户，但某些应用程序、脚本或第三方产品可能依赖于名为 `root` 的用户的存在。虽然这种配置始终针对单个环境，但必要的调整可能会被供应商更新覆盖，因此这会成为一项持续的任务，而不是一次性设置。这在涉及第三方应用程序的复杂设置中尤其如此，需要与所有相关供应商核实重命名 `root` 帐户是否受支持。
 
@@ -1762,9 +1698,7 @@ YaST 允许您创建、修改、删除或临时禁用用户帐户。除非您是
 
 通常，重命名 `root` 帐户的目的是隐藏它或使其不可预测。但是，`/etc/passwd` 需要常规用户具有 `644` 权限，因此系统中的任何用户都可以检索用户 ID 0 的登录名。有关更好地保护 `root` 帐户的方法，请参阅 “安全和加固指南”丛书，第 14 章“用户管理”，第 14.5 节“限制 `root` 登录” 和 “安全和加固指南”丛书，第 14 章“用户管理”，第 14.5.3 节“限制 SSH 登录”。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：匹配用户 ID
+![Tip](./image/icon-tip.svg "Tip") **提示**：匹配用户 ID
 
 将（本地）用户 ID 与网络中的 ID 匹配会很有用。例如，笔记本电脑上的新（本地）用户应与具有相同用户 ID 集成到网络环境中。这可确保用户在“离线”创建的文件所有权与直接在网络上创建的文件所有权相同。
 
@@ -1786,9 +1720,7 @@ YaST 允许您创建、修改、删除或临时禁用用户帐户。除非您是
 
 如果您使用 GNOME 桌面环境，您可以为某个用户配置 _自动登录_，并为所有用户配置 _无密码登录_。自动登录会在启动时自动将用户登录到桌面环境。此功能一次只能为一个用户激活。无密码登录允许所有用户在登录管理器中输入用户名后登录到系统。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：安全风险
+![Warning](./image/icon-warning.svg "Warning") **警告**：安全风险
 
 在可以被多个人访问的机器上启用 _自动登录_ 或 _无密码登录_ 存在安全风险。无需身份验证，任何用户都可以访问您的系统和数据。如果您的系统包含机密数据，请不要使用此功能。
 
@@ -2271,9 +2203,7 @@ LANG=_LANGUAGE_ _application_
 *   如果您只在机器上运行 Linux，请将硬件时钟设置为 UTC，并让系统执行从夏令时到标准时间的变化。
     
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：将硬件时钟设置为UTC
+![Important](./image/icon-important.svg "Important") **重要**：将硬件时钟设置为UTC
 
 标准时间到夏令时的切换（反之亦然）只有在硬件时钟（CMOS 时钟）设置为 UTC 时才能自动执行。如果您使用 NTP 自动时间同步，也适用此规则，因为自动同步仅在硬件时钟和系统时钟之间的时间差小于 15 分钟时才执行。
 
@@ -2374,9 +2304,7 @@ Ghostscript 网页。
 
 有多种可能性可以将打印机连接到系统。CUPS 的配置不区分本地打印机和通过网络连接到系统的打印机。有关打印机连接的更多信息，请阅读文章 _CUPS 概览_，网址为 [https://en.opensuse.net.cn/SDB:CUPS\_in\_a\_Nutshell](https://en.opensuse.net.cn/SDB:CUPS_in_a_Nutshell)。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：在运行的系统中更改电缆连接
+![Warning](./image/icon-warning.svg "Warning") **警告**：在运行的系统中更改电缆连接
 
 连接打印机到机器时，请不要忘记只能在运行过程中插入或拔出 USB 设备。为避免损坏您的系统或打印机，请在更改任何非 USB 连接之前关闭系统。
 
@@ -2865,9 +2793,7 @@ SUSE 为您的产品提供持续的软件安全更新。默认情况下，使用
 
 YaST 软件管理器使您能够管理系统上的软件源。此 YaST 模块有两个版本：一个用于 X Window 的图形版本，以及一个用于命令行界面的文本版本。下面描述了图形版本—有关基于文本的 YaST，请参阅 “参考”手册，第 1 章“文本模式下的 YaST”。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：确认和审查更改
+![Note](./image/icon-note.svg "Note") **注意**：确认和审查更改
 
 在安装、更新或删除软件包时，软件管理器中的任何更改仅在单击 接受 或 应用 后才会生效。YaST 会维护一个包含所有操作的列表，允许您在将其应用于系统之前审查和修改您的更改。
 
@@ -2957,9 +2883,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 如果您已经选择了要安装、更新或删除的软件包，则此视图显示将应用于您的系统的更改。要筛选具有特定状态的软件包，请激活或停用相应的复选框。按 Shift–F1 以获取有关状态标志的详细信息。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：查找不属于活动仓库的软件包
+![Tip](./image/icon-tip.svg "Tip") **提示**：查找不属于活动仓库的软件包
 
 要列出不属于活动仓库的所有软件包，请选择 视图 › 仓库 › @System，然后选择 辅助过滤器 › 未维护的软件包。例如，如果您删除了一个仓库并想确保没有来自该仓库的软件包仍然安装，这将很有用。
 
@@ -2967,9 +2891,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 大多数软件包依赖于其他软件包，例如共享库。几个软件包不能与其他软件包共存。如果可能，YaST 会自动解决这些依赖关系或冲突。如果您的选择导致无法自动解决的依赖关系冲突，则需要按照 [第 9.2.4 节，“软件包依赖关系”](#sec-yast-software-dependencies "9.2.4. 软件包依赖关系") 中所述手动解决它。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：删除软件包
+![Note](./image/icon-note.svg "Note") **注意**：删除软件包
 
 删除任何软件包时，YaST 默认情况下仅删除所选软件包。如果您希望 YaST 也可以删除在删除指定软件包后变得不再需要的任何其他软件包，请从主菜单中选择 选项 › 删除软件包时清理。
 
@@ -3000,9 +2922,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
     安装、更新或删除所有选定的软件包后，YaST 软件管理器会自动关闭。
     
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：安装源软件包
+![Note](./image/icon-note.svg "Note") **注意**：安装源软件包
 
 目前无法使用 YaST 软件管理器安装源软件包。为此，请使用命令行工具 `zypper`。有关更多信息，请参阅 “参考”手册，第 2 章“使用命令行工具管理软件”，第 2.1.3.5 节“安装或下载源软件包”。
 
@@ -3065,9 +2985,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 要查看软件包的依赖关系，请右键单击它并选择显示求解器信息。将打开一个显示依赖关系的地图。已安装的软件包将以绿色边框显示。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：手动解决软件包冲突
+![Note](./image/icon-note.svg "Note") **注意**：手动解决软件包冲突
 
 除非您有经验，否则请遵循 YaST 在处理软件包冲突时提出的建议，否则您可能无法解决它们。请记住，您所做的任何更改都可能触发其他冲突，因此您很容易陷入冲突数量不断增加的境地。如果发生这种情况，请取消软件管理器，放弃所有更改并重新开始。
 
@@ -3092,9 +3010,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 每个仓库都提供描述仓库内容（软件包名称、版本等）的文件。YaST 将这些仓库描述文件下载到本地缓存。为了确保其完整性，软件仓库可以使用仓库维护者的 GPG 密钥进行签名。每当您添加新仓库时，YaST 都会提供导入其密钥的能力。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：信任外部软件源
+![Warning](./image/icon-warning.svg "Warning") **警告**：信任外部软件源
 
 在将外部软件仓库添加到您的仓库列表中之前，请确保可以信任此仓库。SUSE 对从第三方软件仓库安装的软件引起的任何问题不承担责任。
 
@@ -3152,9 +3068,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 仓库的优先级是一个介于`1`和`200`之间的值，`1`是最高优先级，`200`是最低优先级。使用 YaST 添加的任何新仓库默认情况下都具有优先级`99`。如果您不关心某个仓库的优先级值，也可以将值设置为`0`，以将默认优先级（`99`）应用于该仓库。如果一个软件包在多个仓库中可用，则具有最高优先级的仓库优先。这对于避免从 Internet 上不必要地下载软件包很有用，方法是为本地仓库（例如 DVD）赋予更高的优先级。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：优先级与版本
+![Important](./image/icon-important.svg "Important") **重要提示**：优先级与版本
 
 具有最高优先级的仓库始终优先。因此，请确保更新仓库始终具有最高优先级，否则您可能会安装过时的版本，直到下次在线更新才会更新。
 
@@ -3452,9 +3366,7 @@ YaST 在线更新对话框允许您一次安装所有可用补丁，或手动选
 12.1 升级系统
 --------------------------------------------------------------------------------------------------------------------------------------
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：openSUSE Leap 15.6 仅提供 64 位版本
+![Important](./image/icon-important.svg "Important") **重要提示**：openSUSE Leap 15.6 仅提供 64 位版本
 
 openSUSE Leap 15.6 仅提供 64 位版本。不支持将 32 位安装升级到 64 位。请按照 [第 1 章，_快速安装指南_](#art-opensuse-installquick "第 1 章：快速安装指南") 和 [第 3 章，_安装步骤_](#cha-install "第 3 章：安装步骤") 中的说明在您的计算机上安装 openSUSE Leap，或考虑切换到 [openSUSE Tumbleweed](https://en.opensuse.net.cn/Portal:Tumbleweed)。
 
@@ -3602,9 +3514,7 @@ udev           252M  124K  252M   1% /dev
 
 #### 12.1.4.2 升级过程
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：检查您的系统备份
+![Warning](./image/icon-warning.svg "Warning") **警告**：检查您的系统备份
 
 在实际开始升级过程之前，请检查您的系统备份是否是最新的并且可以恢复。这尤其重要，因为您需要手动输入以下许多步骤。
 
@@ -4366,9 +4276,7 @@ Documents/file.txt
 
 您可以在一个命令中组合多个通配符。在上面的示例中，`rm myfile[1-3,5].*` 将产生与 `rm myfile[1-3,5].txt` 相同的结果，因为只有具有 `.txt` 扩展名的文件可用。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：在 `rm` 命令中使用通配符
+![Note](./image/icon-note.svg "Note") **注意**：在 `rm` 命令中使用通配符
 
 在 `rm` 命令中使用通配符可能非常有用，但也非常危险：您可能会删除目录中比预期更多的文件。要查看受 `rm` 影响的文件，请先使用 `ls` 运行您的通配符字符串，而不是 `rm`。
 
@@ -4395,9 +4303,7 @@ _扩展_ 模式
 
 ### 13.8.1 示例：使用 vi 编辑
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：键的显示
+![Note](./image/icon-note.svg "Note") **注意**：键的显示
 
 在以下内容中，找到您可以通过按键在 vi 中输入的几个命令。这些以键盘上的大写字母显示。如果您需要以大写字母输入键，则会明确说明，方法是显示包含 Shift 键的键组合。
 
@@ -5116,9 +5022,7 @@ shell 可以被调用为
 
 每个 shell 读取不同的配置文件。下表显示了登录和非登录 shell 的配置文件。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**
+![Tip](./image/icon-tip.svg "Tip") **提示**
 
 Bash 会根据运行 shell 的类型，以特定顺序查找其配置文件。有关更多详细信息，请参阅 Bash 手册页 (`man 1 bash`)。搜索标题 `INVOCATION`。
 
@@ -5245,9 +5149,7 @@ scard             /usr/sbin/nologin
 
 保存系统上具有帐户的每个用户的私有数据。此处的 文件只能由其所有者或系统管理员修改。默认情况下，您的电子邮件目录和个人桌面配置位于此处，以隐藏的文件和目录的形式，例如 `.gconf/` 和 `.config`。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：网络环境中的家目录
+![Note](./image/icon-note.svg "Note") **注意**：网络环境中的家目录
 
 如果您在网络环境中工作，您的家目录可能映射到文件系统中的目录，而不是 `/home`。
 
@@ -5287,9 +5189,7 @@ scard             /usr/sbin/nologin
 
 此目录由需要临时存储文件的程序使用。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：启动时清理 `/tmp`
+![Important](./image/icon-important.svg "Important") **重要**：启动时清理 `/tmp`
 
 存储在 `/tmp` 中的数据不能保证在系统重新启动后幸存。它取决于，例如，在 `/etc/tmpfiles.d/tmp.conf` 中所做的设置。
 
@@ -5703,9 +5603,7 @@ YaST 系统键盘布局 模块允许你定义系统的默认键盘布局（也�
 
 YaST 会自动检测大多数声卡并使用适当的值进行配置。要更改默认设置，或要设置无法自动配置的声卡，请使用 YaST 声卡模块。在那里，您还可以设置其他声卡或更改它们的顺序。
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**
+![Warning](./image/icon-warning.svg "Warning") **警告**
 
 如果你不了解你的声音系统的所有细节，请不要手动更改其设置。相反，让你的声音子系统—PipeWire 或 PulseAudio—为你配置它。使用专用的桌面应用程序来切换音频设备。作为后备方案，请使用 `pavucontrol` 图形应用程序。
 
@@ -5729,9 +5627,7 @@ YaST 会自动检测大多数声卡并使用适当的值进行配置。要更改
 
 仅供专家使用。允许您自定义声卡的全部参数。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要提示**：进阶配置
+![Important](./image/icon-important.svg "Important") **重要提示**：进阶配置
 
 只有在您确切知道自己在做什么的情况下才使用此选项。否则，请保持参数不变，并使用普通或自动设置选项。
 
@@ -5796,9 +5692,7 @@ YaST 会自动检测大多数声卡并使用适当的值进行配置。要更改
 
 在 YaST 中，单击 硬件 › 打印机 以启动打印机模块。默认情况下，它以 打印机配置视图打开，显示所有可用和已配置的打印机列表。当通过网络访问大量打印机时，这尤其有用。从这里您还可以 打印测试页 和配置打印机。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：启动 CUPS
+![Note](./image/icon-note.svg "Note") **注意**：启动 CUPS
 
 要使用连接到您机器的打印机，您必须在您的系统上安装并运行 CUPS。如果 CUPS 未运行，系统会提示您启动它。如果 CUPS 未在启动时启动，系统也会提示您启用它（推荐）。
 
@@ -5904,9 +5798,7 @@ PostScript 打印机不需要打印机驱动程序软件。PostScript 打印机�
 
 在 Linux 环境中，CUPS 用于通过网络打印。最简单的设置是仅通过一个 CUPS 服务器打印，所有客户端都可以直接访问该服务器。通过多个 CUPS 服务器打印需要运行本地 CUPS 守护进程，该守护进程与远程 CUPS 服务器通信。
 
-![Important](./image/icon-important.svg "Important")
-
-**重要**：浏览网络打印队列
+![Important](./image/icon-important.svg "Important") **重要**：浏览网络打印队列
 
 CUPS 服务器通过传统的 CUPS 浏览协议或 Bonjour/DNS-SD 通过网络广播其打印队列。客户端需要浏览这些列表，以便用户可以选择特定的打印机来发送其打印作业。要浏览网络打印队列，必须在所有通过 CUPS 服务器打印的客户端上运行软件包 `cups-filters-cups-browsed` 提供的服务 `cups-browsed`。使用 YaST 配置网络打印时，会自动启动 `cups-browsed`。
 
@@ -6075,9 +5967,7 @@ SUSE 目前支持在具有 AMD64/Intel 64 和 POWER 架构的机器上使用 op
 
 这个新的存储子系统定义在 ACPI 标准的第 6 版中。但是，`libnvdimm` 支持预标准 NVDIMM，并且可以以相同的方式使用它们。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：Intel Optane DC 持久内存
+![Tip](./image/icon-tip.svg "Tip") **提示**：Intel Optane DC 持久内存
 
 Intel Optane DIMM 内存可以在特定模式下使用
 
@@ -6119,9 +6009,7 @@ raw
 
 一个没有标签或元数据的内存磁盘。不支持 DAX。与其他操作系统兼容。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**
+![Note](./image/icon-note.svg "Note") **注意**
 
 `raw` 模式不受 SUSE 支持。无法在 `raw` 命名空间上挂载文件系统。
 
@@ -6296,9 +6184,7 @@ help
 
 使用不同的参数，`ndctl` `list` 还会列出可用的区域。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**
+![Note](./image/icon-note.svg "Note") **注意**
 
 区域可能不会按数字顺序出现。
 
@@ -6458,9 +6344,7 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 
 与我们先前配置的具有 DAX 的 PMEM 命名空间一样，此具有 BTT 的 PMEM 命名空间消耗了 NVDIMM 上的所有可用存储。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**
+![Note](./image/icon-note.svg "Note") **注意**
 
 设备名称中的尾随 `s`（例如 `/dev/_pmem3s_`）表示 `sector`（扇区），可用于轻松区分配置为使用 BTT 的命名空间。
 
@@ -6564,9 +6448,7 @@ GNOME 桌面帮助中心（帮助）提供对 GNOME 桌面文档的集中访问�
 
 在您的已安装 Linux 系统上查找文档的传统目录是 `/usr/share/doc`。该目录包含发行说明和有关已安装软件包的信息，以及手册等。
 
-![Note](./image/icon-note.svg "Note")
-
-**注意**：内容取决于已安装的软件包
+![Note](./image/icon-note.svg "Note") **注意**：内容取决于已安装的软件包
 
 在 Linux 世界中，手册和其他类型的文档以软件包的形式提供，就像软件一样。您在 `/usr/share/doc` 中找到的信息的数量和类型也取决于（文档）软件包的安装情况。如果您找不到此处提及的子目录，请检查您的系统上是否安装了相应的软件包，并在需要时使用 YaST 添加它们。
 
@@ -7189,9 +7071,7 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
 `>` `sudo` fsck -t ext4 -A
 ```
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**
+![Tip](./image/icon-tip.svg "Tip") **提示**
 
 对于 Btrfs，您可以使用 `btrfs check` 命令，该命令位于 btrfsprogs 包中。
 
@@ -7263,9 +7143,7 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
 6.  现在您可以使用已安装的系统。重新启动系统之前，使用 `umount` `-a` 卸载分区，并使用 `exit` 退出 “change root” 环境。
     
 
-![Warning](./image/icon-warning.svg "Warning")
-
-**警告**：限制
+![Warning](./image/icon-warning.svg "Warning") **警告**：限制
 
 虽然您可以完全访问已安装系统的文件和应用程序，但有一些限制。正在运行的内核是随救援系统启动的内核，而不是随 change root 环境启动的内核。它仅支持基本硬件，并且除非内核版本相同，否则无法从已安装的系统添加内核模块。始终使用 `uname -r` 检查当前正在运行（救援）内核的版本，然后在 `/lib/modules` 目录中查找 change root 环境中是否存在匹配的子目录。如果是，您可以使用已安装的模块，否则您需要在其他介质（例如闪存盘）上提供正确的版本。通常救援内核版本与已安装的版本不同——然后您无法简单地访问声卡，例如。也不可能启动图形用户界面。
 
@@ -7315,9 +7193,7 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
 
 内核更新可能会引入新的错误，从而影响系统的运行。例如，系统中某个硬件的驱动程序可能存在缺陷，导致您无法访问和使用它。在这种情况下，请恢复到上一个可用的内核（如果系统上有），或从安装介质安装原始内核。
 
-![Tip](./image/icon-tip.svg "Tip")
-
-**提示**：如何更新后保留上一个内核
+![Tip](./image/icon-tip.svg "Tip") **提示**：如何更新后保留上一个内核
 
 为了防止在有缺陷的内核更新后无法启动，请使用内核多版本功能，并告诉 `libzypp` 您希望在更新后保留哪些内核。
 

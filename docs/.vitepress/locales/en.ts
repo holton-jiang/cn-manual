@@ -105,7 +105,7 @@ export const themeConfig: DefaultTheme.Config = {
         text: "入门指南",
         items: [
           { text: "关于本手册", link: "/start-up/start-up" },
-          { text: "入门指南", link: "/start-up/installation-chapter1" },
+          { text: "入门指南", link: "/start-up/startup" },
         ],
       },
       
@@ -151,13 +151,13 @@ export const themeConfig: DefaultTheme.Config = {
         ],
       },
 
-      //关于
+      /*关于
       {
         text: "关于",
         items: [
           { text: "关于成员与贡献者", link: "/about/about-members" },
         ],
-      },
+      },*/
     
     ], //侧边栏代码结束
   
