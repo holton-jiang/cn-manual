@@ -565,16 +565,12 @@ ipv6only=1
 1.  在启动屏幕上，按 E 编辑启动菜单。
     
 2.  将 `proxy` 参数附加到以下格式的 `linux` 行
-    
     `
-    proxy=https://_proxy.example.com_:_PORT_
-    `
+    proxy=https://_proxy.example.com_:_PORT_`
     
     如果代理服务器需要身份验证，请按如下方式添加凭据
-    
     `
-    proxy=https://_USER_:_PASSWORD_@_proxy.example.com_:_PORT_
-    `
+    proxy=https://_USER_:_PASSWORD_@_proxy.example.com_:_PORT_`
     
     如果无法验证代理服务器的 SSL 证书，请使用 `sslcerts=0` 启动参数禁用证书检查。
     
@@ -1416,10 +1412,8 @@ USB 闪存驱动器
 1.  启动进行安装。
     
 2.  在启动参数提示符处输入以下文本
-    
     `
-    vnc=1 vncpassword=_SOME\_PASSWORD_
-    `
+    vnc=1 vncpassword=_SOME\_PASSWORD_`
     
     将 _SOME\_PASSWORD_ 替换为用于 VNC 安装的密码。
     
@@ -1428,10 +1422,8 @@ USB 闪存驱动器
     系统不会立即启动图形化安装程序，而是继续在文本模式下运行。然后系统会停止，显示一条消息，其中包含可以通过浏览器界面或 VNC 查看器应用程序访问安装程序的 IP 地址和端口号。
     
 4.  使用浏览器访问安装程序时，启动浏览器并输入未来 openSUSE Leap 机器的安装程序提供的地址信息，然后按 Enter 键
-    
     `
-    http://_IP\_ADDRESS\_OF\_MACHINE_:5801
-    `
+    http://_IP\_ADDRESS\_OF\_MACHINE_:5801`
     
     浏览器窗口中会打开一个对话框，提示您输入 VNC 密码。输入密码并按照 [第 3 章，《安装步骤》](#cha-install "第 3 章 安装步骤") 中所述继续安装。
     
@@ -1679,9 +1671,7 @@ openSUSE Leap 允许使用 `soft` 和 `hard` 配额。此外，还可以定义�
     
 5.  通过输入以下命令，确保服务 `quotaon` 正在运行
     
-    `
-    `>` `sudo` systemctl status quotaon.service
-    `
+    >` `sudo` systemctl status quotaon.service`
     
     它应该标记为 `active`。如果不是，请使用命令 `systemctl start quotaon.service` 启动它。
     
@@ -2197,31 +2187,23 @@ network socket://192.168.2.253
 
 1.  首先，列出所有选项
     
-    `
-    `>` `sudo` lpoptions -p _QUEUE_ -l
-    `
+    >` `sudo` lpoptions -p _QUEUE_ -l`
     
     示例
-    
     `
-    Resolution/Output Resolution: 150dpi \*300dpi 600dpi
-    `
+    Resolution/Output Resolution: 150dpi \*300dpi 600dpi`
     
     激活的默认选项由前导星号（`*`）标识。
     
 2.  使用 `lpadmin` 更改选项
     
-    `
-    `>` `sudo` lpadmin -p _QUEUE_ -o Resolution=600dpi
-    `
+    >` `sudo` lpadmin -p _QUEUE_ -o Resolution=600dpi`
     
 3.  检查新设置
     
-    `
-    `>` `sudo` lpoptions -p _QUEUE_ -l
+    >` `sudo` lpoptions -p _QUEUE_ -l
     
-    Resolution/Output Resolution: 150dpi 300dpi \*600dpi
-    `
+    Resolution/Output Resolution: 150dpi 300dpi \*600dpi`
     
 
 当普通用户运行 `lpoptions` 时，设置将写入 `~/.cups/lpoptions`。但是，`root` 设置将写入 `/etc/cups/lpoptions`。
@@ -2466,23 +2448,16 @@ NTFS（新技术文件系统）是 Windows 的默认文件系统。由于在正�
     
 4.  以读写模式挂载分区。将占位符 DEVICE 替换为您的 Windows 分区
     
-    `
-    `>` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_
-    `
+    >` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_`
     
     要以只读模式使用 Windows 分区，请附加 -o ro
     
-    `
-    `>` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o ro
-    `
+    >` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o ro`
     
     ntfs-3g 命令使用当前用户 (UID) 和组 (GID) 来挂载给定的设备。要将写入权限设置为不同的用户，请使用命令 id USER 获取 UID 和 GID 值的输出。使用以下命令设置它
-    
-    `
-    `#` id tux
+    ``#` id tux
     uid=1000(tux) gid=100(users) groups=100(users),16(dialout),33(video)
-    ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o uid=1000,gid=100
-    `
+    ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o uid=1000,gid=100`
     
     在 man 手册页中查找其他选项。
     
@@ -2499,10 +2474,7 @@ SSH（安全 shell 网络协议）可用于通过安全通道在两台计算机�
 2.  创建一个用作挂载点的目录。一个好主意是使用 ~/mounts/HOST。将 HOST 替换为您的远程计算机的名称。
     
 3.  挂载远程文件系统
-    
-    `
-    `#` sshfs _USER_@_HOST_ _MOUNT POINT_
-    `
+    ``#` sshfs _USER_@_HOST_ _MOUNT POINT_`
     
 4.  输入远程计算机的密码。
     
@@ -2519,10 +2491,7 @@ SSH（安全 shell 网络协议）可用于通过安全通道在两台计算机�
 2.  创建一个用作挂载点的目录，例如 ~/mounts/iso。
     
 3.  挂载 ISO 镜像
-    
-    `
-    `#` fuseiso _ISO\_IMAGE_ _MOUNT POINT_
-    `
+    ``#` fuseiso _ISO\_IMAGE_ _MOUNT POINT_`
     
 
 您只能从 ISO 镜像读取内容，但无法写回。要卸载资源，请使用 fusermount -u MOUNT POINT。
@@ -2808,7 +2777,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
     
 2.  选择对话框中列出的选项之一
     
-    ![Adding a software repository](./image/yast2_addon_new.png]](./image/yast2_addon_new.png)
+    ![Adding a software repository](./image/yast2_addon_new.png)
     
     ###### 图 9.2： 添加软件仓库 [](#fig-y2-sw-repo-new "Permalink")
     
@@ -2874,7 +2843,7 @@ SUSE 提供持续的软件安全补丁和产品更新。可以使用您的桌面
 
 每当有新的补丁或软件包更新可用时，GNOME 都会在通知区域或锁屏界面上显示通知。
 
-![Update notification on GNOME desktop](./image/gnome_update_notification_desktop_osuse.png]](./image/gnome_update_notification_desktop_osuse.png)
+![Update notification on GNOME desktop](./image/gnome_update_notification_desktop_osuse.png)
 
 ###### 图 9.3： GNOME 桌面上的更新通知 [](#id-1.3.5.2.8.6 "Permalink")
 
@@ -3304,17 +3273,13 @@ udev           252M  124K  252M   1% /dev
 
 1.  运行在线更新以确保软件管理堆栈是最新的
     
-    `
-    `>` `sudo` zypper patch
-    `
+    >` `sudo` zypper patch`
     
 2.  配置您想要用作更新源的仓库。正确配置这一点至关重要。在以下步骤中使用的仓库的 _名称_ 可能因您的操作系统定制而异。有关更多信息，请参阅 “参考”手册，第 2章“使用命令行工具管理软件”，第 2.1.6节“使用 Zypper 管理仓库”)
     
     要查看您当前的仓库，请输入
     
-    `
-    `>` zypper --releasever=15.6 lr -u
-    `
+    >` zypper --releasever=15.6 lr -u`
     
 3.  在上一条命令的结果中，检查最后一列 (URL)。所有仓库链接都应包含 `15.6` 作为版本号。如果不是这样，则版本号丢失或硬编码在 `/etc/zypp/repos.d/` 下的仓库定义文件中。要修复此问题，请按以下步骤操作
     
@@ -3346,31 +3311,23 @@ udev           252M  124K  252M   1% /dev
         
 4.  最后，再次检查当前的仓库配置
     
-    `
-    `>` `sudo` zypper --releasever=15.6 lr -u
-    `
+    >` `sudo` zypper --releasever=15.6 lr -u`
     
     现在，所有仓库都应指向 `15.6` 版本（除了支持新发布的没有版本控制的第三方仓库）。仍然指向旧版本的仓库至少应禁用（已启用 列需要显示 `否`）。
     
 5.  通过运行以下命令更新仓库元数据
     
-    `
-    `>` `sudo` zypper --releasever=15.6 ref
-    `
+    >` `sudo` zypper --releasever=15.6 ref`
     
 6.  启动发行版升级，这将使您的系统提升到新版本
     
-    `
-    `>` `sudo` zypper --releasever=15.6 dup
-    `
+    >` `sudo` zypper --releasever=15.6 dup`
     
     根据软件选择，您可能需要批准一个或多个许可证。检查命令的输出。如果一切正常，请使用 y 批准。
     
 7.  最后，重新启动您的机器以启动新的 openSUSE Leap 版本
     
-    `
-    `>` `sudo` shutdown -r now
-    `
+    >` `sudo` shutdown -r now`
     
 
 您可以使用 `zypper dup` 升级您的系统。在使用此命令时，请注意以下事项
@@ -3393,15 +3350,14 @@ udev           252M  124K  252M   1% /dev
 
 各种版本的常见问题和特殊问题会在网上发布，以便在发现后进行识别。请参阅以下链接。可以使用 YaST 在线更新访问单个软件包的重要更新。有关更多信息，请参阅 [第 11章，_YaST 在线更新_](#cha-onlineupdate-you "第 11章 YaST 在线更新")。
 
-请参阅 `产品亮点` ([https://en.opensuse.net.cn/Product\_highlights](https://en.opensuse.net.cn/Product_highlights) 和 openSUSE wiki 上的 `Bug 文章 [https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs](https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs)，以获取有关最新更改和问题的更多信息。` `第 IV 部分 Bash shell
+请参阅 `产品亮点` ([https://en.opensuse.net.cn/Product\_highlights](https://en.opensuse.net.cn/Product_highlights) 和 openSUSE wiki 上的 `Bug 文章 [https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs](https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs)，以获取有关最新更改和问题的更多信息。` 
+第 IV 部分 Bash shell
 ============================================================================================================================================
 
-`[13 Shell 基础知识](#cha-new-bash)` `在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与…` `[14 Bash 和 Bash 脚本](#cha-adm-shell)` `如今，许多人使用带有图形用户界面 (GUI)（如 GNOME）的计算机。虽然 GUI 提供了许多功能，但在执行自动化任务时受到限制。Shell 很好地补充了 GUI，本章概述了 shell 的几个方面，在本例中是 Bash shell。` 13 Shell 基础知识
+`[13 Shell 基础知识](#cha-new-bash)` `在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与…` `[14 Bash 和 Bash 脚本](#cha-adm-shell)` `如今，许多人使用带有图形用户界面 (GUI)（如 GNOME）的计算机。虽然 GUI 提供了许多功能，但在执行自动化任务时受到限制。Shell 很好地补充了 GUI，本章概述了 shell 的几个方面，在本例中是 Bash shell。`  13 Shell 基础知识
 --------------------------------------------------------------------------------------------------------------------------------
 
-`[13.1 启动 shell](#sec-new-bash-start)` `[13.2 输入命令](#sec-new-bash-commands)` `[13.3 获取帮助](#sec-new-bash-commands-help)` `[13.4 处理文件和目录](#sec-new-bash-fildir)` [13.5 成为 `root`](#sec-new-bash-root)
-
-`[13.6 文件访问权限](#sec-new-bash-accperm)` `[13.7 Bash 的省时功能](#sec-new-bash-feat)` `[13.8 编辑文本](#sec-new-bash-edit)` `[13.9 搜索文件或内容](#sec-new-bash-search)` `[13.10 查看文本文件](#sec-new-bash-view)` `[13.11 重定向和管道](#sec-new-bash-redir)` `[13.12 启动程序和处理进程](#sec-new-bash-jobs)` `[13.13 归档和数据压缩](#sec-bash-tar)` `[13.14 重要的 Linux 命令](#sec-shell-commands)` `在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与操作系统的后续交互。Linux 中的图形用户界面在安装期间最初配置，并由 KDE 或 GNOME 等桌面环境使用。` `尽管如此，掌握 shell 的一些基本知识仍然很有用，因为您可能会遇到图形用户界面不可用的情况。例如，如果 X Window System 出现了一些问题。如果您不熟悉 shell，当您开始输入命令时可能会感到有些不舒服，但您使用得越多，就越会意识到命令行通常是执行某些日常任务的最快最简单的方法。` `对于 Unix 或 Linux，有几个 shell 可用，它们在行为和接受的命令上略有不同。 openSUSE® Leap 的默认 shell 是 Bash（GNU Bourne-Again Shell）。` `以下部分将指导您完成 Bash shell 的第一步，并向您展示如何通过命令行完成一些基本任务。如果您有兴趣了解更多信息，或者已经感觉自己是 shell “高手”，请参阅 [第 14章，_Bash 和 Bash 脚本_](#cha-adm-shell "第 14章 Bash 和 Bash 脚本")。` 13.1 启动 shell
+`在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与操作系统的后续交互。Linux 中的图形用户界面在安装期间最初配置，并由 KDE 或 GNOME 等桌面环境使用。` `尽管如此，掌握 shell 的一些基本知识仍然很有用，因为您可能会遇到图形用户界面不可用的情况。例如，如果 X Window System 出现了一些问题。如果您不熟悉 shell，当您开始输入命令时可能会感到有些不舒服，但您使用得越多，就越会意识到命令行通常是执行某些日常任务的最快最简单的方法。` `对于 Unix 或 Linux，有几个 shell 可用，它们在行为和接受的命令上略有不同。 openSUSE® Leap 的默认 shell 是 Bash（GNU Bourne-Again Shell）。` `以下部分将指导您完成 Bash shell 的第一步，并向您展示如何通过命令行完成一些基本任务。如果您有兴趣了解更多信息，或者已经感觉自己是 shell “高手”，请参阅 [第 14章，_Bash 和 Bash 脚本_](#cha-adm-shell "第 14章 Bash 和 Bash 脚本")。` 13.1 启动 shell
 --------------------------------------------------------------------------------------------------------------------------------------
 
 `基本上，有两种不同的方法可以从图形用户界面启动 shell，该界面通常在您启动计算机后显示` *   `您可以离开图形用户界面，或者`
@@ -3486,14 +3442,9 @@ drwxr-xr-x1 12 tux3 users4 485 2006-06-23 16:086 bin7
 
 手册页直接在 shell 中显示。要导航它们，请使用以下键` 
 
-*   使用 Page ↑ 和 Page ↓ 向上和向下移动` 
-    
-*   使用 Home 和 End 在文档的开头和结尾之间移动` 
-    
-*   通过按 Q 退出 man 页面查看器` 
-    
-
-有关 `man` 命令的更多信息，请使用 `man man`。
+*   使用 Page ↑ 和 Page ↓ 向上和向下移动`
+*   使用 Home 和 End 在文档的开头和结尾之间移动`
+*   通过按 Q 退出 man 页面查看器` 有关 `man` 命令的更多信息，请使用 `man man`。
 
 信息页` 
 
@@ -3503,12 +3454,8 @@ drwxr-xr-x1 12 tux3 users4 485 2006-06-23 16:086 bin7
 
 *   使用 Space 向前移动一个部分（_节点_）。使用 <— 向后移动一个部分。
     
-*   使用 Page ↑ 和 Page ↓ 向上和向下移动` 
-    
-*   通过按 Q 退出信息页查看器` 
-    
-
-请注意，并非所有命令都存在手册页和信息页。有时两者都可用（通常用于关键命令），有时仅存在手册页或信息页，有时两者都不存在。
+*   使用 Page ↑ 和 Page ↓ 向上和向下移动`
+*   通过按 Q 退出信息页查看器` 请注意，并非所有命令都存在手册页和信息页。有时两者都可用（通常用于关键命令），有时仅存在手册页或信息页，有时两者都不存在。
 
 13.4 使用文件和目录
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3558,27 +3505,15 @@ Documents/file.txt
 
 从你的主目录在 `/tmp` 中创建一个子目录
 
-1.  输入` 
-    
-    `
-    ` `>` mkdir /tmp/test `
-    `
+1.  输入``` `>` mkdir /tmp/test ``
     
      `mkdir` 代表 “创建目录”。此命令在 `/tmp` 目录中创建一个名为 `test` 的新目录。在这种情况下，你使用绝对路径创建 `test` 目录。 
     
-2.  要检查发生的情况，现在输入` 
-    
-    `
-    ` `>` ls -l /tmp `
-    `
+2.  要检查发生的情况，现在输入``` `>` ls -l /tmp ``
     
     新的目录 `test` 应该出现在 `/tmp` 目录的内容列表中。
     
-3.  使用以下命令切换到新创建的目录` 
-    
-    `
-    ` `>` cd /tmp/test `
-    `
+3.  使用以下命令切换到新创建的目录``` `>` cd /tmp/test ``
     
 
 ###### 程序 13.2： 创建和复制文件 [](#id-1.3.6.2.9.10.4 "Permalink")` 
@@ -3587,49 +3522,27 @@ Documents/file.txt
 
 ![Important](./image/icon-important.svg "Important")  **重要**：覆盖现有文件  在复制、移动或重命名文件之前，请检查你的目标目录是否已包含同名的文件。如果是，请考虑更改其中一个文件名或使用带有 `-i` 等选项的 `cp` 或 `mv`，这将会在覆盖现有文件之前提示。否则，Bash 将会在没有确认的情况下覆盖现有文件。  
 
-1.  要列出你的主目录的内容，请输入` 
-    
-    `
-    ` `>` ls -l ~ `
-    `
+1.  要列出你的主目录的内容，请输入``` `>` ls -l ~ ``
     
     它应该默认包含一个名为 `Documents` 的子目录。如果不是，请使用你已经知道的 `mkdir` 命令创建此子目录
-    
-    `
-    ` `>` mkdir ~/Documents `
-    `
+`>` mkdir ~/Documents ``
     
 2.  要创建一个名为 `myfile.txt` 的新空文件，并将其放置在 `Documents` 目录下，请输入
-    
-    `
-    ` `>` touch ~/Documents/myfile.txt `
-    `
+`>` touch ~/Documents/myfile.txt ``
     
     通常，`touch` 命令会更新现有文件的修改和访问日期。 如果您在目标目录中使用 `touch` 命令，而该文件名不存在，它将创建一个新文件。
     
-3.  输入` 
-    
-    `
-    ` `>` ls -l ~/Documents `
-    `
+3.  输入``` `>` ls -l ~/Documents ``
     
     新文件应该出现在内容列表中。
     
-4.  要复制新创建的文件，请输入` 
-    
-    `
-    ` `>` cp ~/Documents/myfile.txt . `
-    `
+4.  要复制新创建的文件，请输入``` `>` cp ~/Documents/myfile.txt . ``
     
     不要忘记末尾的点。
     
     此命令告诉 Bash 转到您的主目录，并将 `myfile.txt` 从 `Documents` 子目录复制到当前目录 `/tmp/test`，而不更改文件名。
     
-5.  通过输入以下命令检查结果` 
-    
-    `
-    ` `>` ls -l `
-    `
+5.  通过输入以下命令检查结果``` `>` ls -l ``
     
     文件 `myfile.txt` 应该出现在 `/tmp/test` 的内容列表中。
     
@@ -3638,50 +3551,30 @@ Documents/file.txt
 
 现在假设您想将 `myfile.txt` 重命名为 `tuxfile.txt`。 最后，您决定删除重命名的文件和 `test` 子目录。
 
-1.  要重命名文件，请输入` 
+1.  要重命名文件，请输入``` `>` mv myfile.txt tuxfile.txt ``
     
-    `
-    ` `>` mv myfile.txt tuxfile.txt `
-    `
-    
-2.  要检查发生的情况，请输入` 
-    
-    `
-    ` `>` ls -l `
-    `
+2.  要检查发生的情况，请输入``` `>` ls -l ``
     
     在内容列表中，应该显示 `tuxfile.txt`，而不是 `myfile.txt`。
     
      `mv` 代表 `move`（移动），并带有两个选项使用：第一个选项指定源，第二个选项指定操作的目标。 您可以使用 `mv` 命令 
     
-    *   重命名文件或目录，或者` 
-        
-    *   将文件或目录移动到新位置，或者` 
-        
+    *   重命名文件或目录，或者`    
+    *   将文件或目录移动到新位置，或者`    
     *   一步完成两者。
         
     
-3.  既然您认为不再需要该文件，可以通过输入以下命令删除它` 
-    
-    `
-    ` `>` rm tuxfile.txt `
-    `
+3.  既然您认为不再需要该文件，可以通过输入以下命令删除它``` `>` rm tuxfile.txt ``
     
     Bash 会在没有任何确认的情况下删除该文件。
     
 4.  使用 `cd ..` 向上移动一级，并使用以下命令检查
-    
-    `
-    ` `>` ls -l test `
-    `
+`>` ls -l test ``
     
     现在 `test` 目录是否为空。
     
 5.  如果是，可以使用以下命令删除 `test` 目录
-    
-    `
-    ` `>` rmdir test `
-    `
+`>` rmdir test ``
     
 
 13.5 成为 `root`
@@ -3696,16 +3589,10 @@ Documents/file.txt
 2.  输入密码。 如果您错误地输入了 `root` 密码，shell 将显示一条消息。 在这种情况下，您必须在重新输入密码之前重新输入 `su`。 如果您的密码正确，则井号 `#` 将出现在提示符的末尾，表示您现在正在以 `root` 身份行事。
     
 3.  执行您的任务。 例如，将文件的所有权转移给一个新用户，只有 `root` 才能执行此操作
-    
-    `
-    ` `>` chown `wilber` kde_quick.xml `
-    `
+`>` chown `wilber` kde_quick.xml ``
     
 4.  完成作为 `root` 执行的任务后，切换回您的普通用户帐户。 为此，请输入
-    
-    `
-    ` `>` exit `
-    `
+`>` exit ``
     
     井号将消失，您将再次以 “普通” 用户身份行事。
     
@@ -3791,36 +3678,20 @@ Documents/file.txt
 假设您是 `tux`，并想修改对您文件的访问权限
 
 1.  如果想授予 `users` 组对 `kde-start.xml` 的写入权限，请输入
-    
-    `
-    ` `>` chmod g+w kde-start.xml `
-    `
+`>` chmod g+w kde-start.xml ``
     
 2.  要授予 `users` 组和其他用户对 `kde-start.xml` 的写入权限，请输入
+`>` chmod go+w kde-start.xml ``
     
-    `
-    ` `>` chmod go+w kde-start.xml `
-    `
-    
-3.  要删除所有用户的写入权限，请输入` 
-    
-    `
-    ` `>` chmod -w kde-start.xml `
-    `
+3.  要删除所有用户的写入权限，请输入``` `>` chmod -w kde-start.xml ``
     
     如果您没有指定任何类型的用户，则更改将应用于所有用户——文件的所有者、所有者组和其他人。 现在，即使所有者 `tux` 在没有重新建立写入权限的情况下也无法写入该文件。
     
 4.  要禁止 `users` 组和其他用户进入目录 `local`，请输入
-    
-    `
-    ` `>` chmod go-x local `
-    `
+`>` chmod go-x local ``
     
 5.  要授予其他人对两个文件（`kde_quick.xml` 和 `gnome_quick.xml`）的写入权限，请输入
-    
-    `
-    ` `>` chmod o+w  kde_quick.xml gnome_quick.xml `
-    `
+`>` chmod o+w  kde_quick.xml gnome_quick.xml ``
     
 
 ###### 步骤 13.5： 更改所有权
@@ -3829,23 +3700,12 @@ Documents/file.txt
 
 1.  输入 `root` 的用户名和密码。
     
-2.  输入` 
+2.  输入`` ``# `chown `wilber`kde_quick.xml ``
     
-    `
-    ` `#` chown `wilber` kde_quick.xml `
-    `
+3.  使用以下命令检查发生的情况``` `>` ls -l kde_quick.xml ``
     
-3.  使用以下命令检查发生的情况` 
-    
-    `
-    ` `>` ls -l kde_quick.xml `
-    `
-    
-    您应该得到以下输出` 
-    
-    `
-    -rw-r--r-- 1 wilber users  47896 2006-06-21 09:46 kde_quick.xml
-    `
+    您应该得到以下输出``
+    -rw-r--r-- 1 wilber users  47896 2006-06-21 09:46 kde_quick.xml`
     
 4.  如果所有权已按您的意愿设置，请切换回您的普通用户帐户。
     
@@ -3896,12 +3756,9 @@ Documents/file.txt
     什么也不会发生，因为 Bash 无法识别您想要更改的子目录。
     
 4.  再次按 →| 以查看可能的选项列表
-    
     `
     >` `cd D`
-    Desktop/ Documents/ Downloads/
-    `>` `cd D
-    `
+    Desktop/ Documents/ Downloads/`>` `cd D`
     
 5.  提示符仍然显示您的初始输入。键入您想要进入的子目录的下一个字符，然后再次按 →|。
     
@@ -4013,9 +3870,7 @@ _扩展_ 模式
 
 1.  要创建并使用 vi 打开一个新文件，请输入
     
-    `
-    `>` vi textfile.txt
-    `
+    >` vi textfile.txt`
     
     默认情况下，vi 以 _命令_ 模式打开，在这种模式下您无法输入文本。
     
@@ -4045,23 +3900,16 @@ Bash 提供了几个命令来搜索文件和搜索文件的内容
 
 *   要搜索您的主目录中包含 `.txt` 文件扩展名的所有文件名，请使用
     
-    `
-    `>` find ~ -name '\*.txt' -print
-    `
+    >` find ~ -name '\*.txt' -print`
     
 *   要搜索目录（在本例中为您的主目录）中包含例如单词 `music` 的所有文件，请使用
     
-    `
-    `>` grep music ~/\*
-    `
-    
+    >` grep music ~/\*`
     `grep` 默认区分大小写。因此，使用上面的命令，您将找不到包含 `Music` 的任何文件。要忽略大小写，请使用 `-i` 选项。
     
 *   要使用由多个单词组成的搜索字符串，请将其用双引号括起来，例如
     
-    `
-    `>` grep "music is great" ~/\*
-    `
+    >` grep "music is great" ~/\*`
     
 
 13.10 查看文本文件
@@ -4098,45 +3946,33 @@ Bash 提供了几个命令来搜索文件和搜索文件的内容
 
 1.  要将命令（如 `ls`）的输出写入文件，请输入
     
-    `
-    `>` ls -l > filelist.txt
-    `
+    >` ls -l > filelist.txt`
     
     这将创建一个名为 `filelist.txt` 的文件，其中包含当前目录的内容列表，由 `ls` 命令生成。
     
     但是，如果名为 `filelist.txt` 的文件已经存在，此命令将覆盖现有文件。要防止这种情况，请使用 `>>` 代替 >。输入
     
-    `
-    `>` ls -l >> filelist.txt
-    `
+    >` ls -l >> filelist.txt`
     
     会将 `ls` 命令的输出简单地追加到名为 `filelist.txt` 的现有文件中。如果文件不存在，则会创建该文件。
     
 2.  重定向也适用于反向操作。您可以将文件用作命令的标准输入，而不是从键盘获取输入
     
-    `
-    `>` sort < filelist.txt
-    `
+    >` sort < filelist.txt`
     
     这将强制 `sort` 命令从 `filelist.txt` 的内容获取输入。结果将显示在屏幕上。当然，您也可以使用重定向的组合将结果写入另一个文件
     
-    `
-    `>` sort < filelist.txt > sorted\_filelist.txt
-    `
+    >` sort < filelist.txt > sorted\_filelist.txt`
     
 3.  如果命令生成了大量的输出，例如 `ls` `-l` 可能会做的那样，将输出管道传输到像 `less` 这样的查看器可能很有用，以便您可以滚动浏览页面。为此，请输入
     
-    `
-    `>` ls -l | less
-    `
+    >` ls -l | less`
     
     当前目录的内容列表将显示在 `less` 中。
     
     管道通常也与 `grep` 命令结合使用，以便在另一个命令的输出中搜索特定的字符串。例如，如果您想查看目录中由用户 `tux` 拥有的文件列表，请输入
     
-    `
-    `>` ls -l | grep tux
-    `
+    >` ls -l | grep tux`
     
 
 13.12 启动程序和处理进程
@@ -4208,25 +4044,17 @@ PID TTY          TIME CMD
     
 3.  使用以下命令压缩文件
     
-    `
-    `>` tar -cvf testarchive.tar test
-    `
-    
+    >` tar -cvf testarchive.tar test`
     `-c` 选项创建归档文件，使其成为由 `-f` 指示的文件。 `-v` 选项列出正在处理的文件。
-    
     `test` 目录及其所有文件和目录在您的硬盘上保持不变。
     
 4.  使用以下命令查看归档文件的内容
     
-    `
-    `>` tar -tf testarchive.tar
-    `
+    >` tar -tf testarchive.tar`
     
 5.  要解包归档文件，请使用
     
-    `
-    `>` tar -xvf testarchive.tar
-    `
+    >` tar -xvf testarchive.tar`
     
     如果当前目录中的文件与归档文件中的文件同名，则它们将被覆盖，不会发出任何警告。
     
@@ -4239,9 +4067,7 @@ PID TTY          TIME CMD
     
     要压缩归档文件，请使用
     
-    `
-    `>` gzip testarchive.tar
-    `
+    >` gzip testarchive.tar`
     
     使用 `ls`，现在可以看到文件 `testarchive.tar` 不再存在，并且已创建文件 `testarchive.tar.gz`。
     
@@ -4814,9 +4640,7 @@ echo "Hello World" 3
     
 3.  脚本需要可执行权限。使用以下命令设置权限
     
-    `
-    `>` chmod +x ~/bin/hello.sh
-    `
+    >` chmod +x ~/bin/hello.sh`
     
 
 如果您满足上述所有先决条件，可以通过以下方式执行脚本
@@ -5471,7 +5295,7 @@ Intel Optane DIMM 内存可以在特定模式下使用
 
 devdax
 
-设备-DAX 模式。创建一个单字符设备文件 ( `/dev/dax_X_._Y_` )。_不需要_创建文件系统。
+设备-DAX 模式。创建一个单字符设备文件 ( `/dev/dax_X_._Y_` )。不需要_创建文件系统。
 
 fsdax
 
@@ -5686,7 +5510,8 @@ help
    "type":"blk"
   }
 \]
-` 空间以两种不同的形式可用：要么是三个单独的 64 区域的 BLK 类型，要么是一个组合的 189 GB 区域的 PMEM 类型，该类型将三个交错 NVDIMM 上的所有空间作为一个卷呈现。
+` 
+空间以两种不同的形式可用：要么是三个单独的 64 区域的 BLK 类型，要么是一个组合的 189 GB 区域的 PMEM 类型，该类型将三个交错 NVDIMM 上的所有空间作为一个卷呈现。
 
 请注意，显示的 `available_size` 值与 `size` 值相同。这意味着尚未分配任何空间。
 
@@ -6207,10 +6032,7 @@ systemd.mask=dev-sda1.swap
 2.  成为 `root`。
     
 3.  使用以下命令再次启动解锁过程
-    
-    `
-    `#` systemctl restart home.mount
-    `
+    ``#` systemctl restart home.mount`
     
 4.  输入您的密码以解锁加密分区。
     
@@ -6354,9 +6176,7 @@ systemd.mask=dev-sda1.swap
     
 2.  重启 NetworkManager
     
-    `
-    `>` `sudo` systemctl restart NetworkManager
-    `
+    >` `sudo` systemctl restart NetworkManager`
     
 3.  以普通用户打开一个网页，例如 [https://opensuse.net.cn](https://opensuse.net.cn)，以查看您是否可以连接。
     
@@ -6383,16 +6203,10 @@ systemd.mask=dev-sda1.swap
 3.  确定要存储镜像的位置（标记为 _BACKUP\_PATH_）。它必须与您的源设备不同。换句话说：如果您从 `/dev/sda` 备份，您的镜像文件不能存储在 `/dev/sda` 下。
     
 4.  运行命令以创建压缩的镜像文件
-    
-    `
-    `#` dd if=/dev/_SOURCE_ | gzip > /_BACKUP\_PATH_/image.gz
-    `
+    ``#` dd if=/dev/_SOURCE_ | gzip > /_BACKUP\_PATH_/image.gz`
     
 5.  使用以下命令恢复硬盘
-    
-    `
-    `#` gzip -dc /_BACKUP\_PATH_/image.gz | dd of=/dev/_SOURCE_
-    `
+    ``#` gzip -dc /_BACKUP\_PATH_/image.gz | dd of=/dev/_SOURCE_`
     
 
 如果您只需要备份一个分区，请将 _SOURCE_ 占位符替换为您的相应分区。在这种情况下，您的镜像文件可以位于同一硬盘上，但位于不同的分区上。
@@ -6452,25 +6266,19 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 2.  要将位于 `/dev/sda6` 下的根文件系统挂载到救援系统，请使用以下命令
     
-    `
-    `>` `sudo` mount /dev/sda6 /mnt
-    `
+    >` `sudo` mount /dev/sda6 /mnt`
     
     系统的所有目录现在位于 `/mnt` 下
     
 3.  更改目录到挂载的根文件系统
     
-    `
-    `>` `sudo` cd /mnt
-    `
+    >` `sudo` cd /mnt`
     
 4.  在 vi 编辑器中打开有问题 的配置文件。调整并保存配置。
     
 5.  从救援系统卸载根文件系统
     
-    `
-    `>` `sudo` umount /mnt
-    `
+    >` `sudo` umount /mnt`
     
 6.  重新启动机器。
     
@@ -6509,48 +6317,33 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     **提示**：导入 LVM 卷组
     
     如果您正在使用 LVM 设置（请参阅 “参考”一书，第 5 章“专家分区程序”，第 5.3 节“LVM 配置” 以获取更多常规详细信息），请导入所有现有的卷组以能够找到并挂载设备
-    
-    `
-    `root`vgimport -a
-    `
+    ``root`vgimport -a`
     
     运行 `lsblk` 以检查哪个节点对应于根分区。在我们的示例中，它是 `/dev/sda2`
     
-    `
-    `>` lsblk
+    >` lsblk
     NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
     sda           8:0    0 149,1G  0 disk
     ├─sda1        8:1    0     2G  0 part  \[SWAP\]
     ├─sda2        8:2    0    20G  0 part  /
     └─sda3        8:3    0   127G  0 part
-      └─cr\_home 254:0    0   127G  0 crypt /home
-    `
+      └─cr\_home 254:0    0   127G  0 crypt /home`
     
 2.  将已安装系统中的根分区挂载
     
-    `
-    `>` `sudo` mount /dev/sda2 /mnt
-    `
+    >` `sudo` mount /dev/sda2 /mnt`
     
 3.  挂载 `/proc`、`/dev` 和 `/sys` 分区
     
-    `
-    `>` `sudo` mount -t proc none /mnt/proc
-    `>` `sudo` mount --rbind /dev /mnt/dev
-    `>` `sudo` mount --rbind /sys /mnt/sys
-    `
+    >` `sudo` mount -t proc none /mnt/proc`>` `sudo` mount --rbind /dev /mnt/dev`>` `sudo` mount --rbind /sys /mnt/sys`
     
 4.  现在您可以 “change root” 进入新环境，保留 `bash` shell
     
-    `
-    `>` chroot /mnt /bin/bash
-    `
+    >` chroot /mnt /bin/bash`
     
 5.  最后，从已安装的系统挂载剩余的分区
     
-    `
-    `>` mount -a
-    `
+    >` mount -a`
     
 6.  现在您可以使用已安装的系统。重新启动系统之前，使用 `umount` `-a` 卸载分区，并使用 `exit` 退出 “change root” 环境。
     
@@ -6571,9 +6364,7 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 2.  检查 GRUB 2 启动加载程序是否已安装在系统上。如果未安装，请安装软件包 `grub2` 并运行
     
-    `
-    `>` `sudo` grub2-install /dev/sda
-    `
+    >` `sudo` grub2-install /dev/sda`
     
 3.  检查以下文件是否根据 “参考”手册，第 12 章“启动加载程序 GRUB 2” 中概述的 GRUB 2 配置原则正确配置，并在必要时应用修复。
     
@@ -6588,17 +6379,13 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 4.  使用以下命令序列重新安装启动加载程序
     
-    `
-    `>` `sudo` grub2-mkconfig -o /boot/grub2/grub.cfg
-    `
+    >` `sudo` grub2-mkconfig -o /boot/grub2/grub.cfg`
     
 5.  卸载分区，退出 “更改根目录” 环境，并重新启动系统
     
-    `
-    `>` umount -a
+    >` umount -a
     exit
-    reboot
-    `
+    reboot`
     
 
 #### 21.5.2.5 修复内核安装
