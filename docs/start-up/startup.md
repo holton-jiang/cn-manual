@@ -317,7 +317,7 @@ openSUSE Leap 允许在启动时设置几个参数，例如选择安装数据的
 
 使用重复的读写循环测试您的系统 RAM。通过重新启动来终止测试。有关更多信息，请参阅 [第 4.4 节，“启动失败”](#sec-installation-troubleshooting-noboot "4.4. 启动失败")。
 
-![The Boot Screen on Machines with a Traditional BIOS](./image/install_boot_osuse.png]](./image/install_boot_osuse.png)
+![The Boot Screen on Machines with a Traditional BIOS](./image/install_boot_osuse.png)
 
 ###### 图 2.1： 具有传统 BIOS 的机器上的启动屏幕 [](#id-1.3.3.3.7.3.4)
 
@@ -396,7 +396,7 @@ UEFI（统一可扩展固件接口）是一种新的行业标准，它取代并�
 
 GRUB 2 for EFI 在 openSUSE Leap 上不支持启动提示或用于添加启动参数的功能键。默认情况下，将使用美国英语和启动介质作为安装源启动安装。将执行 DHCP 查找以配置网络。要更改这些默认设置或添加启动参数，您需要编辑相应的启动条目。使用箭头键突出显示它并按 E。请参阅屏幕上的帮助以获取编辑提示（请注意，现在只能使用英语键盘）。 安装 条目将类似于以下内容
 
-```
+`
 setparams 'Installation'
 
    set gfxpayload=keep
@@ -404,9 +404,7 @@ setparams 'Installation'
    linuxefi /boot/x86\_64/loader/linux splash=silent
    echo 'Loading initial ramdisk ...'
    initrdefi /boot/x86\_64/loader/initrd
-```
-
-在以 `linuxefi` 开头的行末尾添加以空格分隔的参数。要启动编辑后的条目，请按 F10。如果您通过串行控制台访问机器，请按 Esc–0。完整的参数列表可在 [https://en.opensuse.net.cn/Linuxrc](https://en.opensuse.net.cn/Linuxrc) 上找到。
+` 在以 `linuxefi` 开头的行末尾添加以空格分隔的参数。要启动编辑后的条目，请按 F10。如果您通过串行控制台访问机器，请按 Esc–0。完整的参数列表可在 [https://en.opensuse.net.cn/Linuxrc](https://en.opensuse.net.cn/Linuxrc) 上找到。
 
 2.3 重要的启动参数列表
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -419,17 +417,13 @@ setparams 'Installation'
 
 `autoyast` 参数指定 `autoinst.xml` 控制文件的位置，用于自动安装。
 
-`manual=<0|1>`
-
-`manual` 参数控制其他参数是否仅为默认值，这些默认值仍然需要用户确认。如果应接受所有值且不提出任何问题，请将此参数设置为 `0`。设置 `autoyast` 意味着将 `manual` 设置为 `0`。
+`manual=<0|1>` `manual` 参数控制其他参数是否仅为默认值，这些默认值仍然需要用户确认。如果应接受所有值且不提出任何问题，请将此参数设置为 `0`。设置 `autoyast` 意味着将 `manual` 设置为 `0`。
 
 `Info=`_URL_
 
 指定从文件中读取其他选项的位置。
 
-`upgrade=<0|1>`
-
-要升级 openSUSE Leap，请指定 `Upgrade=1`。
+`upgrade=<0|1>` 要升级 openSUSE Leap，请指定 `Upgrade=1`。
 
 `dud=`_URL_
 
@@ -441,21 +435,13 @@ setparams 'Installation'
 
 设置安装语言。一些受支持的值是 `cs_CZ`、`de_DE`、`es_ES`、`fr_FR`、`ja_JP`、`pt_BR`、`pt_PT`、`ru_RU`、`zh_CN` 和 `zh_TW`。
 
-`acpi=off`
+`acpi=off` 禁用 ACPI 支持。
 
-禁用 ACPI 支持。
+`noapic` 无逻辑 APIC。
 
-`noapic`
+`nomodeset` 禁用 KMS。
 
-无逻辑 APIC。
-
-`nomodeset`
-
-禁用 KMS。
-
-`textmode=1`
-
-以文本模式启动安装程序。
+`textmode=1` 以文本模式启动安装程序。
 
 `console=`_SERIAL\_DEVICE_\[,_MODE_\]
 
@@ -469,13 +455,9 @@ _SERIAL\_DEVICE_ 可以是实际的串行或并行设备（例如 `ttyS0`）或�
 
 只有在安装期间需要网络时才会配置网络。要强制配置网络，请使用 `netsetup` 或 `ifcfg` 参数。
 
-`netsetup=_VALUE_`
+`netsetup=_VALUE_` `netsetup=dhcp` 强制通过 DHCP 进行配置。将 `netsetup=-dhcp` 设置为使用启动参数 `hostip`、`gateway` 和 `nameserver` 配置网络。使用选项 `netsetup=hostip,netmask,gateway,nameserver`，安装程序将在启动时询问网络设置。
 
-`netsetup=dhcp` 强制通过 DHCP 进行配置。将 `netsetup=-dhcp` 设置为使用启动参数 `hostip`、`gateway` 和 `nameserver` 配置网络。使用选项 `netsetup=hostip,netmask,gateway,nameserver`，安装程序将在启动时询问网络设置。
-
-`ifcfg=_INTERFACE_[._VLAN_]=[.try,]_SETTINGS_`
-
-_INTERFACE_ 可以是 `*` 以匹配所有接口，或者例如 `eth*` 以匹配所有以 `eth` 开头的接口。也可以使用 MAC 地址作为值。
+`ifcfg=_INTERFACE_[._VLAN_]=[.try,]_SETTINGS_` _INTERFACE_ 可以是 `*` 以匹配所有接口，或者例如 `eth*` 以匹配所有以 `eth` 开头的接口。也可以使用 MAC 地址作为值。
 
 可选地，可以在接口名称后面用句点分隔设置 VLAN。
 
@@ -485,79 +467,53 @@ _INTERFACE_ 可以是 `*` 以匹配所有接口，或者例如 `eth*` 以匹配�
 
 静态配置的语法是
 
-```
+`
 ifcfg=\*="_IPS\_NETMASK_,_GATEWAYS_,_NAMESERVERS_,_DOMAINS_"
-```
+` 每个逗号分隔的值可以反过来包含一个由空格分隔的值的列表。 _IPS\_NETMASK_ 使用 _CIDR 表示法_，例如 `10.0.0.1/24`。 仅在使用空格分隔的列表时才需要引号。 带有两个名称服务器的示例
 
-每个逗号分隔的值可以反过来包含一个由空格分隔的值的列表。 _IPS\_NETMASK_ 使用 _CIDR 表示法_，例如 `10.0.0.1/24`。 仅在使用空格分隔的列表时才需要引号。 带有两个名称服务器的示例
-
-```
+`
 ifcfg=\*="_10.0.0.10/24_,_10.0.0.1_,_10.0.0.1 10.0.0.2_,_example.com_"
-```
-
-![Tip](./image/icon-tip.svg "Tip") **提示**：其他网络参数
+` ![Tip](./image/icon-tip.svg "Tip") **提示**：其他网络参数
 
 `ifcfg` 启动参数功能非常强大，允许您设置几乎所有网络参数。 除了上述参数之外，您还可以设置 `/etc/sysconfig/network/ifcfg.template` 和 `/etc/sysconfig/network/config` 中的所有配置选项（逗号分隔）。 以下示例在通过 DHCP 配置的接口上设置自定义 MTU 大小
 
-```
+`
 ifcfg=eth0=dhcp,MTU=1500
-```
+` `hostname=host.example.com` 输入完全限定的主机名。
 
-`hostname=host.example.com`
+`domain=example.com` DNS 的域名搜索路径。 允许您使用简短的主机名而不是完全限定的主机名。
 
-输入完全限定的主机名。
+`hostip=192.168.1.2[/24]` 输入要配置的接口的 IP 地址。 IP 可以包含子网掩码，例如 `hostip=192.168.1.2/24`。 仅当安装期间需要网络时才评估此设置。
 
-`domain=example.com`
+`gateway=192.168.1.3` 指定要使用的网关。 仅当安装期间需要网络时才评估此设置。
 
-DNS 的域名搜索路径。 允许您使用简短的主机名而不是完全限定的主机名。
+`nameserver=192.168.1.4` 指定负责的 DNS 服务器。 仅当安装期间需要网络时才评估此设置。
 
-`hostip=192.168.1.2[/24]`
-
-输入要配置的接口的 IP 地址。 IP 可以包含子网掩码，例如 `hostip=192.168.1.2/24`。 仅当安装期间需要网络时才评估此设置。
-
-`gateway=192.168.1.3`
-
-指定要使用的网关。 仅当安装期间需要网络时才评估此设置。
-
-`nameserver=192.168.1.4`
-
-指定负责的 DNS 服务器。 仅当安装期间需要网络时才评估此设置。
-
-`domain=example.com`
-
-域名搜索路径。 仅当安装期间需要网络时才评估此设置。
+`domain=example.com` 域名搜索路径。 仅当安装期间需要网络时才评估此设置。
 
 ### 2.3.3 指定安装源
 
 如果您不使用 DVD 或 USB 闪存驱动器进行安装，请指定替代安装源。
 
-`install=SOURCE`
-
-指定要使用的安装源的位置。 可能的协议包括 `cd`、`hd`、`slp`、`nfs`、`smb` (Samba/CIFS)、`ftp`、`tftp`、`http` 和 `https`。 默认选项是 `cd`。
+`install=SOURCE` 指定要使用的安装源的位置。 可能的协议包括 `cd`、`hd`、`slp`、`nfs`、`smb` (Samba/CIFS)、`ftp`、`tftp`、`http` 和 `https`。 默认选项是 `cd`。
 
 要通过加密连接安装，请使用 `https` URL。 如果无法验证证书，请使用 `sslcerts=0` 启动参数禁用证书检查。
 
 如果给出了 `http`、`https`、`ftp`、`tftp` 或 `smb` URL，您可以通过在 URL 中指定用户名和密码来验证身份。 示例
 
-```
+`
 install=https://_USER_:_PASSWORD_@_SERVER_/_DIRECTORY_/DVD1/
-```
+` 在 Samba 或 CIFS 安装的情况下，您还可以指定应使用的域
 
-在 Samba 或 CIFS 安装的情况下，您还可以指定应使用的域
-
-```
+`
 install=smb://_WORKDOMAIN_;_USER_:_PASSWORD_@_SERVER_/_DIRECTORY_/DVD1/
-```
+` 要使用 `cd`、`hd` 或 `slp`，请按以下示例进行设置
 
-要使用 `cd`、`hd` 或 `slp`，请按以下示例进行设置
-
-```
+`
 install=cd:/
 install=hd:/?device=_sda/PATH\_TO\_ISO_
 install=slp:/
-```
-
-### 2.3.4 指定远程访问
+` ### 2.3.4 指定远程访问
 
 一次只能指定一种不同的远程控制方法。 不同的方法是：SSH、VNC、远程 X 服务器。
 
@@ -569,17 +525,13 @@ install=slp:/
 
 使用 X Window System 的直接安装依赖于基于主机名的原始身份验证机制。 此机制在当前的 openSUSE Leap 版本中已禁用。 建议使用 SSH 或 VNC 进行安装。
 
-`vnc=1`
-
-在安装过程中启用 VNC 服务器。
+`vnc=1` 在安装过程中启用 VNC 服务器。
 
 `vncpassword=`_PASSWORD_
 
 设置 VNC 服务器的密码。
 
-`ssh=1`
-
-`ssh` 启用 SSH 安装。
+`ssh=1` `ssh` 启用 SSH 安装。
 
 `ssh.password=`_PASSWORD_
 
@@ -596,17 +548,13 @@ install=slp:/
 
 接受 IPv4 和 IPv6
 
-```
+`
 ipv6=1
-```
+` 仅接受 IPv6
 
-仅接受 IPv6
-
-```
+`
 ipv6only=1
-```
-
-### 2.4.2 使用代理进行安装
+` ### 2.4.2 使用代理进行安装
 
 在强制使用代理服务器才能访问远程网站的网络中，只有在配置代理服务器时才能在安装过程中进行注册。
 
@@ -618,15 +566,15 @@ ipv6only=1
     
 2.  将 `proxy` 参数附加到以下格式的 `linux` 行
     
-    ```
+    `
     proxy=https://_proxy.example.com_:_PORT_
-    ```
+    `
     
     如果代理服务器需要身份验证，请按如下方式添加凭据
     
-    ```
+    `
     proxy=https://_USER_:_PASSWORD_@_proxy.example.com_:_PORT_
-    ```
+    `
     
     如果无法验证代理服务器的 SSL 证书，请使用 `sslcerts=0` 启动参数禁用证书检查。
     
@@ -643,27 +591,19 @@ ipv6only=1
 
 在安装启动时启用 SELinux 可让您在安装完成后配置它，而无需重新启动。 使用以下参数
 
-```
+`
 security=selinux selinux=1
-```
-
-### 2.4.4 启用安装程序自更新
+` ### 2.4.4 启用安装程序自更新
 
 在安装和升级期间，YaST 可以更新自身，如 [第 3.2 节，“安装程序自更新”](#sec-yast-install-self-update "3.2. 安装程序自更新") 中所述，以解决发布后发现的潜在错误。 可以使用 `self_update` 参数来修改此功能的行为。
 
-要启用安装程序自更新，请将参数设置为 `1`
-
-```
+要启用安装程序自更新，请将参数设置为 `1` `
 self\_update=1
-```
+` 要使用用户定义的仓库，请指定 URL
 
-要使用用户定义的仓库，请指定 URL
-
-```
+`
 self\_update=https://updates.example.com/
-```
-
-### 2.4.5 重用 LVM
+` ### 2.4.5 重用 LVM
 
 从 SUSE Linux Enterprise 15 SP6 开始，安装程序不再在 引导设置 中重用预先存在的逻辑卷管理器 (LVM) 配置，因为这可能会令人困惑并导致次优设置。 要无论如何重用现有的 LVM，请使用 `YAST_REUSE_LVM` 参数或在 专家分区程序 (“参考”手册，第 5 章“专家分区程序”) 中手动配置它。
 
@@ -671,11 +611,9 @@ self\_update=https://updates.example.com/
 
 如果您的屏幕使用非常高的 DPI，请使用启动参数 `QT_AUTO_SCREEN_SCALE_FACTOR`。 这会根据屏幕 DPI 缩放字体和用户界面元素。
 
-```
+`
 QT\_AUTO\_SCREEN\_SCALE\_FACTOR=1
-```
-
-### 2.4.7 使用 CPU 缓解措施
+` ### 2.4.7 使用 CPU 缓解措施
 
 启动参数 `mitigations` 允许您控制受影响的 CPU 上侧通道攻击的缓解选项。 其可能的值是
 
@@ -691,11 +629,9 @@ QT\_AUTO\_SCREEN\_SCALE\_FACTOR=1
 
 从 SUSE Linux Enterprise 15 SP4 开始，YaST 安装程序支持 LUKS2 加密，但需要显式启用。
 
-```
+`
 YAST\_LUKS2\_AVAILABLE
-```
-
-或者，您也可以在 YaST 专家控制台中启用 LUKS2。 有关更多信息，请参阅 “参考”手册，第 5 章“专家分区程序”，第 5.2 节“设备加密”。
+` 或者，您也可以在 YaST 专家控制台中启用 LUKS2。 有关更多信息，请参阅 “参考”手册，第 5 章“专家分区程序”，第 5.2 节“设备加密”。
 
 2.5 更多信息
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -803,11 +739,9 @@ YAST\_LUKS2\_AVAILABLE
 
 无论您使用以下哪种选项，都只期望安装程序自更新仓库 URL，例如
 
-```
+`
 self\_update=https://www.example.com/my\_installer\_updates/
-```
-
-不要提供任何其他仓库 URL，例如软件更新仓库的 URL。
+` 不要提供任何其他仓库 URL，例如软件更新仓库的 URL。
 
 YaST 将尝试以下信息来源
 
@@ -1009,9 +943,7 @@ UEFI机器 _需要_ 必须挂载到 `/boot/efi` 的EFI系统分区。此分区�
 
 如果您的UEFI机器上不存在EFI系统分区，请确保创建它。EFI系统分区必须是物理分区或RAID 1。不支持其他RAID级别、LVM和其他技术。它需要使用FAT32文件系统格式化。
 
-自定义分区和 `Snapper`
-
-如果根分区大于16 GB，openSUSE Leap 默认启用文件系统快照。
+自定义分区和 `Snapper` 如果根分区大于16 GB，openSUSE Leap 默认启用文件系统快照。
 
 openSUSE Leap 使用Snapper与Btrfs结合使用此功能。Btrfs需要为根分区启用快照。
 
@@ -1134,32 +1066,12 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 如果已经配置了网络，则可以配置与NTP服务器同步时间。单击 其他设置 以更改NTP设置或 手动 设置时间。有关配置NTP服务的更多信息，请参见 “参考”手册，第18章“使用NTP进行时间同步”。完成后，单击 接受 以继续安装。
 
-如果未配置NTP，请考虑设置 `SYSTOHC=no`（`sysconfig 变量）以避免将未同步的时间保存到硬件时钟。`
-
-3.9 创建新用户
+如果未配置NTP，请考虑设置 `SYSTOHC=no`（`sysconfig 变量）以避免将未同步的时间保存到硬件时钟。` 3.9 创建新用户
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`在本步骤中，创建一个本地用户。`
+`在本步骤中，创建一个本地用户。` `![Create New User](./image/install_user_osuse.png]](./image/install_user_osuse.png)` `图3.6： 创建新用户 [](#id-1.3.3.4.13.3 "Permalink")` 在输入名字和姓氏后，您可以接受提案或指定一个 用户名，该用户名将用于登录。只能使用小写字母（a-z）、数字（0-9）以及字符 `.`（点）、`-`（连字符）和 `_`（下划线）。不允许使用特殊字符、变音符号和重音符号。
 
-`![Create New User](./image/install_user_osuse.png]](./image/install_user_osuse.png)`
-
-`图3.6： 创建新用户 [](#id-1.3.3.4.13.3 "Permalink")`
-
-``在输入名字和姓氏后，您可以接受提案或指定一个 用户名，该用户名将用于登录。只能使用小写字母（a-z）、数字（0-9）以及字符 `.`（点）、`-`（连字符）和 `_`（下划线）。不允许使用特殊字符、变音符号和重音符号。``
-
-`最后，为用户输入密码。重新输入密码以进行确认（以确保您没有输入其他内容）。为了提供有效的安全性，密码应至少六个字符长，并包含大写和小写字母、数字和特殊字符（7位ASCII）。不允许使用变音符号或重音符号。您输入的密码将进行弱密码检查。如果您输入容易猜到的密码（例如字典中的单词或名称），您将看到警告。使用强密码是一种良好的安全做法。`
-
-`![Important](./image/icon-important.svg "Important")  **重要**：用户名和密码  请记住您的用户名和密码，因为每次登录系统时都需要它们。  `
-
-`如果您在具有一个或多个现有Linux安装的机器上安装 openSUSE Leap，YaST允许您导入用户数据，例如用户名和密码。选择 从以前的安装导入用户数据，然后选择 选择要导入的用户。`
-
-`如果您不想配置任何本地用户（例如，在具有集中用户身份验证的网络上设置客户端时），请跳过此步骤，选择 下一步 并确认警告。可以在安装的系统中稍后配置网络用户身份验证；有关说明，请参阅 [第5章，_使用YaST管理用户_](#cha-yast-userman "第5章. 使用YaST管理用户")。`
-
-`有两个附加选项可用`
-
-`将此密码用于系统管理员`
-
-``如果选中，您为用户输入的密码将用于系统管理员 `root`。此选项适用于独立工作站或家庭网络中的机器，这些机器由单个用户管理。如果未选中，您将在安装流程的下一步中被提示输入系统管理员密码（请参阅 [root](#sec-yast-install-user-root "3.10. 系统管理员 <code class=")`` [的身份验证">第 3.10 节，“系统管理员 `root` 的身份验证”](#sec-yast-install-user-root "3.10. 系统管理员 <code class=")）。
+`最后，为用户输入密码。重新输入密码以进行确认（以确保您没有输入其他内容）。为了提供有效的安全性，密码应至少六个字符长，并包含大写和小写字母、数字和特殊字符（7位ASCII）。不允许使用变音符号或重音符号。您输入的密码将进行弱密码检查。如果您输入容易猜到的密码（例如字典中的单词或名称），您将看到警告。使用强密码是一种良好的安全做法。` `![Important](./image/icon-important.svg "Important")  **重要**：用户名和密码  请记住您的用户名和密码，因为每次登录系统时都需要它们。  ` `如果您在具有一个或多个现有Linux安装的机器上安装 openSUSE Leap，YaST允许您导入用户数据，例如用户名和密码。选择 从以前的安装导入用户数据，然后选择 选择要导入的用户。` `如果您不想配置任何本地用户（例如，在具有集中用户身份验证的网络上设置客户端时），请跳过此步骤，选择 下一步 并确认警告。可以在安装的系统中稍后配置网络用户身份验证；有关说明，请参阅 [第5章，_使用YaST管理用户_](#cha-yast-userman "第5章. 使用YaST管理用户")。` `有两个附加选项可用` `将此密码用于系统管理员` 如果选中，您为用户输入的密码将用于系统管理员 `root`。此选项适用于独立工作站或家庭网络中的机器，这些机器由单个用户管理。如果未选中，您将在安装流程的下一步中被提示输入系统管理员密码（请参阅 [root](#sec-yast-install-user-root "3.10. 系统管理员 <code class=") [的身份验证">第 3.10 节，“系统管理员 `root` 的身份验证”](#sec-yast-install-user-root "3.10. 系统管理员 <code class=")）。
 
 自动登录
 
@@ -1176,7 +1088,7 @@ FCoE和iSCSI设备将在启动过程中异步出现。虽然initrd保证正确�
 
 如果您在上一步骤中未选择 为系统管理员使用此密码，您将被提示输入系统管理员 `root` 的密码或提供一个公共 SSH 密钥。否则，将跳过此配置步骤。
 
-![Authentication for the System Administrator root](./image/install_root_osuse.png]](./image/install_root_osuse.png)
+![Authentication for the System Administrator root](./image/install_root_osuse.png)
 
 ###### 图 3.7：系统管理员 `root` 的身份验证 [](#id-1.3.3.4.14.3)
 
@@ -1244,7 +1156,7 @@ openSUSE Leap 包含用于各种应用程序目的的几个软件模式。可用
 
 每个模式包含几个用于特定功能的软件包（例如 多媒体或办公软件）。如果您在 系统角色 对话框中选择了 通用桌面，请从可用的 图形环境 列表中选择一个桌面环境。 要基于要安装的软件包进行更详细的选择，请选择 详细信息 以切换到 YaST 软件管理器。
 
-![Software Selection and System Tasks](./image/install_software_osuse.png]](./image/install_software_osuse.png)
+![Software Selection and System Tasks](./image/install_software_osuse.png)
 
 ###### 图 3.9：软件选择和系统任务 [](#id-1.3.3.4.15.5.6)
 
@@ -1445,41 +1357,23 @@ USB 闪存驱动器
 
 在启动提示符处可以输入其他与 ACPI 相关的内核参数，然后再启动进行安装
 
-`acpi=off`
+`acpi=off` 此参数将禁用计算机上的整个 ACPI 子系统。如果您的计算机无法处理 ACPI，或者您认为计算机中的 ACPI 导致问题，这可能很有用。
 
-此参数将禁用计算机上的整个 ACPI 子系统。如果您的计算机无法处理 ACPI，或者您认为计算机中的 ACPI 导致问题，这可能很有用。
+`acpi=force` 即使您的计算机的 BIOS 发布于 2000 年之前，也始终启用 ACPI。如果除了 `acpi=off` 之外还设置了此参数，此参数也会启用 ACPI。
 
-`acpi=force`
+`acpi=noirq` 不要使用 ACPI 进行 IRQ 路由。
 
-即使您的计算机的 BIOS 发布于 2000 年之前，也始终启用 ACPI。如果除了 `acpi=off` 之外还设置了此参数，此参数也会启用 ACPI。
+`acpi=ht` 仅启用支持超线程的 ACPI。
 
-`acpi=noirq`
+`acpi=strict` 对不严格符合 ACPI 标准的平台不太宽容。
 
-不要使用 ACPI 进行 IRQ 路由。
+`pci=noacpi` 禁用新 ACPI 系统的 PCI IRQ 路由。
 
-`acpi=ht`
+`pnpacpi=off` 启用此选项以避免由 BIOS 中配置不正确的设备资源引起的错误。
 
-仅启用支持超线程的 ACPI。
+`notsc` 禁用时间戳计数器。此选项可用于解决系统中的时序问题。这是一个最近的功能，因此，如果您在机器上看到回归，尤其是与时间相关或完全死机，那么值得尝试此选项。
 
-`acpi=strict`
-
-对不严格符合 ACPI 标准的平台不太宽容。
-
-`pci=noacpi`
-
-禁用新 ACPI 系统的 PCI IRQ 路由。
-
-`pnpacpi=off`
-
-启用此选项以避免由 BIOS 中配置不正确的设备资源引起的错误。
-
-`notsc`
-
-禁用时间戳计数器。此选项可用于解决系统中的时序问题。这是一个最近的功能，因此，如果您在机器上看到回归，尤其是与时间相关或完全死机，那么值得尝试此选项。
-
-`nohz=off`
-
-禁用 nohz 功能。如果机器死机，启用此选项可能会有所帮助。
+`nohz=off` 禁用 nohz 功能。如果机器死机，启用此选项可能会有所帮助。
 
 确定正确的参数组合后，YaST 会自动将其写入引导加载程序配置，以确保下次系统正确启动。
 
@@ -1523,9 +1417,9 @@ USB 闪存驱动器
     
 2.  在启动参数提示符处输入以下文本
     
-    ```
+    `
     vnc=1 vncpassword=_SOME\_PASSWORD_
-    ```
+    `
     
     将 _SOME\_PASSWORD_ 替换为用于 VNC 安装的密码。
     
@@ -1535,9 +1429,9 @@ USB 闪存驱动器
     
 4.  使用浏览器访问安装程序时，启动浏览器并输入未来 openSUSE Leap 机器的安装程序提供的地址信息，然后按 Enter 键
     
-    ```
+    `
     http://_IP\_ADDRESS\_OF\_MACHINE_:5801
-    ```
+    `
     
     浏览器窗口中会打开一个对话框，提示您输入 VNC 密码。输入密码并按照 [第 3 章，《安装步骤》](#cha-install "第 3 章 安装步骤") 中所述继续安装。
     
@@ -1785,9 +1679,9 @@ openSUSE Leap 允许使用 `soft` 和 `hard` 配额。此外，还可以定义�
     
 5.  通过输入以下命令，确保服务 `quotaon` 正在运行
     
-    ```
+    `
     `>` `sudo` systemctl status quotaon.service
-    ```
+    `
     
     它应该标记为 `active`。如果不是，请使用命令 `systemctl start quotaon.service` 启动它。
     
@@ -1930,146 +1824,78 @@ SMB 身份验证通常用于混合 Linux 和 Windows 网络。有关详细信息
 
 ###### 默认安装的常见用户名称 [](#id-1.3.4.2.11.3 "Permalink")
 
-`bin`, `daemon`
+`bin`, `daemon` 遗留用户，为兼容旧应用程序而包含。新的应用程序不应再使用此用户名。
 
-遗留用户，为兼容旧应用程序而包含。新的应用程序不应再使用此用户名。
+`gdm` 由 GNOME 显示管理器 (GDM) 用于提供图形登录并管理本地和远程显示。
 
-`gdm`
+`lp` 由打印守护进程用于 Common Unix Printing System (CUPS)。
 
-由 GNOME 显示管理器 (GDM) 用于提供图形登录并管理本地和远程显示。
+`mail` 为邮件程序（如 `sendmail` 或 `postfix`）保留的用户。
 
-`lp`
+`man` 用于访问 man 手册页。
 
-由打印守护进程用于 Common Unix Printing System (CUPS)。
+`messagebus` 用于访问 D-Bus（桌面总线），一种用于进程间通信的软件总线。守护进程是 `dbus-daemon`。
 
-`mail`
+`nobody` 不拥有任何文件且不在任何特权组中的用户。如今，它的使用受到限制，因为 Linux 标准库建议为每个守护进程提供一个单独的用户帐户。
 
-为邮件程序（如 `sendmail` 或 `postfix`）保留的用户。
+`nscd` 由名称服务缓存守护进程使用。此守护进程是一个查找服务，用于提高 NIS 和 LDAP 的性能。守护进程是 `nscd`。
 
-`man`
+`polkitd` 由 PolicyKit 授权框架使用，该框架定义和处理非特权进程的授权请求。守护进程是 `polkitd`。
 
-用于访问 man 手册页。
+`postfix` 由 Postfix 邮件程序使用。
 
-`messagebus`
+`pulse` 由 Pulseaudio 音频服务器使用。
 
-用于访问 D-Bus（桌面总线），一种用于进程间通信的软件总线。守护进程是 `dbus-daemon`。
+`root` 由系统管理员使用，提供所有适当的权限。
 
-`nobody`
+`rpc` 由 `rpcbind` 命令使用，一个 RPC 端口映射器。
 
-不拥有任何文件且不在任何特权组中的用户。如今，它的使用受到限制，因为 Linux 标准库建议为每个守护进程提供一个单独的用户帐户。
+`rtkit` 由 rtkit 包使用，该包为实时调度模式提供一个 D-Bus 系统服务。
 
-`nscd`
+`salt` Salt 提供的并行远程执行的用户。守护进程名为 `salt-master`。
 
-由名称服务缓存守护进程使用。此守护进程是一个查找服务，用于提高 NIS 和 LDAP 的性能。守护进程是 `nscd`。
+`scard` 用于与智能卡和读卡器通信的用户。守护进程名为 `pcscd`。
 
-`polkitd`
+`srvGeoClue` 由 GeoClue D-Bus 服务使用，以提供位置信息。
 
-由 PolicyKit 授权框架使用，该框架定义和处理非特权进程的授权请求。守护进程是 `polkitd`。
+`sshd` 由安全 Shell 守护进程 (SSH) 使用，以确保通过不安全网络进行安全加密的通信。
 
-`postfix`
+`statd` 由网络状态监视器协议 (NSM) 使用，该协议在 `rpc.statd` 守护进程中实现，以侦听重新启动通知。
 
-由 Postfix 邮件程序使用。
+`systemd-coredump` 由 `/usr/lib/systemd/systemd-coredump` 命令使用，以获取、保存和处理核心转储。
 
-`pulse`
+`systemd-network` 由 `/usr/lib/systemd/systemd-networkd` 命令使用，以管理网络。
 
-由 Pulseaudio 音频服务器使用。
-
-`root`
-
-由系统管理员使用，提供所有适当的权限。
-
-`rpc`
-
-由 `rpcbind` 命令使用，一个 RPC 端口映射器。
-
-`rtkit`
-
-由 rtkit 包使用，该包为实时调度模式提供一个 D-Bus 系统服务。
-
-`salt`
-
-Salt 提供的并行远程执行的用户。守护进程名为 `salt-master`。
-
-`scard`
-
-用于与智能卡和读卡器通信的用户。守护进程名为 `pcscd`。
-
-`srvGeoClue`
-
-由 GeoClue D-Bus 服务使用，以提供位置信息。
-
-`sshd`
-
-由安全 Shell 守护进程 (SSH) 使用，以确保通过不安全网络进行安全加密的通信。
-
-`statd`
-
-由网络状态监视器协议 (NSM) 使用，该协议在 `rpc.statd` 守护进程中实现，以侦听重新启动通知。
-
-`systemd-coredump`
-
-由 `/usr/lib/systemd/systemd-coredump` 命令使用，以获取、保存和处理核心转储。
-
-`systemd-network`
-
-由 `/usr/lib/systemd/systemd-networkd` 命令使用，以管理网络。
-
-`systemd-timesync`
-
-由 `/usr/lib/systemd/systemd-timesyncd` 命令使用，以将本地系统时钟与远程网络时间协议 (NTP) 服务器同步。
+`systemd-timesync` 由 `/usr/lib/systemd/systemd-timesyncd` 命令使用，以将本地系统时钟与远程网络时间协议 (NTP) 服务器同步。
 
 5.9 默认系统组
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 默认情况下，SLE 创建多个用户组，这些用户组由系统服务使用。以下列表描述了必需和常见的可选组的示例。
 
-`root`
+`root` 具有所有权限的管理员组。
 
-具有所有权限的管理员组。
+`bin` 为兼容旧应用程序而包含。新的应用程序不应使用此组。
 
-`bin`
+`daemon` 以前用于限制守护进程对系统的访问。现在守护进程应在其自己的 UID/GID 下运行，以将守护进程彼此分离。
 
-为兼容旧应用程序而包含。新的应用程序不应使用此组。
+`audio` 音频设备的权限。
 
-`daemon`
+`gdm` GNOME 显示管理器的权限。
 
-以前用于限制守护进程对系统的访问。现在守护进程应在其自己的 UID/GID 下运行，以将守护进程彼此分离。
+`chrony` 时间同步服务的权限。
 
-`audio`
+`kvm` QEMU 机器模拟工具包的权限。
 
-音频设备的权限。
+`libvirt` 虚拟化堆栈的权限。
 
-`gdm`
+`lp` 打印操作的权限。
 
-GNOME 显示管理器的权限。
+`mail` 邮件服务的权限。
 
-`chrony`
+`man` 手册页和 `man` 命令的特定权限。
 
-时间同步服务的权限。
-
-`kvm`
-
-QEMU 机器模拟工具包的权限。
-
-`libvirt`
-
-虚拟化堆栈的权限。
-
-`lp`
-
-打印操作的权限。
-
-`mail`
-
-邮件服务的权限。
-
-`man`
-
-手册页和 `man` 命令的特定权限。
-
-`sshd`
-
-SSH 通信协议守护进程的权限。
+`sshd` SSH 通信协议守护进程的权限。
 
 6 使用 YaST 更改语言和国家/地区设置
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2181,11 +2007,9 @@ YaST 中设置的主要语言适用于整个系统，包括 YaST 和桌面环境
 
 从命令行启动应用程序，使用以下命令
 
-```
+`
 LANG=_LANGUAGE_ _application_
-```
-
-例如，要以德语启动 f-spot，请运行 `LANG=de_DE f-spot`。对于其他语言，请使用适当的语言代码。使用 `locale`  `-av` 命令获取可用语言代码的列表。
+` 例如，要以德语启动 f-spot，请运行 `LANG=de_DE f-spot`。对于其他语言，请使用适当的语言代码。使用 `locale`  `-av` 命令获取可用语言代码的列表。
 
 6.2 更改国家/地区和时间设置
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2284,9 +2108,7 @@ OpenPrinting 主页和打印机数据库。该数据库显示最新的 Linux 支
 
 Ghostscript 网页。
 
-`/usr/share/doc/packages/ghostscript/catalog.devices`
-
-内置 Ghostscript 驱动程序列表。
+`/usr/share/doc/packages/ghostscript/catalog.devices` 内置 Ghostscript 驱动程序列表。
 
 7.1 CUPS 工作流程
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2344,74 +2166,62 @@ CUPS 还支持在连接到 Windows 共享的打印机上打印。为此使用的
 
 在配置之前，必须确定打印机支持的协议。如果制造商未提供所需的信息，可以使用命令 `nmap`（随 `nmap` 包一起提供）来确定协议。`nmap` 检查主机上是否有开放端口。例如
 
-```
+`
 `>` nmap -p 35,137-139,515,631,9100-10000 _IP.OF.THE.PRINTER_
-```
-
-7.5 使用命令行工具配置 CUPS
+` 7.5 使用命令行工具配置 CUPS
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-可以使用命令行工具（如 `lpinfo`、`lpadmin` 和 `lpoptions`）配置 CUPS。您需要一个由后端（例如 USB）和参数组成的设备 URI。要确定系统上的有效设备 URI，请使用命令 `lpinfo -v | grep ":/"`
-
-```
+可以使用命令行工具（如 `lpinfo`、`lpadmin` 和 `lpoptions`）配置 CUPS。您需要一个由后端（例如 USB）和参数组成的设备 URI。要确定系统上的有效设备 URI，请使用命令 `lpinfo -v | grep ":/"` `
 `>` `sudo` lpinfo -v | grep ":/"
 direct usb://ACME/FunPrinter%20XL
 network socket://192.168.2.253
-```
+` 使用 `lpadmin`，CUPS 服务器管理员可以添加、删除或管理打印队列。要添加打印队列，请使用以下语法
 
-使用 `lpadmin`，CUPS 服务器管理员可以添加、删除或管理打印队列。要添加打印队列，请使用以下语法
-
-```
+`
 `>` `sudo` lpadmin -p _QUEUE_ -v _DEVICE-URI_ -P _PPD-FILE_ -E
-```
-
-然后，设备（`-v`）将作为 _队列名称_（`-p`）可用，使用指定的 PPD 文件（`-P`）。这意味着您必须知道 PPD 文件和设备 URI 才能手动配置打印机。
+` 然后，设备（`-v`）将作为 _队列名称_（`-p`）可用，使用指定的 PPD 文件（`-P`）。这意味着您必须知道 PPD 文件和设备 URI 才能手动配置打印机。
 
 不要将 `-E` 作为第一个选项使用。对于所有 CUPS 命令，`-E` 作为第一个参数设置使用加密连接。要启用打印机，`-E` 必须按如下所示使用
 
-```
+`
 `>` `sudo` lpadmin -p ps -v usb://ACME/FunPrinter%20XL -P \\
 /usr/share/cups/model/Postscript.ppd.gz -E
-```
+` 以下示例配置网络打印机
 
-以下示例配置网络打印机
-
-```
+`
 `>` `sudo` lpadmin -p ps -v socket://192.168.2.202:9100/ -P \\
 /usr/share/cups/model/Postscript-level1.ppd.gz -E
-```
-
-有关 `lpadmin` 的更多选项，请参阅 `lpadmin(8)` 的手册页。
+` 有关 `lpadmin` 的更多选项，请参阅 `lpadmin(8)` 的手册页。
 
 在打印机设置期间，某些选项设置为默认值。这些选项可以针对每个打印作业进行修改（具体取决于使用的打印工具）。也可以使用 YaST 更改这些默认选项。使用命令行工具，按如下方式设置默认选项
 
 1.  首先，列出所有选项
     
-    ```
+    `
     `>` `sudo` lpoptions -p _QUEUE_ -l
-    ```
+    `
     
     示例
     
-    ```
+    `
     Resolution/Output Resolution: 150dpi \*300dpi 600dpi
-    ```
+    `
     
     激活的默认选项由前导星号（`*`）标识。
     
 2.  使用 `lpadmin` 更改选项
     
-    ```
+    `
     `>` `sudo` lpadmin -p _QUEUE_ -o Resolution=600dpi
-    ```
+    `
     
 3.  检查新设置
     
-    ```
+    `
     `>` `sudo` lpoptions -p _QUEUE_ -l
     
     Resolution/Output Resolution: 150dpi 300dpi \*600dpi
-    ```
+    `
     
 
 当普通用户运行 `lpoptions` 时，设置将写入 `~/.cups/lpoptions`。但是，`root` 设置将写入 `/etc/cups/lpoptions`。
@@ -2502,90 +2312,68 @@ YaST 打印机配置使用安装在 `/usr/share/cups/model` 中的 PPD 文件设
 
 TCP/IP 网络和名称解析必须正常工作。
 
-检查远程 `lpd`
+检查远程 `lpd` 使用以下命令测试是否可以建立到 _HOST_ 上的 `lpd`（端口 `515`）的 TCP 连接
 
-使用以下命令测试是否可以建立到 _HOST_ 上的 `lpd`（端口 `515`）的 TCP 连接
-
-```
+`
 `>` netcat -z _HOST_ 515 && echo ok || echo failed
-```
-
-如果无法建立到 `lpd` 的连接，则 `lpd` 可能未激活或存在基本的网络问题。
+` 如果无法建立到 `lpd` 的连接，则 `lpd` 可能未激活或存在基本的网络问题。
 
 前提是相应的 `lpd` 处于活动状态并且主机接受查询，以 `root` 身份运行以下命令以查询 _HOST_ 上的 _QUEUE_ 的状态报告
 
-```
+`
 `#` echo -e "\\004queue" \\
 | netcat -w 2 -p 722 _HOST_ 515
-```
-
-如果 `lpd` 不响应，则它可能未激活或存在基本的网络问题。如果 `lpd` 响应，则响应应显示为什么无法在 `host` 上的 `queue` 上进行打印。如果您收到类似于 [示例 7.1，“来自 `lpd` 的错误消息”](#aus-d-lpd "来自 lpd 的错误消息") 的响应，则问题是由远程 `lpd` 引起的。
+` 如果 `lpd` 不响应，则它可能未激活或存在基本的网络问题。如果 `lpd` 响应，则响应应显示为什么无法在 `host` 上的 `queue` 上进行打印。如果您收到类似于 [示例 7.1，“来自 `lpd` 的错误消息”](#aus-d-lpd "来自 lpd 的错误消息") 的响应，则问题是由远程 `lpd` 引起的。
 
 ###### 示例 7.1：来自 `lpd` 的错误消息 [](#aus-d-lpd "Permalink")
 
-```
+`
 lpd: your host does not have line printer access
 lpd: queue does not exist
 printer: spooling disabled
 printer: printing disabled
-```
+` 检查远程 `cupsd` CUPS 网络服务器默认情况下每 30 秒通过 UDP 端口 `631` 广播其队列。因此，可以使用以下命令测试网络中是否存在广播 CUPS 网络服务器。确保在执行该命令之前停止本地 CUPS 守护程序。
 
-检查远程 `cupsd`
-
-CUPS 网络服务器默认情况下每 30 秒通过 UDP 端口 `631` 广播其队列。因此，可以使用以下命令测试网络中是否存在广播 CUPS 网络服务器。确保在执行该命令之前停止本地 CUPS 守护程序。
-
-```
+`
 `>` netcat -u -l -p 631 & PID=$! ; sleep 40 ; kill $PID
-```
-
-如果存在广播 CUPS 网络服务器，则输出将显示为 [示例 7.2，“来自 CUPS 网络服务器的广播”](#aus-d-bcast "来自 CUPS 网络服务器的广播")。
+` 如果存在广播 CUPS 网络服务器，则输出将显示为 [示例 7.2，“来自 CUPS 网络服务器的广播”](#aus-d-bcast "来自 CUPS 网络服务器的广播")。
 
 ###### 示例 7.2：来自 CUPS 网络服务器的广播 [](#aus-d-bcast "Permalink")
 
-```
+`
 ipp://192.168.2.202:631/printers/queue
-```
+` 可以使用以下命令测试是否可以建立到 _HOST_ 上的 `cupsd`（端口 `631`）的 TCP 连接
 
-可以使用以下命令测试是否可以建立到 _HOST_ 上的 `cupsd`（端口 `631`）的 TCP 连接
-
-```
+`
 `>` netcat -z _HOST_ 631 && echo ok || echo failed
-```
-
-如果无法建立到 `cupsd` 的连接，则 `cupsd` 可能未激活或存在基本的网络问题。 `lpstat -h` _HOST_ -l -t 返回 _HOST_ 上所有队列的状态报告，前提是相应的 `cupsd` 处于活动状态并且主机接受查询。
+` 如果无法建立到 `cupsd` 的连接，则 `cupsd` 可能未激活或存在基本的网络问题。 `lpstat -h` _HOST_ -l -t 返回 _HOST_ 上所有队列的状态报告，前提是相应的 `cupsd` 处于活动状态并且主机接受查询。
 
 可以使用以下命令测试是否可以发送包含单个回车符的打印作业到 _HOST_ 上的 _QUEUE_。不应打印任何内容。可能会弹出空白页。
 
-```
+`
 `>` echo -en "\\r" \\
 | lp -d queue -h _HOST_
-```
-
-故障排除网络打印机或打印服务器机器
+` 故障排除网络打印机或打印服务器机器
 
 打印服务器机器中运行的假脱机程序有时会在处理多个打印作业时引起问题。由于这是由打印服务器机器中的假脱机程序引起的，因此无法解决此问题。作为解决方法，通过使用 TCP 套接字直接寻址连接到打印服务器机器的打印机来绕过打印服务器机器中的假脱机程序。请参阅 [第 7.4 节，“网络打印机”](#sec-print-net "7.4. 网络打印机")。
 
 这样，打印服务器机器就被简化为多个数据传输形式（TCP/IP 网络和本地打印机连接）之间的转换器。要使用此方法，您需要知道打印服务器机器上的 TCP 端口。如果打印机连接到打印服务器机器并已打开，则通常可以在打印服务器机器启动一段时间后使用 `nmap` 实用程序从 `nmap` 包中确定此 TCP 端口。例如，`nmap`  _IP 地址_ 可能会为打印服务器机器提供以下输出
 
-```
+`
 Port       State       Service
 23/tcp     open        telnet
 80/tcp     open        http
 515/tcp    open        printer
 631/tcp    open        cups
 9100/tcp   open        jetdirect
-```
-
-此输出表明连接到打印服务器的打印机可以通过 TCP socket 在 9100 端口进行寻址。默认情况下，nmap 只会检查 /usr/share/nmap/nmap-services 中列出的几个常用端口。要检查所有可能的端口，请使用命令 nmap -p FROM\_PORT-TO\_PORT IP\_ADDRESS。有关更多信息，请参阅 nmap 的 man 手册页。
+` 此输出表明连接到打印服务器的打印机可以通过 TCP socket 在 9100 端口进行寻址。默认情况下，nmap 只会检查 /usr/share/nmap/nmap-services 中列出的几个常用端口。要检查所有可能的端口，请使用命令 nmap -p FROM\_PORT-TO\_PORT IP\_ADDRESS。有关更多信息，请参阅 nmap 的 man 手册页。
 
 输入如下命令
 
-```
+`
 `>` echo -en "\\rHello\\r\\f" | netcat -w 1 IP-address port
 cat file | netcat -w 1 IP-address port
-```
-
-以直接向相应的端口发送字符字符串或文件，以测试是否可以通过此端口寻址打印机。
+` 以直接向相应的端口发送字符字符串或文件，以测试是否可以通过此端口寻址打印机。
 
 ### 7.8.4 打印输出有缺陷但无错误消息
 
@@ -2601,11 +2389,9 @@ cat file | netcat -w 1 IP-address port
 
 要删除服务器上的打印作业，请使用如下命令 lpstat -h cups.example.com -o 来确定服务器上的作业编号。假设服务器尚未通过将其发送到打印机来完成打印作业。使用获得的作业编号，按照以下方式删除服务器上的打印作业
 
-```
+`
 `>` cancel -h cups.example.com _QUEUE-JOBNUMBER_
-```
-
-### 7.8.7 有缺陷的打印作业和数据传输错误
+` ### 7.8.7 有缺陷的打印作业和数据传输错误
 
 如果在打印过程中关闭打印机或关机，打印作业将保留在队列中。当计算机（或打印机）重新启动时，打印将继续。必须使用 cancel 命令从队列中删除有缺陷的打印作业。
 
@@ -2680,23 +2466,23 @@ NTFS（新技术文件系统）是 Windows 的默认文件系统。由于在正�
     
 4.  以读写模式挂载分区。将占位符 DEVICE 替换为您的 Windows 分区
     
-    ```
+    `
     `>` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_
-    ```
+    `
     
     要以只读模式使用 Windows 分区，请附加 -o ro
     
-    ```
+    `
     `>` ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o ro
-    ```
+    `
     
     ntfs-3g 命令使用当前用户 (UID) 和组 (GID) 来挂载给定的设备。要将写入权限设置为不同的用户，请使用命令 id USER 获取 UID 和 GID 值的输出。使用以下命令设置它
     
-    ```
+    `
     `#` id tux
     uid=1000(tux) gid=100(users) groups=100(users),16(dialout),33(video)
     ntfs-3g /dev/_DEVICE_ _MOUNT POINT_ -o uid=1000,gid=100
-    ```
+    `
     
     在 man 手册页中查找其他选项。
     
@@ -2714,9 +2500,9 @@ SSH（安全 shell 网络协议）可用于通过安全通道在两台计算机�
     
 3.  挂载远程文件系统
     
-    ```
+    `
     `#` sshfs _USER_@_HOST_ _MOUNT POINT_
-    ```
+    `
     
 4.  输入远程计算机的密码。
     
@@ -2734,9 +2520,9 @@ SSH（安全 shell 网络协议）可用于通过安全通道在两台计算机�
     
 3.  挂载 ISO 镜像
     
-    ```
+    `
     `#` fuseiso _ISO\_IMAGE_ _MOUNT POINT_
-    ```
+    `
     
 
 您只能从 ISO 镜像读取内容，但无法写回。要卸载资源，请使用 fusermount -u MOUNT POINT。
@@ -2999,9 +2785,7 @@ YaST 软件管理器可以从所有当前启用的仓库安装软件包或模式
 
 在安装新软件包时，默认情况下仍会安装推荐的软件包。在更新现有软件包时，缺少的推荐不会自动安装。要更改此设置，请在`/etc/sysconfig/yast2`中设置`PKGMGR_RECOMMENDED="yes"`。要安装已安装软件包的所有缺少的推荐，请启动YaST › 软件管理器并选择其他 › 安装所有匹配的推荐软件包。
 
-要禁用在安装新软件包时安装推荐软件包，请在 YaST 软件管理器中停用依赖关系 › 安装推荐软件包。使用命令行工具 Zypper 安装软件包时，使用选项`--no-recommends.`
-
-9.3 管理软件仓库和服务
+要禁用在安装新软件包时安装推荐软件包，请在 YaST 软件管理器中停用依赖关系 › 安装推荐软件包。使用命令行工具 Zypper 安装软件包时，使用选项`--no-recommends.` 9.3 管理软件仓库和服务
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 要安装第三方软件，请将软件仓库添加到您的系统。默认情况下，产品仓库（例如openSUSE Leap\-DVD 15.6）和匹配的更新仓库会自动配置。根据最初选择的产品，可能还会配置包含翻译、字典等内容的额外仓库。
@@ -3382,16 +3166,14 @@ openSUSE Leap 15.6 仅提供 64 位版本。不支持将 32 位安装升级到 
 
 ###### 示例 12.1：使用 `df -h` 列出 [](#aus-update-df "Permalink")
 
-```
+`
 Filesystem     Size  Used Avail Use% Mounted on
 /dev/sda3       74G   22G   53G  29% /
 udev           252M  124K  252M   1% /dev
 /dev/sda5      116G  5.8G  111G   5% /home
 /dev/sda1       39G  1.6G   37G   4% /windows/C
 /dev/sda2      4.6G  2.6G  2.1G  57% /windows/D
-```
-
-### 12.1.2 可能出现的问题
+` ### 12.1.2 可能出现的问题
 
 如果您从以前的版本升级到此版本，YaST 会计算出必要的更改并执行它们。根据您的自定义设置，某些步骤（或整个升级过程）可能会失败，您必须恢复备份数据。在开始系统更新之前，请检查以下问题。
 
@@ -3522,25 +3304,25 @@ udev           252M  124K  252M   1% /dev
 
 1.  运行在线更新以确保软件管理堆栈是最新的
     
-    ```
+    `
     `>` `sudo` zypper patch
-    ```
+    `
     
 2.  配置您想要用作更新源的仓库。正确配置这一点至关重要。在以下步骤中使用的仓库的 _名称_ 可能因您的操作系统定制而异。有关更多信息，请参阅 “参考”手册，第 2章“使用命令行工具管理软件”，第 2.1.6节“使用 Zypper 管理仓库”)
     
     要查看您当前的仓库，请输入
     
-    ```
+    `
     `>` zypper --releasever=15.6 lr -u
-    ```
+    `
     
 3.  在上一条命令的结果中，检查最后一列 (URL)。所有仓库链接都应包含 `15.6` 作为版本号。如果不是这样，则版本号丢失或硬编码在 `/etc/zypp/repos.d/` 下的仓库定义文件中。要修复此问题，请按以下步骤操作
     
     1.  确定仓库是否仍然需要。如果不需要，请删除它
         
-        ```
+        `
         `>` `sudo` zypper rr _NAME_
-        ```
+        `
         
         删除您不再需要的任何仓库。
         
@@ -3548,47 +3330,47 @@ udev           252M  124K  252M   1% /dev
         
     3.  您想要保留的所有剩余仓库都需要更新到新版本。为了允许将来无需修改仓库即可进行更新，请将硬编码的版本号替换为变量 `$releasever`。如果硬编码了 `15.3`，请运行
         
-        ```
+        `
         `>` `sudo` sed -i 's/15.3/$releasever/' /etc/zypp/repos.d/\*.repo
-        ```
+        `
         
         对每个硬编码的版本号重复此步骤。
         
         使用您的浏览器检查新的仓库 URL 是否正确。如果不是，则可能尚未存在仓库的新版本。停用仓库并稍后再试。
         
-        ```
+        `
         `>` `sudo` zypper mr -d _NAME_
-        ```
+        `
         
         如果所有依赖项仍然满足，则停用的仓库中的软件包不会被删除。
         
 4.  最后，再次检查当前的仓库配置
     
-    ```
+    `
     `>` `sudo` zypper --releasever=15.6 lr -u
-    ```
+    `
     
     现在，所有仓库都应指向 `15.6` 版本（除了支持新发布的没有版本控制的第三方仓库）。仍然指向旧版本的仓库至少应禁用（已启用 列需要显示 `否`）。
     
 5.  通过运行以下命令更新仓库元数据
     
-    ```
+    `
     `>` `sudo` zypper --releasever=15.6 ref
-    ```
+    `
     
 6.  启动发行版升级，这将使您的系统提升到新版本
     
-    ```
+    `
     `>` `sudo` zypper --releasever=15.6 dup
-    ```
+    `
     
     根据软件选择，您可能需要批准一个或多个许可证。检查命令的输出。如果一切正常，请使用 y 批准。
     
 7.  最后，重新启动您的机器以启动新的 openSUSE Leap 版本
     
-    ```
+    `
     `>` `sudo` shutdown -r now
-    ```
+    `
     
 
 您可以使用 `zypper dup` 升级您的系统。在使用此命令时，请注意以下事项
@@ -3611,134 +3393,74 @@ udev           252M  124K  252M   1% /dev
 
 各种版本的常见问题和特殊问题会在网上发布，以便在发现后进行识别。请参阅以下链接。可以使用 YaST 在线更新访问单个软件包的重要更新。有关更多信息，请参阅 [第 11章，_YaST 在线更新_](#cha-onlineupdate-you "第 11章 YaST 在线更新")。
 
-请参阅 `产品亮点` ([https://en.opensuse.net.cn/Product\_highlights](https://en.opensuse.net.cn/Product_highlights) 和 openSUSE wiki 上的 `Bug 文章 [https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs](https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs)，以获取有关最新更改和问题的更多信息。`
-
-`第 IV 部分 Bash shell
+请参阅 `产品亮点` ([https://en.opensuse.net.cn/Product\_highlights](https://en.opensuse.net.cn/Product_highlights) 和 openSUSE wiki 上的 `Bug 文章 [https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs](https://en.opensuse.net.cn/openSUSE:Most_annoying_bugs)，以获取有关最新更改和问题的更多信息。` `第 IV 部分 Bash shell
 ============================================================================================================================================
 
-`[13 Shell 基础知识](#cha-new-bash)`
-
-`在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与…`
-
-`[14 Bash 和 Bash 脚本](#cha-adm-shell)`
-
-`如今，许多人使用带有图形用户界面 (GUI)（如 GNOME）的计算机。虽然 GUI 提供了许多功能，但在执行自动化任务时受到限制。Shell 很好地补充了 GUI，本章概述了 shell 的几个方面，在本例中是 Bash shell。`
-
-13 Shell 基础知识
+`[13 Shell 基础知识](#cha-new-bash)` `在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与…` `[14 Bash 和 Bash 脚本](#cha-adm-shell)` `如今，许多人使用带有图形用户界面 (GUI)（如 GNOME）的计算机。虽然 GUI 提供了许多功能，但在执行自动化任务时受到限制。Shell 很好地补充了 GUI，本章概述了 shell 的几个方面，在本例中是 Bash shell。` 13 Shell 基础知识
 --------------------------------------------------------------------------------------------------------------------------------
 
-`[13.1 启动 shell](#sec-new-bash-start)`
+`[13.1 启动 shell](#sec-new-bash-start)` `[13.2 输入命令](#sec-new-bash-commands)` `[13.3 获取帮助](#sec-new-bash-commands-help)` `[13.4 处理文件和目录](#sec-new-bash-fildir)` [13.5 成为 `root`](#sec-new-bash-root)
 
-`[13.2 输入命令](#sec-new-bash-commands)`
-
-`[13.3 获取帮助](#sec-new-bash-commands-help)`
-
-`[13.4 处理文件和目录](#sec-new-bash-fildir)`
-
-``[13.5 成为 `root`](#sec-new-bash-root)``
-
-`[13.6 文件访问权限](#sec-new-bash-accperm)`
-
-`[13.7 Bash 的省时功能](#sec-new-bash-feat)`
-
-`[13.8 编辑文本](#sec-new-bash-edit)`
-
-`[13.9 搜索文件或内容](#sec-new-bash-search)`
-
-`[13.10 查看文本文件](#sec-new-bash-view)`
-
-`[13.11 重定向和管道](#sec-new-bash-redir)`
-
-`[13.12 启动程序和处理进程](#sec-new-bash-jobs)`
-
-`[13.13 归档和数据压缩](#sec-bash-tar)`
-
-`[13.14 重要的 Linux 命令](#sec-shell-commands)`
-
-`在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与操作系统的后续交互。Linux 中的图形用户界面在安装期间最初配置，并由 KDE 或 GNOME 等桌面环境使用。`
-
-`尽管如此，掌握 shell 的一些基本知识仍然很有用，因为您可能会遇到图形用户界面不可用的情况。例如，如果 X Window System 出现了一些问题。如果您不熟悉 shell，当您开始输入命令时可能会感到有些不舒服，但您使用得越多，就越会意识到命令行通常是执行某些日常任务的最快最简单的方法。`
-
-`对于 Unix 或 Linux，有几个 shell 可用，它们在行为和接受的命令上略有不同。 openSUSE® Leap 的默认 shell 是 Bash（GNU Bourne-Again Shell）。`
-
-`以下部分将指导您完成 Bash shell 的第一步，并向您展示如何通过命令行完成一些基本任务。如果您有兴趣了解更多信息，或者已经感觉自己是 shell “高手”，请参阅 [第 14章，_Bash 和 Bash 脚本_](#cha-adm-shell "第 14章 Bash 和 Bash 脚本")。`
-
-13.1 启动 shell
+`[13.6 文件访问权限](#sec-new-bash-accperm)` `[13.7 Bash 的省时功能](#sec-new-bash-feat)` `[13.8 编辑文本](#sec-new-bash-edit)` `[13.9 搜索文件或内容](#sec-new-bash-search)` `[13.10 查看文本文件](#sec-new-bash-view)` `[13.11 重定向和管道](#sec-new-bash-redir)` `[13.12 启动程序和处理进程](#sec-new-bash-jobs)` `[13.13 归档和数据压缩](#sec-bash-tar)` `[13.14 重要的 Linux 命令](#sec-shell-commands)` `在使用 Linux 时，您几乎可以在无需命令行解释器（shell）的情况下与系统进行通信。启动 Linux 系统后，通常会引导您进入图形用户界面，该界面引导您完成登录过程以及与操作系统的后续交互。Linux 中的图形用户界面在安装期间最初配置，并由 KDE 或 GNOME 等桌面环境使用。` `尽管如此，掌握 shell 的一些基本知识仍然很有用，因为您可能会遇到图形用户界面不可用的情况。例如，如果 X Window System 出现了一些问题。如果您不熟悉 shell，当您开始输入命令时可能会感到有些不舒服，但您使用得越多，就越会意识到命令行通常是执行某些日常任务的最快最简单的方法。` `对于 Unix 或 Linux，有几个 shell 可用，它们在行为和接受的命令上略有不同。 openSUSE® Leap 的默认 shell 是 Bash（GNU Bourne-Again Shell）。` `以下部分将指导您完成 Bash shell 的第一步，并向您展示如何通过命令行完成一些基本任务。如果您有兴趣了解更多信息，或者已经感觉自己是 shell “高手”，请参阅 [第 14章，_Bash 和 Bash 脚本_](#cha-adm-shell "第 14章 Bash 和 Bash 脚本")。` 13.1 启动 shell
 --------------------------------------------------------------------------------------------------------------------------------------
 
-`基本上，有两种不同的方法可以从图形用户界面启动 shell，该界面通常在您启动计算机后显示`
-
-*   `您可以离开图形用户界面，或者`
+`基本上，有两种不同的方法可以从图形用户界面启动 shell，该界面通常在您启动计算机后显示` *   `您可以离开图形用户界面，或者`
     
 *   `您可以在图形用户界面_内_启动一个终端窗口。`
     
 
-`虽然始终可以使用第一种选项，但只有在您已经登录到 KDE 或 GNOME 等桌面时，才能使用第二种选项。无论您选择哪种方式，都始终有返回的方法，并且可以在 shell 和图形用户界面之间来回切换。`
-
-`如果您想尝试一下，请按 Ctrl–Alt–F2 离开图形用户界面。图形用户界面消失，您将被带到一个 shell，该 shell提示您登录。键入您的用户名并按 Enter。然后键入您的密码并按 Enter。提示现在会更改并显示以下示例中的一些有用信息`
-
-```
+`虽然始终可以使用第一种选项，但只有在您已经登录到 KDE 或 GNOME 等桌面时，才能使用第二种选项。无论您选择哪种方式，都始终有返回的方法，并且可以在 shell 和图形用户界面之间来回切换。` `如果您想尝试一下，请按 Ctrl–Alt–F2 离开图形用户界面。图形用户界面消失，您将被带到一个 shell，该 shell提示您登录。键入您的用户名并按 Enter。然后键入您的密码并按 Enter。提示现在会更改并显示以下示例中的一些有用信息` `
  1   2   3
 tux@linux:~>
-```
+` <table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-user"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>您的登录名。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-hostname"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>您计算机的主机名。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-path"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>当前目录的路径。登录后，当前目录通常是您的主目录，由 <code class="literal">~</code> 符号（波浪线）指示。</p></td></tr></tbody></table>
 
-<table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-user"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>您的登录名。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-hostname"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>您计算机的主机名。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-prompt-path"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>当前目录的路径。登录后，当前目录通常是您的主目录，由 <code class="literal">~</code> 符号（波浪线）指示。</p></td></tr></tbody></table>
+`当您登录到远程计算机时，提示提供的信息始终会向您显示您当前正在使用的系统。` 当光标位于此提示符后面时，您可以直接将命令传递给您的计算机系统。例如，您现在可以输入 `ls` `-l` 以详细格式列出当前目录的内容。如果这对您与 shell 的第一次接触就足够了，并且您想返回到图形用户界面，您应该先从 shell 会话注销。为此，键入 `exit` 并按 Enter。然后按 Alt–F7 切换回图形用户界面。您会发现您的桌面和正在运行的应用程序未更改。
 
-`当您登录到远程计算机时，提示提供的信息始终会向您显示您当前正在使用的系统。`
+ 如果您已经登录到 GNOME 或 KDE 桌面，并且想在桌面内启动一个终端窗口，请按 Alt–F2 并输入 `konsole`（对于 KDE）或 `gnome-terminal（对于 GNOME）。这将在您的桌面上打开一个终端窗口。由于您已经登录到桌面，因此提示会显示有关系统的信息，如上所述。现在您可以输入命令并执行任务，就像在与桌面并行运行的任何 shell 中一样。要切换到桌面上另一个应用程序，只需单击相应的应用程序窗口或从面板的任务栏中选择它。要关闭终端窗口，请按 Alt–F4。
 
-``当光标位于此提示符后面时，您可以直接将命令传递给您的计算机系统。例如，您现在可以输入 `ls` `-l` 以详细格式列出当前目录的内容。如果这对您与 shell 的第一次接触就足够了，并且您想返回到图形用户界面，您应该先从 shell 会话注销。为此，键入 `exit` 并按 Enter。然后按 Alt–F7 切换回图形用户界面。您会发现您的桌面和正在运行的应用程序未更改。``
-
-`` 如果您已经登录到 GNOME 或 KDE 桌面，并且想在桌面内启动一个终端窗口，请按 Alt–F2 并输入 `konsole`（对于 KDE）或 `gnome-terminal（对于 GNOME）。这将在您的桌面上打开一个终端窗口。由于您已经登录到桌面，因此提示会显示有关系统的信息，如上所述。现在您可以输入命令并执行任务，就像在与桌面并行运行的任何 shell 中一样。要切换到桌面上另一个应用程序，只需单击相应的应用程序窗口或从面板的任务栏中选择它。要关闭终端窗口，请按 Alt–F4。` ``
-
-`` 13.2 输入命令 ``
+ 13.2 输入命令 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-`` `当提示符出现在 shell 上时，它已准备好接收和执行命令。一个命令可以由几个元素组成。第一个元素是实际的命令，后跟参数或选项。您可以通过以下键输入命令并进行编辑：←、→、Home、End、<—（Backspace）、Del 和 Space。您可以更正拼写错误或添加选项。只有在您按 Enter 时，才会执行该命令。` ``
+当提示符出现在 shell 上时，它已准备好接收和执行命令。一个命令可以由几个元素组成。第一个元素是实际的命令，后跟参数或选项。您可以通过以下键输入命令并进行编辑：←、→、Home、End、<—（Backspace）、Del 和 Space。您可以更正拼写错误或添加选项。只有在您按 Enter 时，才会执行该命令。
 
-``` ``![Important](./image/icon-important.svg "Important")  **重要提示**：没有消息就是好消息  shell 不会多话：与某些图形用户界面不同，它通常不会在命令执行后提供确认消息。只有在出现问题或错误时，或者如果您明确要求通过执行带有特定选项的命令时，才会出现消息。  在使用删除对象的命令时，请记住这一点。在输入像 `rm`（没有任何选项）这样的命令来删除文件之前，你应该知道你是否真的想删除该对象：它将被不可恢复地删除，没有确认。  `` ```
+![Important](./image/icon-important.svg "Important")  **重要提示**：没有消息就是好消息  shell 不会多话：与某些图形用户界面不同，它通常不会在命令执行后提供确认消息。只有在出现问题或错误时，或者如果您明确要求通过执行带有特定选项的命令时，才会出现消息。  在使用删除对象的命令时，请记住这一点。在输入像 `rm`（没有任何选项）这样的命令来删除文件之前，你应该知道你是否真的想删除该对象：它将被不可恢复地删除，没有确认。  
 
 ### 13.2.1 不带选项的命令
 
-``` ``在 [第 13.6.1 节，“用户、组和其他人的权限”](#sec-new-bash-accperm-ugo "13.6.1. 用户、组和其他人的权限") 你已经了解了最基本的命令之一：`ls`，它用于列出目录的内容。这个命令可以带选项使用，也可以不带选项使用。输入简单的 `ls` 命令会显示当前目录的内容`` ```
+在 [第 13.6.1 节，“用户、组和其他人的权限”](#sec-new-bash-accperm-ugo "13.6.1. 用户、组和其他人的权限") 你已经了解了最基本的命令之一：`ls`，它用于列出目录的内容。这个命令可以带选项使用，也可以不带选项使用。输入简单的 `ls` 命令会显示当前目录的内容
 
-```
-`` `>` ls bin Desktop Documents public_html tux.txt `>` `` 
-```
-
-``` ``Linux 中的文件可能具有文件扩展名或后缀，例如 `.txt`，但不必具有。这使得在这个 `ls` 的输出中很难区分文件和文件夹。默认情况下，Bash shell 中的颜色会给你一个提示：目录通常显示为蓝色，文件显示为黑色。`` ```
+`
+>` ls bin Desktop Documents public_html tux.txt `>`  
+` Linux 中的文件可能具有文件扩展名或后缀，例如 `.txt`，但不必具有。这使得在这个 `ls` 的输出中很难区分文件和文件夹。默认情况下，Bash shell 中的颜色会给你一个提示：目录通常显示为蓝色，文件显示为黑色。
 
 ### 13.2.2 带选项的命令
 
-``` ``获取目录内容的更详细信息的一个更好的方法是使用带有选项字符串的 `ls` 命令。选项修改命令的工作方式，以便你可以让它执行特定的任务。选项与命令之间用空格分隔，通常以连字符开头。 `ls` `-l` 命令以完整细节（长列表格式）显示相同目录的内容`` ```
+获取目录内容的更详细信息的一个更好的方法是使用带有选项字符串的 `ls` 命令。选项修改命令的工作方式，以便你可以让它执行特定的任务。选项与命令之间用空格分隔，通常以连字符开头。 `ls` `-l` 命令以完整细节（长列表格式）显示相同目录的内容
 
-```
-`` `>` ls -l drwxr-xr-x 1 tux users     48 2015-06-23 16:08 bin drwx---r-- 1 tux users  53279 2015-06-21 13:16 Desktop drwx------ 1 tux users    280 2015-06-23 16:08 Documents drwxr-xr-x 1 tux users  70733 2015-06-21 09:35 public_html -rw-r--r-- 1 tux users  47896 2015-06-21 09:46 tux.txt `>` `` 
-```
+`
+>` ls -l drwxr-xr-x 1 tux users     48 2015-06-23 16:08 bin drwx---r-- 1 tux users  53279 2015-06-21 13:16 Desktop drwx------ 1 tux users    280 2015-06-23 16:08 Documents drwxr-xr-x 1 tux users  70733 2015-06-21 09:35 public_html -rw-r--r-- 1 tux users  47896 2015-06-21 09:46 tux.txt `>`  
+` 此输出显示每个对象的以下信息` 
 
-`` `此输出显示每个对象的以下信息` ``
-
-```
+`
 drwxr-xr-x1 12 tux3 users4 485 2006-06-23 16:086 bin7
-```
+` <table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-perm"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>对象类型和访问权限。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-a"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>指向此文件的硬链接数。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-user"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>文件或目录的所有者。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-group"><span class="callout">4</span></a></p></td><td valign="top" align="left"><p>分配给文件或目录的组。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-size"><span class="callout">5</span></a></p></td><td valign="top" align="left"><p>文件大小（以字节为单位）。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-date"><span class="callout">6</span></a></p></td><td valign="top" align="left"><p>上次更改的日期和时间。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-name"><span class="callout">7</span></a></p></td><td valign="top" align="left"><p>对象名称。</p></td></tr></tbody></table>
 
-<table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-perm"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>对象类型和访问权限。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-a"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>指向此文件的硬链接数。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-user"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>文件或目录的所有者。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-group"><span class="callout">4</span></a></p></td><td valign="top" align="left"><p>分配给文件或目录的组。有关更多信息，请参阅 <a class="xref" href="#sec-new-bash-accperm-ugo" title="13.6.1.&nbsp;用户、组和其他人的权限">第 13.6.1 节，“用户、组和其他人的权限”</a>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-size"><span class="callout">5</span></a></p></td><td valign="top" align="left"><p>文件大小（以字节为单位）。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-date"><span class="callout">6</span></a></p></td><td valign="top" align="left"><p>上次更改的日期和时间。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-ls-l-name"><span class="callout">7</span></a></p></td><td valign="top" align="left"><p>对象名称。</p></td></tr></tbody></table>
+通常，你可以通过仅在第一个选项前加上连字符，然后连续写入其他选项（不带空格）来组合多个选项。例如，如果你想以长列表格式查看目录中的所有文件，你可以组合 `-l` 和 `-a`（显示所有文件）这两个选项用于 `ls` 命令。执行 `ls` `-la` 也会显示目录中的隐藏文件，这些文件前面有一个点（例如，`.hiddenfile`）。
 
-``` ``通常，你可以通过仅在第一个选项前加上连字符，然后连续写入其他选项（不带空格）来组合多个选项。例如，如果你想以长列表格式查看目录中的所有文件，你可以组合 `-l` 和 `-a`（显示所有文件）这两个选项用于 `ls` 命令。执行 `ls` `-la` 也会显示目录中的隐藏文件，这些文件前面有一个点（例如，`.hiddenfile`）。`` ```
+你使用 `ls` 获取的内容列表按文件名排序。但是，就像在图形文件管理器中一样，你还可以根据各种标准（例如日期、文件扩展名或文件大小）对 `ls` `-l` 的输出进行排序
 
-``` ``你使用 `ls` 获取的内容列表按文件名排序。但是，就像在图形文件管理器中一样，你还可以根据各种标准（例如日期、文件扩展名或文件大小）对 `ls` `-l` 的输出进行排序`` ```
-
-*   ``` ``对于日期和时间，使用 `ls` `-lt`（按最新排列）。`` ```
+*   对于日期和时间，使用 `ls` `-lt`（按最新排列）。
     
-*   ``` ``对于扩展名，使用 `ls` `-lx`（按无扩展名的文件排列）。`` ```
+*   对于扩展名，使用 `ls` `-lx`（按无扩展名的文件排列）。
     
-*   ``` ``对于文件大小，使用 `ls` `-lS`（按最大排列）。`` ```
+*   对于文件大小，使用 `ls` `-lS`（按最大排列）。
     
 
-``` ``要反转排序顺序，将 `-r` 作为选项添加到你的 `ls` 命令中。例如，`ls` `-lr` 会以相反的字母顺序对内容列表进行排序，`ls` `-ltr` 会首先显示最旧的文件。 `ls` 还有许多其他有用的选项。在下一节中，你将学习如何调查它们。`` ```
+要反转排序顺序，将 `-r` 作为选项添加到你的 `ls` 命令中。例如，`ls` `-lr` 会以相反的字母顺序对内容列表进行排序，`ls` `-ltr` 会首先显示最旧的文件。 `ls` 还有许多其他有用的选项。在下一节中，你将学习如何调查它们。
 
 ### 13.2.3 Bash 快捷键
 
-`` `输入了几个命令后，你的 shell 将会充满各种命令和相应的输出。在下表中，找到一些用于在 shell 中导航和编辑的有用快捷键。` ``
+输入了几个命令后，你的 shell 将会充满各种命令和相应的输出。在下表中，找到一些用于在 shell 中导航和编辑的有用快捷键。
 
 |快捷键|功能|
 | --- | --- |
@@ -3752,294 +3474,280 @@ drwxr-xr-x1 12 tux3 users4 485 2006-06-23 16:086 bin7
 13.3 获取帮助
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`` `如果你记得命令的名称但不确定选项或命令的语法，请选择以下可能性之一` ``
+如果你记得命令的名称但不确定选项或命令的语法，请选择以下可能性之一` 
 
-``` `` `--help`/`-h` 选项 `` ```
+ `--help`/`-h` 选项 
 
-``` ``如果你只想查找某个命令的选项，请尝试输入命令后跟一个空格和 `--help`。许多命令都存在此 `--help` 选项。例如，`ls` `--help` 显示 `ls` 命令的所有选项。`` ```
+如果你只想查找某个命令的选项，请尝试输入命令后跟一个空格和 `--help`。许多命令都存在此 `--help` 选项。例如，`ls` `--help` 显示 `ls` 命令的所有选项。
 
-`` `手册页` ``
+手册页` 
 
-``` ``要了解有关各种命令的更多信息，你还可以使用手册页。手册页还提供命令作用的简短描述。可以使用 `man` 后跟命令名称来访问它们，例如，`man ls`。`` ```
+要了解有关各种命令的更多信息，你还可以使用手册页。手册页还提供命令作用的简短描述。可以使用 `man` 后跟命令名称来访问它们，例如，`man ls`。
 
-`` `手册页直接在 shell 中显示。要导航它们，请使用以下键` ``
+手册页直接在 shell 中显示。要导航它们，请使用以下键` 
 
-*   `` `使用 Page ↑ 和 Page ↓ 向上和向下移动` ``
+*   使用 Page ↑ 和 Page ↓ 向上和向下移动` 
     
-*   `` `使用 Home 和 End 在文档的开头和结尾之间移动` ``
+*   使用 Home 和 End 在文档的开头和结尾之间移动` 
     
-*   `` `通过按 Q 退出 man 页面查看器` ``
-    
-
-``` ``有关 `man` 命令的更多信息，请使用 `man man`。`` ```
-
-`` `信息页` ``
-
-``` ``信息页通常提供有关命令的更多信息。要查看某个命令的信息页，请输入 `info` 后跟命令名称（例如，`info ls`）。`` ```
-
-`` `信息页直接在 shell 中显示。要导航它们，请使用以下键` ``
-
-*   `` `使用 Space 向前移动一个部分（_节点_）。使用 <— 向后移动一个部分。` ``
-    
-*   `` `使用 Page ↑ 和 Page ↓ 向上和向下移动` ``
-    
-*   `` `通过按 Q 退出信息页查看器` ``
+*   通过按 Q 退出 man 页面查看器` 
     
 
-`` `请注意，并非所有命令都存在手册页和信息页。有时两者都可用（通常用于关键命令），有时仅存在手册页或信息页，有时两者都不存在。` ``
+有关 `man` 命令的更多信息，请使用 `man man`。
+
+信息页` 
+
+信息页通常提供有关命令的更多信息。要查看某个命令的信息页，请输入 `info` 后跟命令名称（例如，`info ls`）。
+
+信息页直接在 shell 中显示。要导航它们，请使用以下键` 
+
+*   使用 Space 向前移动一个部分（_节点_）。使用 <— 向后移动一个部分。
+    
+*   使用 Page ↑ 和 Page ↓ 向上和向下移动` 
+    
+*   通过按 Q 退出信息页查看器` 
+    
+
+请注意，并非所有命令都存在手册页和信息页。有时两者都可用（通常用于关键命令），有时仅存在手册页或信息页，有时两者都不存在。
 
 13.4 使用文件和目录
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`` `要引用某个文件或目录，必须指定通往该目录或文件的路径。有两种方法可以指定路径` ``
+要引用某个文件或目录，必须指定通往该目录或文件的路径。有两种方法可以指定路径` 
 
-`` `绝对路径` ``
+绝对路径` 
 
-``` ``从根目录（`/`）到相关文件或目录的完整路径。例如，位于你的 `Documents` 目录中的名为 `file.txt` 的文本文件的绝对路径可能是`` ```
+从根目录（`/`）到相关文件或目录的完整路径。例如，位于你的 `Documents` 目录中的名为 `file.txt` 的文本文件的绝对路径可能是
 
-```
+`
 /home/tux/Documents/file.txt
-```
+` 相对路径` 
 
-`` `相对路径` ``
+从当前工作目录到相关文件或目录的路径。如果你的当前工作目录是 `/home/tux`，则 `Documents` 目录中的相对路径 `file.txt` 是
 
-``` ``从当前工作目录到相关文件或目录的路径。如果你的当前工作目录是 `/home/tux`，则 `Documents` 目录中的相对路径 `file.txt` 是`` ```
-
-```
+`
 Documents/file.txt
-```
+` 但是，如果你的工作目录是 `/home/tux/Music`，则你需要向上移动一级到 `/home/tux`（使用 `..`）然后才能进一步向下移动
 
-``` ``但是，如果你的工作目录是 `/home/tux/Music`，则你需要向上移动一级到 `/home/tux`（使用 `..`）然后才能进一步向下移动`` ```
-
-```
+`
 ../Documents/file.txt
-```
+` 路径包含文件名、目录或两者，用斜杠分隔。绝对路径始终以斜杠开头。相对路径不以斜杠开头，但可以有一个或两个点。
 
-`` `路径包含文件名、目录或两者，用斜杠分隔。绝对路径始终以斜杠开头。相对路径不以斜杠开头，但可以有一个或两个点。` ``
+在输入命令时，你可以选择以你喜欢的方式或根据输入量来指定路径，两者都会导致相同的结果。要更改目录，请使用 `cd` 命令并指定目录的路径。
 
-``` ``在输入命令时，你可以选择以你喜欢的方式或根据输入量来指定路径，两者都会导致相同的结果。要更改目录，请使用 `cd` 命令并指定目录的路径。`` ```
+![Note](./image/icon-note.svg "Note")  **注意**：处理文件名或目录名中的空格  如果文件名或目录名包含空格，请使用反斜杠 (`\`) 在空格前面转义空格，或将文件名括在单引号中。否则，Bash 会将类似 `My Documents` 的文件名解释为两个文件名或目录，即 `My` 和 `Documents`。  
 
-``` ``![Note](./image/icon-note.svg "Note")  **注意**：处理文件名或目录名中的空格  如果文件名或目录名包含空格，请使用反斜杠 (`\`) 在空格前面转义空格，或将文件名括在单引号中。否则，Bash 会将类似 `My Documents` 的文件名解释为两个文件名或目录，即 `My` 和 `Documents`。  `` ```
+在指定路径时，以下 “快捷方式” 可以节省你大量的输入` 
 
-`` `在指定路径时，以下 “快捷方式” 可以节省你大量的输入` ``
-
-*   ``` ``波浪线符号 (`~`) 是主目录的快捷方式。例如，要列出你的主目录的内容，请使用 `ls` `~`。要列出另一个用户的主目录的内容，请输入 `ls` `~_USERNAME_` （当然，只有当你具有查看内容的权限时，才能这样做，请参阅 [第 13.6 节，“文件访问权限”](#sec-new-bash-accperm "13.6. 文件访问权限")）。例如，输入 `ls ~tux` 将列出名为 `tux` 的用户的主目录的内容。你可以在网络环境中也使用波浪线符号作为主目录的快捷方式，即使你的主目录可能不称为 `/home`，但可以映射到文件系统中的任何目录。`` ```
+*   波浪线符号 (`~`) 是主目录的快捷方式。例如，要列出你的主目录的内容，请使用 `ls` `~`。要列出另一个用户的主目录的内容，请输入 `ls` `~_USERNAME_` （当然，只有当你具有查看内容的权限时，才能这样做，请参阅 [第 13.6 节，“文件访问权限”](#sec-new-bash-accperm "13.6. 文件访问权限")）。例如，输入 `ls ~tux` 将列出名为 `tux` 的用户的主目录的内容。你可以在网络环境中也使用波浪线符号作为主目录的快捷方式，即使你的主目录可能不称为 `/home`，但可以映射到文件系统中的任何目录。
     
-    ``` ``从文件系统中的任何位置，你可以通过输入 `cd ~` 或直接输入 `cd`（不带任何选项）来访问你的主目录。`` ```
+    从文件系统中的任何位置，你可以通过输入 `cd ~` 或直接输入 `cd`（不带任何选项）来访问你的主目录。
     
-*   ``` ``在使用相对路径时，用点 (`.`) 表示当前目录。这主要用于 `cp` 或 `mv` 等命令，通过这些命令可以复制或移动文件和目录。`` ```
+*   在使用相对路径时，用点 (`.`) 表示当前目录。这主要用于 `cp` 或 `mv` 等命令，通过这些命令可以复制或移动文件和目录。
     
-*   ``` ``树中的下一级由两个点 (`..`) 表示。要切换到当前目录的父目录，请输入 `cd ..`，要从当前目录向上移动两个级别，请输入 `cd ../..` 等。`` ```
+*   树中的下一级由两个点 (`..`) 表示。要切换到当前目录的父目录，请输入 `cd ..`，要从当前目录向上移动两个级别，请输入 `cd ../..` 等。
     
 
-`` `为了应用你的知识，下面是一些示例。它们涉及使用 Bash 执行的基本任务，涉及文件或文件夹。` ``
+为了应用你的知识，下面是一些示例。它们涉及使用 Bash 执行的基本任务，涉及文件或文件夹。
 
 ### 13.4.1 使用文件和目录的示例
 
-``` ``假设你想将位于主目录中的某个文件复制到你首先需要创建的 `/tmp` 的子目录中。`` ```
+假设你想将位于主目录中的某个文件复制到你首先需要创建的 `/tmp` 的子目录中。
 
-###### `` `程序 13.1： 创建和更改目录 [](#id-1.3.6.2.9.10.3 "Permalink")` ``
+###### 程序 13.1： 创建和更改目录 [](#id-1.3.6.2.9.10.3 "Permalink")` 
 
-``` ``从你的主目录在 `/tmp` 中创建一个子目录`` ```
+从你的主目录在 `/tmp` 中创建一个子目录
 
-1.  `` `输入` ``
+1.  输入` 
     
-    ```
+    `
     ` `>` mkdir /tmp/test `
-    ```
+    `
     
-    ``` `` `mkdir` 代表 “创建目录”。此命令在 `/tmp` 目录中创建一个名为 `test` 的新目录。在这种情况下，你使用绝对路径创建 `test` 目录。 `` ```
+     `mkdir` 代表 “创建目录”。此命令在 `/tmp` 目录中创建一个名为 `test` 的新目录。在这种情况下，你使用绝对路径创建 `test` 目录。 
     
-2.  `` `要检查发生的情况，现在输入` ``
+2.  要检查发生的情况，现在输入` 
     
-    ```
+    `
     ` `>` ls -l /tmp `
-    ```
+    `
     
-    ``` ``新的目录 `test` 应该出现在 `/tmp` 目录的内容列表中。`` ```
+    新的目录 `test` 应该出现在 `/tmp` 目录的内容列表中。
     
-3.  `` `使用以下命令切换到新创建的目录` ``
+3.  使用以下命令切换到新创建的目录` 
     
-    ```
+    `
     ` `>` cd /tmp/test `
-    ```
+    `
     
 
-###### `` `程序 13.2： 创建和复制文件 [](#id-1.3.6.2.9.10.4 "Permalink")` ``
+###### 程序 13.2： 创建和复制文件 [](#id-1.3.6.2.9.10.4 "Permalink")` 
 
-``` ``现在在主目录的子目录中创建一个新文件，并将其复制到 `/tmp/test`。为此任务使用相对路径。`` ```
+现在在主目录的子目录中创建一个新文件，并将其复制到 `/tmp/test`。为此任务使用相对路径。
 
-``` ``![Important](./image/icon-important.svg "Important")  **重要**：覆盖现有文件  在复制、移动或重命名文件之前，请检查你的目标目录是否已包含同名的文件。如果是，请考虑更改其中一个文件名或使用带有 `-i` 等选项的 `cp` 或 `mv`，这将会在覆盖现有文件之前提示。否则，Bash 将会在没有确认的情况下覆盖现有文件。  `` ```
+![Important](./image/icon-important.svg "Important")  **重要**：覆盖现有文件  在复制、移动或重命名文件之前，请检查你的目标目录是否已包含同名的文件。如果是，请考虑更改其中一个文件名或使用带有 `-i` 等选项的 `cp` 或 `mv`，这将会在覆盖现有文件之前提示。否则，Bash 将会在没有确认的情况下覆盖现有文件。  
 
-1.  `` `要列出你的主目录的内容，请输入` ``
+1.  要列出你的主目录的内容，请输入` 
     
-    ```
+    `
     ` `>` ls -l ~ `
-    ```
+    `
     
-    ``` ``它应该默认包含一个名为 `Documents` 的子目录。如果不是，请使用你已经知道的 `mkdir` 命令创建此子目录`` ```
+    它应该默认包含一个名为 `Documents` 的子目录。如果不是，请使用你已经知道的 `mkdir` 命令创建此子目录
     
-    ```
+    `
     ` `>` mkdir ~/Documents `
-    ```
+    `
     
-2.  ``` ``要创建一个名为 `myfile.txt` 的新空文件，并将其放置在 `Documents` 目录下，请输入`` ```
+2.  要创建一个名为 `myfile.txt` 的新空文件，并将其放置在 `Documents` 目录下，请输入
     
-    ```
+    `
     ` `>` touch ~/Documents/myfile.txt `
-    ```
+    `
     
-    ``` ``通常，`touch` 命令会更新现有文件的修改和访问日期。 如果您在目标目录中使用 `touch` 命令，而该文件名不存在，它将创建一个新文件。`` ```
+    通常，`touch` 命令会更新现有文件的修改和访问日期。 如果您在目标目录中使用 `touch` 命令，而该文件名不存在，它将创建一个新文件。
     
-3.  `` `输入` ``
+3.  输入` 
     
-    ```
+    `
     ` `>` ls -l ~/Documents `
-    ```
+    `
     
-    `` `新文件应该出现在内容列表中。` ``
+    新文件应该出现在内容列表中。
     
-4.  `` `要复制新创建的文件，请输入` ``
+4.  要复制新创建的文件，请输入` 
     
-    ```
+    `
     ` `>` cp ~/Documents/myfile.txt . `
-    ```
+    `
     
-    `` `不要忘记末尾的点。` ``
+    不要忘记末尾的点。
     
-    ``` ``此命令告诉 Bash 转到您的主目录，并将 `myfile.txt` 从 `Documents` 子目录复制到当前目录 `/tmp/test`，而不更改文件名。`` ```
+    此命令告诉 Bash 转到您的主目录，并将 `myfile.txt` 从 `Documents` 子目录复制到当前目录 `/tmp/test`，而不更改文件名。
     
-5.  `` `通过输入以下命令检查结果` ``
+5.  通过输入以下命令检查结果` 
     
-    ```
+    `
     ` `>` ls -l `
-    ```
+    `
     
-    ``` ``文件 `myfile.txt` 应该出现在 `/tmp/test` 的内容列表中。`` ```
+    文件 `myfile.txt` 应该出现在 `/tmp/test` 的内容列表中。
     
 
-###### `` `步骤 13.3： 重命名和删除文件或目录 [](#id-1.3.6.2.9.10.5)` ``
+###### 步骤 13.3： 重命名和删除文件或目录 [](#id-1.3.6.2.9.10.5)` 
 
-``` ``现在假设您想将 `myfile.txt` 重命名为 `tuxfile.txt`。 最后，您决定删除重命名的文件和 `test` 子目录。`` ```
+现在假设您想将 `myfile.txt` 重命名为 `tuxfile.txt`。 最后，您决定删除重命名的文件和 `test` 子目录。
 
-1.  `` `要重命名文件，请输入` ``
+1.  要重命名文件，请输入` 
     
-    ```
+    `
     ` `>` mv myfile.txt tuxfile.txt `
-    ```
+    `
     
-2.  `` `要检查发生的情况，请输入` ``
+2.  要检查发生的情况，请输入` 
     
-    ```
+    `
     ` `>` ls -l `
-    ```
+    `
     
-    ``` ``在内容列表中，应该显示 `tuxfile.txt`，而不是 `myfile.txt`。`` ```
+    在内容列表中，应该显示 `tuxfile.txt`，而不是 `myfile.txt`。
     
-    ``` `` `mv` 代表 `move`（移动），并带有两个选项使用：第一个选项指定源，第二个选项指定操作的目标。 您可以使用 `mv` 命令 `` ```
+     `mv` 代表 `move`（移动），并带有两个选项使用：第一个选项指定源，第二个选项指定操作的目标。 您可以使用 `mv` 命令 
     
-    *   `` `重命名文件或目录，或者` ``
+    *   重命名文件或目录，或者` 
         
-    *   `` `将文件或目录移动到新位置，或者` ``
+    *   将文件或目录移动到新位置，或者` 
         
-    *   `` `一步完成两者。` ``
+    *   一步完成两者。
         
     
-3.  `` `既然您认为不再需要该文件，可以通过输入以下命令删除它` ``
+3.  既然您认为不再需要该文件，可以通过输入以下命令删除它` 
     
-    ```
+    `
     ` `>` rm tuxfile.txt `
-    ```
+    `
     
-    `` `Bash 会在没有任何确认的情况下删除该文件。` ``
+    Bash 会在没有任何确认的情况下删除该文件。
     
-4.  ``` ``使用 `cd ..` 向上移动一级，并使用以下命令检查`` ```
+4.  使用 `cd ..` 向上移动一级，并使用以下命令检查
     
-    ```
+    `
     ` `>` ls -l test `
-    ```
+    `
     
-    ``` ``现在 `test` 目录是否为空。`` ```
+    现在 `test` 目录是否为空。
     
-5.  ``` ``如果是，可以使用以下命令删除 `test` 目录`` ```
+5.  如果是，可以使用以下命令删除 `test` 目录
     
-    ```
+    `
     ` `>` rmdir test `
-    ```
+    `
     
 
 13.5 成为 `root`
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-``` `` `root`，也称为超级用户，具有授权其访问系统所有部分并执行管理任务的权限。 他们具有不受限制的更改系统容量，并且可以无限制地访问所有文件。 因此，执行某些管理任务或运行某些程序（例如 YaST）需要 `root` 权限。 `` ```
+ `root`，也称为超级用户，具有授权其访问系统所有部分并执行管理任务的权限。 他们具有不受限制的更改系统容量，并且可以无限制地访问所有文件。 因此，执行某些管理任务或运行某些程序（例如 YaST）需要 `root` 权限。 
 
-### 13.5.1 使用 `su`
+### 13.5.1 使用 `su` 为了在 shell 中临时成为 `root`，请按以下步骤操作
 
-``` ``为了在 shell 中临时成为 `root`，请按以下步骤操作`` ```
-
-1.  ``` ``输入 `su`。 系统会提示您输入 `root` 密码。`` ```
+1.  输入 `su`。 系统会提示您输入 `root` 密码。
     
-2.  ``` ``输入密码。 如果您错误地输入了 `root` 密码，shell 将显示一条消息。 在这种情况下，您必须在重新输入密码之前重新输入 `su`。 如果您的密码正确，则井号 `#` 将出现在提示符的末尾，表示您现在正在以 `root` 身份行事。`` ```
+2.  输入密码。 如果您错误地输入了 `root` 密码，shell 将显示一条消息。 在这种情况下，您必须在重新输入密码之前重新输入 `su`。 如果您的密码正确，则井号 `#` 将出现在提示符的末尾，表示您现在正在以 `root` 身份行事。
     
-3.  ``` ``执行您的任务。 例如，将文件的所有权转移给一个新用户，只有 `root` 才能执行此操作`` ```
+3.  执行您的任务。 例如，将文件的所有权转移给一个新用户，只有 `root` 才能执行此操作
     
-    ```
+    `
     ` `>` chown `wilber` kde_quick.xml `
-    ```
+    `
     
-4.  ``` ``完成作为 `root` 执行的任务后，切换回您的普通用户帐户。 为此，请输入`` ```
+4.  完成作为 `root` 执行的任务后，切换回您的普通用户帐户。 为此，请输入
     
-    ```
+    `
     ` `>` exit `
-    ```
+    `
     
-    `` `井号将消失，您将再次以 “普通” 用户身份行事。` ``
+    井号将消失，您将再次以 “普通” 用户身份行事。
     
 
-### 13.5.2 使用 `sudo`
+### 13.5.2 使用 `sudo` 或者，您也可以使用 `sudo`（superuser “do”，超级用户执行）来执行通常仅供 `root` 使用的某些任务。 使用 sudo，管理员可以授予某些用户在某些命令上具有 `root` 权限。 根据系统配置，用户可以通过输入他们的普通密码来运行 `root` 命令。 由于时间戳功能，用户在输入密码后仅被授予有限时间内的“票证”。 票证通常在几分钟后过期。 在 openSUSE 中，sudo 默认需要 `root` 密码（除非您的系统管理员另有配置）。
 
-``` ``或者，您也可以使用 `sudo`（superuser “do”，超级用户执行）来执行通常仅供 `root` 使用的某些任务。 使用 sudo，管理员可以授予某些用户在某些命令上具有 `root` 权限。 根据系统配置，用户可以通过输入他们的普通密码来运行 `root` 命令。 由于时间戳功能，用户在输入密码后仅被授予有限时间内的“票证”。 票证通常在几分钟后过期。 在 openSUSE 中，sudo 默认需要 `root` 密码（除非您的系统管理员另有配置）。`` ```
+对于用户来说，sudo 很方便，因为它可防止您两次切换帐户（切换到 `root` 和切换回来）。 要使用 sudo 更改文件的所有权，只需一个命令，而不是三个
 
-``` ``对于用户来说，sudo 很方便，因为它可防止您两次切换帐户（切换到 `root` 和切换回来）。 要使用 sudo 更改文件的所有权，只需一个命令，而不是三个`` ```
-
-```
+`
 ` `>` `sudo` chown `wilber` kde_quick.xml `
-```
-
-``` ``在您输入密码后，系统会执行该命令。 如果您在密码仍然有效的情况下，在不久之后输入第二个 `root` 命令，则不会再次提示您输入密码，因为您的票证仍然有效。 在一段时间后，票证会自动过期，并且需要再次输入密码。 这也防止了未经授权的人员在用户忘记切换回其普通用户帐户并留下一个 `root` shell 打开的情况下获得 `root` 权限。`` ```
+` 在您输入密码后，系统会执行该命令。 如果您在密码仍然有效的情况下，在不久之后输入第二个 `root` 命令，则不会再次提示您输入密码，因为您的票证仍然有效。 在一段时间后，票证会自动过期，并且需要再次输入密码。 这也防止了未经授权的人员在用户忘记切换回其普通用户帐户并留下一个 `root` shell 打开的情况下获得 `root` 权限。
 
 13.6 文件访问权限
 -----------------------------------------------------------------------------------------------------------------------------------------
 
-`` `在 Linux 中，诸如文件或文件夹或进程之类的对象通常属于创建或启动它们的用户。 存在一些例外情况。 有关例外情况的更多信息，请参阅 “安全和加固指南”书籍，第 19 章“Linux 中的访问控制列表”。` ``
+在 Linux 中，诸如文件或文件夹或进程之类的对象通常属于创建或启动它们的用户。 存在一些例外情况。 有关例外情况的更多信息，请参阅 “安全和加固指南”书籍，第 19 章“Linux 中的访问控制列表”。
 
-``` ``当您创建新文件或目录时，此对象的初始访问权限将根据预定义的方案设置。 作为文件或目录的所有者，您可以更改此对象的访问权限。 例如，您可以保护包含敏感数据的文件，防止其他用户读取，并且您可以授权您的组或其他用户在适当的情况下写入、读取或执行您的多个文件。 作为 `root`，您还可以更改文件或文件夹的所有权。`` ```
+当您创建新文件或目录时，此对象的初始访问权限将根据预定义的方案设置。 作为文件或目录的所有者，您可以更改此对象的访问权限。 例如，您可以保护包含敏感数据的文件，防止其他用户读取，并且您可以授权您的组或其他用户在适当的情况下写入、读取或执行您的多个文件。 作为 `root`，您还可以更改文件或文件夹的所有权。
 
 ### 13.6.1 用户、组和其他人权限
 
-`` `为 Linux 系统上的每个文件对象定义了三个权限集。 这些集合包括对三种类型的用户（所有者、组和其他用户）的读取、写入和执行权限。` ``
+为 Linux 系统上的每个文件对象定义了三个权限集。 这些集合包括对三种类型的用户（所有者、组和其他用户）的读取、写入和执行权限。
 
-``` ``以下示例显示了 shell 中 `ls` `-l` 命令的输出。 此命令列出目录的内容，并显示该目录中每个文件和文件夹的详细信息。`` ```
+以下示例显示了 shell 中 `ls` `-l` 命令的输出。 此命令列出目录的内容，并显示该目录中每个文件和文件夹的详细信息。
 
-###### `` `示例 13.1： 文件和文件夹的访问权限 [](#ex-new-users-accperm-ugo)` ``
+###### 示例 13.1： 文件和文件夹的访问权限
 
-```
+`
 -rw-r----- 1 tux users      0 2015-06-23 16:08 checklist.txt -rw-r--r-- 1 tux users  53279 2015-06-21 13:16 gnome_quick.xml -rw-rw---- 1 tux users      0 2015-06-23 16:08 index.htm -rw-r--r-- 1 tux users  70733 2015-06-21 09:35 kde-start.xml -rw-r--r-- 1 tux users  47896 2015-06-21 09:46 kde_quick.xml drwxr-xr-x 2 tux users     48 2015-06-23 16:09 local -rwxr--r-- 1 tux users 624398 2015-06-23 15:43 tux.sh
-```
-
-``` `` 如第三列所示，所有对象都属于用户 `tux`。 它们被分配给组 `users`，该组是用户 `tux` 属于的主要组。 要检索访问权限，必须更仔细地检查列表的第一列。 让我们看一下文件 `kde-start.xml` `` ```
+`  如第三列所示，所有对象都属于用户 `tux`。 它们被分配给组 `users`，该组是用户 `tux` 属于的主要组。 要检索访问权限，必须更仔细地检查列表的第一列。 让我们看一下文件 `kde-start.xml` 
 
 <table class="informaltable" border="1"><colgroup><col><col><col><col></colgroup><tbody><tr><td><p>类型</p></td><td><p>用户权限</p></td><td><p>组权限</p></td><td><p>其他人的权限</p></td></tr><tr><td><p><code class="literal">-</code></p></td><td><p><code class="literal">rw-</code></p></td><td><p><code class="literal">r--</code></p></td><td><p><code class="literal">r--</code></p></td></tr></tbody></table>
 
-``` ``列表的第一列由一个前导字符后跟三个块中的九个字符组成。 前导字符指示对象的类型：在本例中，连字符 (`–`) 表示 `kde-start.xml` 是一个文件。 如果您找到字符 `d`，则表示该对象是一个目录，例如 [示例 13.1，“文件和文件夹的访问权限”](#ex-new-users-accperm-ugo "文件和文件夹的访问权限") 中的 `local`。`` ```
+列表的第一列由一个前导字符后跟三个块中的九个字符组成。 前导字符指示对象的类型：在本例中，连字符 (`–`) 表示 `kde-start.xml` 是一个文件。 如果您找到字符 `d`，则表示该对象是一个目录，例如 [示例 13.1，“文件和文件夹的访问权限”](#ex-new-users-accperm-ugo "文件和文件夹的访问权限") 中的 `local`。
 
-``` ``接下来的三个块显示所有者、组和其他用户的访问权限（从左到右）。 每个块遵循相同的模式：第一个位置显示读取权限 (`r`)，下一个位置显示写入权限 (`w`)，最后一个显示执行权限 (`x`)。 缺少任何权限表示为 `-`。 在我们的示例中，`kde-start.xml` 的所有者具有对该文件的读取和写入权限，但无法执行该文件。 `users` 组可以读取该文件，但无法写入或执行该文件。 其他用户也是如此，如第三个字符块所示。`` ```
+接下来的三个块显示所有者、组和其他用户的访问权限（从左到右）。 每个块遵循相同的模式：第一个位置显示读取权限 (`r`)，下一个位置显示写入权限 (`w`)，最后一个显示执行权限 (`x`)。 缺少任何权限表示为 `-`。 在我们的示例中，`kde-start.xml` 的所有者具有对该文件的读取和写入权限，但无法执行该文件。 `users` 组可以读取该文件，但无法写入或执行该文件。 其他用户也是如此，如第三个字符块所示。
 
 ### 13.6.2 文件和文件夹
 
-`` `访问权限对应用于对象类型（文件或目录）的影响略有不同。 下表显示了详细信息` ``
+访问权限对应用于对象类型（文件或目录）的影响略有不同。 下表显示了详细信息
 
-###### `` `表 13.1： 文件和目录的访问权限 [](#tab-new-users-accperm-impact)` ``
+###### 表 13.1： 文件和目录的访问权限
 
 | 访问权限|文件|文件夹|
 | --- | --- | --- |
@@ -4047,145 +3755,141 @@ Documents/file.txt
 |写入 (w)|用户可以更改文件：他们可以添加或删除数据，甚至可以删除文件中的内容。 但是，只要他们没有文件所在目录的写入权限，他们就不能完全从目录中删除该文件。|用户可以在目录中创建、重命名或删除文件。|
 |执行 (x)|用户可以执行该文件。 此权限仅适用于诸如程序或 shell 脚本之类的文件，而不适用于文本文件。 如果操作系统可以直接执行该文件，用户无需读取权限即可执行该文件。 但是，如果该文件必须像 shell 脚本或 perl 程序一样进行解释，则需要额外的读取权限。|用户可以进入目录并执行其中的文件。 如果他们没有对该目录的读取访问权限，他们无法列出文件，但如果他们知道文件的存在，仍然可以访问它们。|
 
-`` `请注意，访问特定文件始终取决于文件本身 _和_ 其所在目录的正确权限组合。` ``
+请注意，访问特定文件始终取决于文件本身 _和_ 其所在目录的正确权限组合。
 
 ### 13.6.3 修改文件权限
 
-`` `在 Linux 中，诸如文件或文件夹或进程之类的对象通常属于创建或启动它们的用户。 组与文件或文件夹关联取决于用户在创建对象时所属的主要组。 当您创建新文件或目录时，此对象的初始访问权限将根据预定义的方案设置。 有关更多详细信息，请参阅 [第 13.6 节，“文件访问权限”](#sec-new-bash-accperm "13.6. 文件访问权限")。` ``
+在 Linux 中，诸如文件或文件夹或进程之类的对象通常属于创建或启动它们的用户。 组与文件或文件夹关联取决于用户在创建对象时所属的主要组。 当您创建新文件或目录时，此对象的初始访问权限将根据预定义的方案设置。 有关更多详细信息，请参阅 [第 13.6 节，“文件访问权限”](#sec-new-bash-accperm "13.6. 文件访问权限")。
 
-``` ``作为文件或目录的所有者（当然，作为 `root`），您可以更改此对象的访问权限。`` ```
+作为文件或目录的所有者（当然，作为 `root`），您可以更改此对象的访问权限。
 
-``` ``要更改文件或文件夹之类的对象属性，请使用 `chmod` 命令，后跟以下参数`` ```
+要更改文件或文件夹之类的对象属性，请使用 `chmod` 命令，后跟以下参数
 
-*   `` `要更改权限的用户，` ``
+*   要更改权限的用户，
     
-*   `` `您想要删除、设置或添加的访问权限类型，以及` ``
+*   您想要删除、设置或添加的访问权限类型，以及
     
-*   `` `用空格分隔的您想要更改权限的文件或文件夹。` ``
+*   用空格分隔的您想要更改权限的文件或文件夹。
     
 
-``` ``您可以更改文件访问权限的用户分为以下几类：文件的所有者（用户，`u`）、拥有文件的组（组，`g`）和其他用户（其他人，`o`）。 您可以添加、删除或设置以下权限之一或多个：读取、写入或执行。`` ```
+您可以更改文件访问权限的用户分为以下几类：文件的所有者（用户，`u`）、拥有文件的组（组，`g`）和其他用户（其他人，`o`）。 您可以添加、删除或设置以下权限之一或多个：读取、写入或执行。
 
-``` ``作为 `root`，您还可以更改文件的所有权：使用 `chown`（更改所有者）命令，您可以将所有权转移给新用户。`` ```
+作为 `root`，您还可以更改文件的所有权：使用 `chown`（更改所有者）命令，您可以将所有权转移给新用户。
 
 #### 13.6.3.1 更改访问权限和所有权的示例
 
-``` ``以下示例显示了 shell 中 `ls` `-l` 命令的输出。`` ```
+以下示例显示了 shell 中 `ls` `-l` 命令的输出。
 
 ###### 示例 13.2：文件和文件夹的访问权限
 
-```
+`
 -rw-r----- 1 tux users      0 2015-06-23 16:08 checklist.txt -rw-r--r-- 1 tux users  53279 2015-06-21 13:16 gnome_quick.xml -rw-rw---- 1 tux users      0 2015-06-23 16:08 index.htm -rw-r--r-- 1 tux users  70733 2015-06-21 09:35 kde-start.xml -rw-r--r-- 1 tux users  47896 2015-06-21 09:46 kde_quick.xml drwxr-xr-x 2 tux users     48 2015-06-23 16:09 local -r-xr-xr-x 1 tux users 624398 2015-06-23 15:43 tux.jpg
-```
-
-``` ``在示例中，用户 `tux` 拥有文件 `kde-start.xml`，并具有对该文件的读取和写入权限，但无法执行该文件。 `users` 组可以读取该文件，但无法写入或执行该文件。 其他用户也是如此，如第三个字符块所示。`` ```
+` 在示例中，用户 `tux` 拥有文件 `kde-start.xml`，并具有对该文件的读取和写入权限，但无法执行该文件。 `users` 组可以读取该文件，但无法写入或执行该文件。 其他用户也是如此，如第三个字符块所示。
 
 ###### 步骤 13.4： 更改访问权限
 
-``` ``假设您是 `tux`，并想修改对您文件的访问权限`` ```
+假设您是 `tux`，并想修改对您文件的访问权限
 
-1.  ``` ``如果想授予 `users` 组对 `kde-start.xml` 的写入权限，请输入`` ```
+1.  如果想授予 `users` 组对 `kde-start.xml` 的写入权限，请输入
     
-    ```
+    `
     ` `>` chmod g+w kde-start.xml `
-    ```
+    `
     
-2.  ``` ``要授予 `users` 组和其他用户对 `kde-start.xml` 的写入权限，请输入`` ```
+2.  要授予 `users` 组和其他用户对 `kde-start.xml` 的写入权限，请输入
     
-    ```
+    `
     ` `>` chmod go+w kde-start.xml `
-    ```
+    `
     
-3.  `` `要删除所有用户的写入权限，请输入` ``
+3.  要删除所有用户的写入权限，请输入` 
     
-    ```
+    `
     ` `>` chmod -w kde-start.xml `
-    ```
+    `
     
-    ``` ``如果您没有指定任何类型的用户，则更改将应用于所有用户——文件的所有者、所有者组和其他人。 现在，即使所有者 `tux` 在没有重新建立写入权限的情况下也无法写入该文件。`` ```
+    如果您没有指定任何类型的用户，则更改将应用于所有用户——文件的所有者、所有者组和其他人。 现在，即使所有者 `tux` 在没有重新建立写入权限的情况下也无法写入该文件。
     
-4.  ``` ``要禁止 `users` 组和其他用户进入目录 `local`，请输入`` ```
+4.  要禁止 `users` 组和其他用户进入目录 `local`，请输入
     
-    ```
+    `
     ` `>` chmod go-x local `
-    ```
+    `
     
-5.  ``` ``要授予其他人对两个文件（`kde_quick.xml` 和 `gnome_quick.xml`）的写入权限，请输入`` ```
+5.  要授予其他人对两个文件（`kde_quick.xml` 和 `gnome_quick.xml`）的写入权限，请输入
     
-    ```
+    `
     ` `>` chmod o+w  kde_quick.xml gnome_quick.xml `
-    ```
+    `
     
 
-###### `` `步骤 13.5： 更改所有权 [](#id-1.3.6.2.11.6.8.6)` ``
+###### 步骤 13.5： 更改所有权
 
-``` ``假设您是 `tux`，并想将文件 `kde_quick.xml` 的所有权转移给另一个用户，名为 `wilber`。 在这种情况下，请按以下步骤操作`` ```
+假设您是 `tux`，并想将文件 `kde_quick.xml` 的所有权转移给另一个用户，名为 `wilber`。 在这种情况下，请按以下步骤操作
 
-1.  ``` ``输入 `root` 的用户名和密码。`` ```
+1.  输入 `root` 的用户名和密码。
     
-2.  `` `输入` ``
+2.  输入` 
     
-    ```
+    `
     ` `#` chown `wilber` kde_quick.xml `
-    ```
+    `
     
-3.  `` `使用以下命令检查发生的情况` ``
+3.  使用以下命令检查发生的情况` 
     
-    ```
+    `
     ` `>` ls -l kde_quick.xml `
-    ```
+    `
     
-    `` `您应该得到以下输出` ``
+    您应该得到以下输出` 
     
-    ```
+    `
     -rw-r--r-- 1 wilber users  47896 2006-06-21 09:46 kde_quick.xml
-    ```
+    `
     
-4.  `` `如果所有权已按您的意愿设置，请切换回您的普通用户帐户。` ``
+4.  如果所有权已按您的意愿设置，请切换回您的普通用户帐户。
     
 
 13.7 Bash 的省时功能
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-`` `在 Bash 中输入命令可能需要大量的键入。本节介绍一些可以节省时间和键入的功能。` ``
+在 Bash 中输入命令可能需要大量的键入。本节介绍一些可以节省时间和键入的功能。
 
-`` `历史记录` ``
+历史记录` 
 
-`` `默认情况下，Bash “记住”您输入的命令。此功能称为“历史记录”。您可以浏览之前输入的命令，选择您想要重复的一个，然后再次执行它。为此，请重复按 ↑，直到所需的命令出现在提示符处。要向前浏览之前输入的命令列表，请按 ↓。为了更轻松地重复 Bash 历史记录中的某个命令，只需键入该命令的第一个字母，然后按 Page ↑。` ``
+默认情况下，Bash “记住”您输入的命令。此功能称为“历史记录”。您可以浏览之前输入的命令，选择您想要重复的一个，然后再次执行它。为此，请重复按 ↑，直到所需的命令出现在提示符处。要向前浏览之前输入的命令列表，请按 ↓。为了更轻松地重复 Bash 历史记录中的某个命令，只需键入该命令的第一个字母，然后按 Page ↑。
 
-`` `现在，您可以在执行命令之前编辑所选命令（例如，更改文件名或路径），方法是按 Enter。要编辑命令行，请使用箭头键将光标移动到所需位置，然后开始键入。` ``
+现在，您可以在执行命令之前编辑所选命令（例如，更改文件名或路径），方法是按 Enter。要编辑命令行，请使用箭头键将光标移动到所需位置，然后开始键入。
 
-`` `您还可以搜索历史记录中的某个命令。按 Ctrl–R 以启动增量搜索功能，显示以下提示符` ``
+您还可以搜索历史记录中的某个命令。按 Ctrl–R 以启动增量搜索功能，显示以下提示符` 
 
-```
+`
 ` `>` (reverse-i-search)`': `
-```
+` 只需键入您正在搜索的命令的一个或多个字母。您输入的每个字符都会缩小搜索范围。相应的搜索结果显示在冒号的右侧，而您的输入显示在冒号的左侧。要接受搜索结果，请按 Esc。提示符现在会更改为正常外观，并显示您选择的命令。现在，您可以编辑该命令或直接通过按 Enter 执行它。
 
-`` `只需键入您正在搜索的命令的一个或多个字母。您输入的每个字符都会缩小搜索范围。相应的搜索结果显示在冒号的右侧，而您的输入显示在冒号的左侧。要接受搜索结果，请按 Esc。提示符现在会更改为正常外观，并显示您选择的命令。现在，您可以编辑该命令或直接通过按 Enter 执行它。` ``
+补全` 
 
-`` `补全` ``
+在键入第一个字母后，将文件名或目录名补全到其完整长度是 Bash 的另一个有用功能。为此，键入前几个字母，然后按 →|（Tab 键）。如果文件名或路径可以唯一标识，则会立即补全，光标移动到文件名末尾。然后，如果需要，您可以输入命令的下一个选项。如果文件名或路径无法唯一标识（因为有多个文件名以相同的字母开头），则文件名或路径仅补全到变得不明确为止。然后，您可以再次按 →| 获得列表。之后，您可以输入文件或路径的下一个字母，然后再次尝试通过按 →| 进行补全。在使用 →| 补全文件名和路径时，您可以同时检查您想要输入的文件或路径是否真的存在（并且您可以确保拼写正确）。
 
-`` `在键入第一个字母后，将文件名或目录名补全到其完整长度是 Bash 的另一个有用功能。为此，键入前几个字母，然后按 →|（Tab 键）。如果文件名或路径可以唯一标识，则会立即补全，光标移动到文件名末尾。然后，如果需要，您可以输入命令的下一个选项。如果文件名或路径无法唯一标识（因为有多个文件名以相同的字母开头），则文件名或路径仅补全到变得不明确为止。然后，您可以再次按 →| 获得列表。之后，您可以输入文件或路径的下一个字母，然后再次尝试通过按 →| 进行补全。在使用 →| 补全文件名和路径时，您可以同时检查您想要输入的文件或路径是否真的存在（并且您可以确保拼写正确）。` ``
+通配符` 
 
-`` `通配符` ``
-
-`` `您可以使用通配符进行路径名扩展，以替换文件名中的一个或多个字符。通配符是可以代表其他字符的字符。Bash 中有三种不同的类型` ``
+您可以使用通配符进行路径名扩展，以替换文件名中的一个或多个字符。通配符是可以代表其他字符的字符。Bash 中有三种不同的类型` 
 
 <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><p>通配符</p></td><td><p>功能</p></td></tr><tr><td><p><code class="literal">?</code></p></td><td><p>匹配任意单个字符</p></td></tr><tr><td><p><code class="literal">*</code></p></td><td><p>匹配任意数量的字符</p></td></tr><tr><td><p><code class="literal">[<em class="replaceable ">SET</em>]</code></p></td><td><p>匹配方括号内指定组中的一个字符，此处由字符串 <em class="replaceable ">SET</em> 表示。</p></td></tr></tbody></table>
 
 ### 13.7.1 使用历史记录、补全和通配符的示例
 
-`` `以下示例说明了如何利用 Bash 的这些便捷功能。` ``
+以下示例说明了如何利用 Bash 的这些便捷功能。
 
-###### `` `过程 13.6： 使用历史记录和补全 [](#id-1.3.6.2.12.4.3 "Permalink")` ``
+###### 过程 13.6： 使用历史记录和补全
 
-`` `如果您已经完成了示例 [第 13.4.1 节，“使用文件和目录的示例”](#sec-new-bash-fildir-ex "13.4.1. 使用文件和目录的示例")，您的 shell 缓冲区应该包含可以使用历史记录功能检索的命令。` ``
+如果您已经完成了示例 [第 13.4.1 节，“使用文件和目录的示例”](#sec-new-bash-fildir-ex "13.4.1. 使用文件和目录的示例")，您的 shell 缓冲区应该包含可以使用历史记录功能检索的命令。
 
-1.  ``` ``按 ↑ 重复，直到出现 `cd ~`。`` ```
+1.  按 ↑ 重复，直到出现 `cd ~`。
     
-2.  `` `按 Enter 执行命令并切换到您的主目录。` ``
+2.  按 Enter 执行命令并切换到您的主目录。
     
-    ``` ``默认情况下，您的主目录包含两个以相同字母开头的子目录，`Documents` 和 `Desktop`。``Desktop ```。
+    默认情况下，您的主目录包含两个以相同字母开头的子目录，`Documents` 和 `Desktop`。Desktop `。
     
 3.  键入 `cd D` 并按 →|。
     
@@ -4193,11 +3897,11 @@ Documents/file.txt
     
 4.  再次按 →| 以查看可能的选项列表
     
-    ```
+    `
     >` `cd D`
     Desktop/ Documents/ Downloads/
     `>` `cd D
-    ```
+    `
     
 5.  提示符仍然显示您的初始输入。键入您想要进入的子目录的下一个字符，然后再次按 →|。
     
@@ -4220,15 +3924,15 @@ Documents/file.txt
         
     3.  要创建同一个文件的几个“版本”，请输入
         
-        ```
+        `
         `>` touch myfile{1..5}.txt
-        ```
+        `
         
         此命令创建五个连续编号的文件：`myfile1.txt`、…、`myfile5.txt`。
         
     4.  列出目录的内容。它应该如下所示
         
-        ```
+        `
         `>` ls -l
         -rw-r--r-- 1 tux users   0 2006-07-14 13:34 foo.xml
         -rw-r--r-- 1 tux users   0 2006-07-14 13:47 home.html
@@ -4241,35 +3945,35 @@ Documents/file.txt
         -rw-r--r-- 1 tux users   0 2006-07-14 13:49 myfile4.txt
         -rw-r--r-- 1 tux users   0 2006-07-14 13:49 myfile5.txt
         -rw-r--r-- 1 tux users   0 2006-07-14 13:32 tux.png
-        ```
+        `
         
 2.  使用通配符，根据各种标准选择文件的某些子集
     
     1.  要列出所有具有 `.html` 扩展名的文件，请输入
         
-        ```
+        `
         `>` ls -l \*.html
-        ```
+        `
         
     2.  要列出 `myfile.txt` 的所有“版本”，请输入
         
-        ```
+        `
         `>` ls -l myfile?.txt
-        ```
+        `
         
         请注意，您只能在此处使用 `?` 通配符，因为文件的编号是单位数。一旦您有一个名为 `myfile10.txt` 的文件，您必须使用 `*` 通配符才能查看 `myfile.txt` 的所有版本（或者添加另一个问号，使您的字符串看起来像 `myfile??.txt`）。
         
     3.  要删除例如版本 1-3 和版本 5 的 `myfile.txt`，请输入
         
-        ```
+        `
         `>` rm myfile\[1-3,5\].txt
-        ```
+        `
         
     4.  使用以下命令检查结果
         
-        ```
+        `
         `>` ls -l
-        ```
+        `
         
         所有 `myfile.txt` 版本中，应该只剩下 `myfile4.txt`。
         
@@ -4309,9 +4013,9 @@ _扩展_ 模式
 
 1.  要创建并使用 vi 打开一个新文件，请输入
     
-    ```
+    `
     `>` vi textfile.txt
-    ```
+    `
     
     默认情况下，vi 以 _命令_ 模式打开，在这种模式下您无法输入文本。
     
@@ -4333,35 +4037,31 @@ _扩展_ 模式
 
 Bash 提供了几个命令来搜索文件和搜索文件的内容
 
-`find`
+`find` 使用 `find`，在给定的目录中搜索文件。第一个参数指定开始搜索的目录。选项 `-name` 必须后跟一个搜索字符串，该字符串也可以包含通配符。与使用数据库的 `locate` 不同，`find` 扫描实际目录。
 
-使用 `find`，在给定的目录中搜索文件。第一个参数指定开始搜索的目录。选项 `-name` 必须后跟一个搜索字符串，该字符串也可以包含通配符。与使用数据库的 `locate` 不同，`find` 扫描实际目录。
-
-`grep`
-
-`grep` 命令在指定的文本文件中找到特定的搜索字符串。如果找到搜索字符串，该命令将显示找到 `searchstring` 的行以及文件名。如果需要，使用通配符指定文件名。
+`grep` `grep` 命令在指定的文本文件中找到特定的搜索字符串。如果找到搜索字符串，该命令将显示找到 `searchstring` 的行以及文件名。如果需要，使用通配符指定文件名。
 
 ### 13.9.1 搜索示例
 
 *   要搜索您的主目录中包含 `.txt` 文件扩展名的所有文件名，请使用
     
-    ```
+    `
     `>` find ~ -name '\*.txt' -print
-    ```
+    `
     
 *   要搜索目录（在本例中为您的主目录）中包含例如单词 `music` 的所有文件，请使用
     
-    ```
+    `
     `>` grep music ~/\*
-    ```
+    `
     
     `grep` 默认区分大小写。因此，使用上面的命令，您将找不到包含 `Music` 的任何文件。要忽略大小写，请使用 `-i` 选项。
     
 *   要使用由多个单词组成的搜索字符串，请将其用双引号括起来，例如
     
-    ```
+    `
     `>` grep "music is great" ~/\*
-    ```
+    `
     
 
 13.10 查看文本文件
@@ -4369,25 +4069,15 @@ Bash 提供了几个命令来搜索文件和搜索文件的内容
 
 使用 `grep` 搜索文件的内容时，输出会显示找到 `searchstring` 的行以及文件名。通常，此上下文信息仍然不足以确定您是否要打开和编辑此文件。Bash 提供了几个命令，可以直接在 shell 中快速查看文本文件的内容，而无需打开编辑器。
 
-`head`
+`head` 使用 `head`，您可以查看文本文件的前几行。如果您不进一步指定命令，`head` 将显示文本文件的前 10 行。
 
-使用 `head`，您可以查看文本文件的前几行。如果您不进一步指定命令，`head` 将显示文本文件的前 10 行。
+`tail` `tail` 命令是 `head` 的对应命令。如果您不使用任何其他选项使用 `tail`，它将显示文本文件的最后 10 行。这对于查看系统的日志文件非常有用，因为最新的消息或日志条目通常位于文件的末尾。
 
-`tail`
+`less` 使用 `less`，显示文本文件的全部内容。要上下移动半页，请使用 Page ↑ 和 Page ↓。使用 Space 向下滚动一页。Home 将带您到开头，End 将带您到文档的末尾。要结束查看模式，请按 Q。
 
-`tail` 命令是 `head` 的对应命令。如果您不使用任何其他选项使用 `tail`，它将显示文本文件的最后 10 行。这对于查看系统的日志文件非常有用，因为最新的消息或日志条目通常位于文件的末尾。
+`more` 您可以选择使用较旧的程序 `more` 代替 `less`。它基本上具有相同的功能，但是不太方便，因为它不允许您向后滚动。使用 Space 向前移动。当您到达文档末尾时，查看器将自动关闭。
 
-`less`
-
-使用 `less`，显示文本文件的全部内容。要上下移动半页，请使用 Page ↑ 和 Page ↓。使用 Space 向下滚动一页。Home 将带您到开头，End 将带您到文档的末尾。要结束查看模式，请按 Q。
-
-`more`
-
-您可以选择使用较旧的程序 `more` 代替 `less`。它基本上具有相同的功能，但是不太方便，因为它不允许您向后滚动。使用 Space 向前移动。当您到达文档末尾时，查看器将自动关闭。
-
-`cat`
-
-`cat` 命令显示文件的内容，将整个内容不间断地打印到屏幕上。由于 `cat` 不允许您滚动，因此它作为查看器用处不大，但它通常与其他命令结合使用。
+`cat` `cat` 命令显示文件的内容，将整个内容不间断地打印到屏幕上。由于 `cat` 不允许您滚动，因此它作为查看器用处不大，但它通常与其他命令结合使用。
 
 13.11 重定向和管道
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -4408,45 +4098,45 @@ Bash 提供了几个命令来搜索文件和搜索文件的内容
 
 1.  要将命令（如 `ls`）的输出写入文件，请输入
     
-    ```
+    `
     `>` ls -l > filelist.txt
-    ```
+    `
     
     这将创建一个名为 `filelist.txt` 的文件，其中包含当前目录的内容列表，由 `ls` 命令生成。
     
     但是，如果名为 `filelist.txt` 的文件已经存在，此命令将覆盖现有文件。要防止这种情况，请使用 `>>` 代替 >。输入
     
-    ```
+    `
     `>` ls -l >> filelist.txt
-    ```
+    `
     
     会将 `ls` 命令的输出简单地追加到名为 `filelist.txt` 的现有文件中。如果文件不存在，则会创建该文件。
     
 2.  重定向也适用于反向操作。您可以将文件用作命令的标准输入，而不是从键盘获取输入
     
-    ```
+    `
     `>` sort < filelist.txt
-    ```
+    `
     
     这将强制 `sort` 命令从 `filelist.txt` 的内容获取输入。结果将显示在屏幕上。当然，您也可以使用重定向的组合将结果写入另一个文件
     
-    ```
+    `
     `>` sort < filelist.txt > sorted\_filelist.txt
-    ```
+    `
     
 3.  如果命令生成了大量的输出，例如 `ls` `-l` 可能会做的那样，将输出管道传输到像 `less` 这样的查看器可能很有用，以便您可以滚动浏览页面。为此，请输入
     
-    ```
+    `
     `>` ls -l | less
-    ```
+    `
     
     当前目录的内容列表将显示在 `less` 中。
     
     管道通常也与 `grep` 命令结合使用，以便在另一个命令的输出中搜索特定的字符串。例如，如果您想查看目录中由用户 `tux` 拥有的文件列表，请输入
     
-    ```
+    `
     `>` ls -l | grep tux
-    ```
+    `
     
 
 13.12 启动程序和处理进程
@@ -4458,53 +4148,41 @@ Bash 提供了几个命令来搜索文件和搜索文件的内容
 
 现在，您仍然可以查看 `vacation.pdf`，同时您的提示符可用于进一步的命令。更简单的方法是在启动时直接将进程发送到后台。为此，请在命令末尾添加一个与符号
 
-```
+`
 `>` okular ~/vacation.pdf &
-```
+` 如果您从同一个 shell 启动了多个后台进程（也称为作业），则 `jobs` 命令将为您提供作业的概述。它还会显示方括号中的作业编号及其状态
 
-如果您从同一个 shell 启动了多个后台进程（也称为作业），则 `jobs` 命令将为您提供作业的概述。它还会显示方括号中的作业编号及其状态
-
-```
+`
 `>` jobs
 \[1\]   Running        okular book.opensuse.startup-xep.pdf &
 \[2\]-  Running        okular book.opensuse.reference-xep.pdf &
 \[3\]+  Stopped        man jobs
-```
-
-要将作业带到前台，请输入 `fg _JOB_NUMBER_`。
+` 要将作业带到前台，请输入 `fg _JOB_NUMBER_`。
 
 虽然 `job` 仅显示从特定 shell 启动的后台进程，但 `ps` 命令（不带任何选项）显示所有进程的列表——您启动的那些进程。下面是一个示例输出
 
-```
+`
 `>` ps
 PID TTY          TIME CMD
 15500 pts/1    00:00:00 bash
 28214 pts/1    00:00:00 okular
 30187 pts/1    00:00:00 kwrite
 30280 pts/1    00:00:00 ps
-```
+` 如果无法以正常方式终止程序，请使用 `kill` 命令停止该程序（或进程）。为此，请指定 `ps` 的输出中显示的进程 ID (PID)。例如，要关闭上面的示例中的 KWrite 编辑器，请输入
 
-如果无法以正常方式终止程序，请使用 `kill` 命令停止该程序（或进程）。为此，请指定 `ps` 的输出中显示的进程 ID (PID)。例如，要关闭上面的示例中的 KWrite 编辑器，请输入
-
-```
+`
 `>` kill 30187
-```
-
-这将发送一个 _TERM_ 信号，指示程序自行关闭。
+` 这将发送一个 _TERM_ 信号，指示程序自行关闭。
 
 或者，如果想要终止的程序或进程是 `jobs` 命令显示的后台作业，也可以使用 `kill` 命令与作业编号结合使用来终止该进程。在用作业编号标识作业时，必须在数字前加上百分号 (`%`)
 
-```
+`
 `>` kill %_JOB\_NUMBER_
-```
+` 如果 `kill` 无效——有时对于 “失控” 程序而言——请尝试
 
-如果 `kill` 无效——有时对于 “失控” 程序而言——请尝试
-
-```
+`
 `>` kill -9 _PID_
-```
-
-这将发送一个 _KILL_ 信号而不是 _TERM_ 信号，通常会结束指定的进程。
+` 这将发送一个 _KILL_ 信号而不是 _TERM_ 信号，通常会结束指定的进程。
 
 本节旨在介绍处理作业和进程的最基本命令集。有关系统管理员的概述，请参阅 “系统分析和调优指南”一书，第 2 章“系统监控实用程序”，第 2.3 节“进程”。
 
@@ -4530,9 +4208,9 @@ PID TTY          TIME CMD
     
 3.  使用以下命令压缩文件
     
-    ```
+    `
     `>` tar -cvf testarchive.tar test
-    ```
+    `
     
     `-c` 选项创建归档文件，使其成为由 `-f` 指示的文件。 `-v` 选项列出正在处理的文件。
     
@@ -4540,15 +4218,15 @@ PID TTY          TIME CMD
     
 4.  使用以下命令查看归档文件的内容
     
-    ```
+    `
     `>` tar -tf testarchive.tar
-    ```
+    `
     
 5.  要解包归档文件，请使用
     
-    ```
+    `
     `>` tar -xvf testarchive.tar
-    ```
+    `
     
     如果当前目录中的文件与归档文件中的文件同名，则它们将被覆盖，不会发出任何警告。
     
@@ -4561,9 +4239,9 @@ PID TTY          TIME CMD
     
     要压缩归档文件，请使用
     
-    ```
+    `
     `>` gzip testarchive.tar
-    ```
+    `
     
     使用 `ls`，现在可以看到文件 `testarchive.tar` 不再存在，并且已创建文件 `testarchive.tar.gz`。
     
@@ -4573,16 +4251,16 @@ PID TTY          TIME CMD
     
     *   这可以分两步完成，首先解压缩文件，然后解归档文件
         
-        ```
+        `
         >` `gzip --decompress testarchive.tar.gz`
         `>` `tar -xvf testarchive.tar
-        ```
+        `
         
     *   您也可以一步解压缩和解归档
         
-        ```
+        `
         `>` tar -xvf testarchive.tar
-        ```
+        `
         
     
     使用 `ls`，您可以看到已创建了一个新的 `test` 目录，其内容与您主目录中的 `test` 目录相同。
@@ -4605,13 +4283,9 @@ PID TTY          TIME CMD
 
 如果您在不带任何其他参数的情况下运行 `ls`，则该程序将以简短形式列出当前目录的内容。
 
-`-l`
+`-l` 详细列表
 
-详细列表
-
-`-a`
-
-显示隐藏文件
+`-a` 显示隐藏文件
 
 `cp` _OPTIONS_ _SOURCE_ _TARGET_
 
@@ -4641,13 +4315,9 @@ PID TTY          TIME CMD
 
 从文件系统中删除指定的 文件。除非使用选项 `-r`，否则 `rm` 不会删除目录。
 
-`-r`
+`-r` 删除任何现有的子目录
 
-删除任何现有的子目录
-
-`-i`
-
-在删除每个文件之前等待确认
+`-i` 在删除每个文件之前等待确认
 
 `ln` _OPTIONS_ _SOURCE_ _TARGET_
 
@@ -4673,9 +4343,7 @@ PID TTY          TIME CMD
 
 将文件的所有权转移给具有指定用户名的用户。
 
-`-R`
-
-更改所有子目录中的文件和目录
+`-R` 更改所有子目录中的文件和目录
 
 `chgrp` _OPTIONS_ _GROUP\_NAME_ _FILES_
 
@@ -4733,41 +4401,23 @@ Setuid 位——应用程序或程序将以文件所有者的身份启动
 
 `tar` 将一个或多个文件放入归档文件中。压缩是可选的。 `tar` 是一个相当复杂的命令，具有多个可用选项。最常用的选项是
 
-`-f`
+`-f` 将输出写入文件，而不是像通常那样写入屏幕
 
-将输出写入文件，而不是像通常那样写入屏幕
+`-c` 创建一个新的 TAR 归档文件
 
-`-c`
+`-r` 将文件添加到现有的归档文件
 
-创建一个新的 TAR 归档文件
+`-t` 输出归档文件的内容
 
-`-r`
+`-u` 添加文件，但仅当它们比归档文件中已有的文件更新时
 
-将文件添加到现有的归档文件
+`-x` 从归档文件中解压文件（_提取_）
 
-`-t`
+`-z` 使用 `gzip` 压缩生成的归档文件
 
-输出归档文件的内容
+`-j` 使用 `bzip2` 压缩生成的归档文件
 
-`-u`
-
-添加文件，但仅当它们比归档文件中已有的文件更新时
-
-`-x`
-
-从归档文件中解压文件（_提取_）
-
-`-z`
-
-使用 `gzip` 压缩生成的归档文件
-
-`-j`
-
-使用 `bzip2` 压缩生成的归档文件
-
-`-v`
-
-列出处理的文件
+`-v` 列出处理的文件
 
 由 `tar` 创建的归档文件以 `.tar` 结尾。如果 TAR 归档文件也使用 `gzip` 压缩，则结尾为 `.tgz` 或 `.tar.gz`。如果它使用 `bzip2` 压缩，则结尾为 `.tar.bz2`。
 
@@ -4801,33 +4451,21 @@ Setuid 位——应用程序或程序将以文件所有者的身份启动
 
 `grep` 命令在指定的文件中查找特定的搜索字符串。如果找到搜索字符串，该命令将显示包含 _搜索字符串_ 的行以及文件名。
 
-`-i`
+`-i` 忽略大小写
 
-忽略大小写
+`-H` 仅显示相关文件的名称，而不显示文本行
 
-`-H`
+`-n` 还显示找到匹配项的行号
 
-仅显示相关文件的名称，而不显示文本行
-
-`-n`
-
-还显示找到匹配项的行号
-
-`-l`
-
-仅列出不包含 `搜索字符串` 的文件
+`-l` 仅列出不包含 `搜索字符串` 的文件
 
 `diff` _选项_ _文件\_1_ _文件\_2_
 
 `diff` 命令比较两个文件的内容。该程序生成的输出列出所有不匹配的行。这通常被程序员使用，他们只需要发送程序的更改，而不是整个源代码。
 
-`-q`
+`-q` 仅报告两个文件是否不同
 
-仅报告两个文件是否不同
-
-`-u`
-
-生成““统一””diff，使输出更易读
+`-u` 生成““统一””diff，使输出更易读
 
 #### 13.14.1.3 文件系统
 
@@ -4835,13 +4473,9 @@ Setuid 位——应用程序或程序将以文件所有者的身份启动
 
 此命令可用于将任何数据介质（例如硬盘、CD-ROM 驱动器和其他驱动器）挂载到 Linux 文件系统的目录。
 
-`-r`
+`-r` 只读挂载
 
-只读挂载
-
-`-t _文件系统_`
-
-指定文件系统：对于 Linux 硬盘，这通常是 `ext4`、`xfs` 或 `btrfs`。
+`-t _文件系统_` 指定文件系统：对于 Linux 硬盘，这通常是 `ext4`、`xfs` 或 `btrfs`。
 
 对于未在 `/etc/fstab` 文件中定义的硬盘，还必须指定设备类型。在这种情况下，只有 `root` 才能挂载它。如果还需要其他用户挂载文件系统，请在 `/etc/fstab` 文件中相应的行中输入选项 `user`（用逗号分隔）并保存此更改。有关更多信息，请参阅 `mount(1)` man 页。
 
@@ -4859,45 +4493,29 @@ Setuid 位——应用程序或程序将以文件所有者的身份启动
 
 在没有任何选项的情况下使用时，`df` 命令显示有关总磁盘空间、当前使用的磁盘空间以及所有已挂载驱动器上的可用空间的信息。如果指定了目录，则信息将限制为位于该目录上的驱动器。
 
-`-h`
+`-h` 以千兆字节、兆字节或千字节的形式显示已占用块的数量——以人类可读的格式
 
-以千兆字节、兆字节或千字节的形式显示已占用块的数量——以人类可读的格式
-
-`-T`
-
-文件系统类型（ext2、nfs 等）
+`-T` 文件系统类型（ext2、nfs 等）
 
 `du` _选项_ _路径_
 
 在没有任何参数的情况下执行时，此命令显示当前目录中文件和子目录占用的总磁盘空间。
 
-`-a`
+`-a` 显示每个单个文件的大小
 
-显示每个单个文件的大小
+`-h` 以人类可读的形式输出
 
-`-h`
-
-以人类可读的形式输出
-
-`-s`
-
-仅显示计算的总大小
+`-s` 仅显示计算的总大小
 
 `free` _选项_
 
 `free` 命令显示有关 RAM 和交换空间使用情况的信息，显示两类别的总用量和已用量。有关更多信息，请参阅 “参考”手册，第 15 章“特殊系统功能”，第 15.1.7 节“`free` 命令”。
 
-`-b`
+`-b` 以字节为单位输出
 
-以字节为单位输出
+`-k` 以千字节为单位输出
 
-`-k`
-
-以千字节为单位输出
-
-`-m`
-
-以兆字节为单位输出
+`-m` 以兆字节为单位输出
 
 `date` _选项_
 
@@ -4939,9 +4557,7 @@ aux
 
 确定要发送的总数据包数，并在发送后结束（默认情况下，未设置限制）
 
-`-f`
-
-_flood ping_：发送尽可能多的数据包；一种流行的手段，仅供 `root` 使用，用于测试网络
+`-f` _flood ping_：发送尽可能多的数据包；一种流行的手段，仅供 `root` 使用，用于测试网络
 
 `-i`_值_
 
@@ -4973,9 +4589,7 @@ SSH 实际上是一种 Internet 协议，使您能够通过网络在远程主机
 
 与 `halt` 相同，只是系统会立即重新启动。
 
-`clear`
-
-此命令清除控制台的可见区域。它没有选项。
+`clear` 此命令清除控制台的可见区域。它没有选项。
 
 ### 13.14.3 更多信息
 
@@ -5060,7 +4674,7 @@ Bash 会根据运行 shell 的类型，以特定顺序查找其配置文件。�
 
 使用以下命令列出分配给所有用户（系统用户和普通用户）在 `/etc/passwd` 中的 shell。输出因您的系统上的服务和用户而异
 
-```
+`
 `>` sort -t: -k 7 /etc/passwd | awk -F: '{print $1"\\t" $7}' | column -t
 tux               /bin/bash
 nobody            /bin/bash
@@ -5099,9 +4713,7 @@ vnc               /sbin/nologin
 wwwrun            /sbin/nologin
 messagebus        /usr/bin/false
 scard             /usr/sbin/nologin
-```
-
-### 14.1.2 目录结构
+` ### 14.1.2 目录结构
 
 下表提供了 Linux 系统上最重要的顶级目录的简要概述。有关目录和重要子目录的更多详细信息，请参阅以下列表。
 
@@ -5129,101 +4741,57 @@ scard             /usr/sbin/nologin
 
 以下列表提供了更多详细信息，并给出了一些可以在目录中找到的文件和子目录的示例
 
-`/bin`
+`/bin` 包含 `root` 和其他用户都可以使用的基本 shell 命令。这些命令包括 `ls`、`mkdir`、`cp`、`mv`、`rm` 和 `rmdir`。`/bin` 还包含 Bash，这是 openSUSE Leap 中的默认 shell。
 
-包含 `root` 和其他用户都可以使用的基本 shell 命令。这些命令包括 `ls`、`mkdir`、`cp`、`mv`、`rm` 和 `rmdir`。`/bin` 还包含 Bash，这是 openSUSE Leap 中的默认 shell。
+`/boot` 包含启动所需的数据，例如引导加载程序、内核和其他在内核开始执行用户模式程序之前使用的数据。
 
-`/boot`
+`/dev` 保存表示硬件组件的设备文件。
 
-包含启动所需的数据，例如引导加载程序、内核和其他在内核开始执行用户模式程序之前使用的数据。
+`/etc` 包含本地配置文件，用于控制 X Window System 等程序的运行。 `/etc/init.d` 子目录包含可以在启动过程中执行的 LSB 初始化脚本。
 
-`/dev`
-
-保存表示硬件组件的设备文件。
-
-`/etc`
-
-包含本地配置文件，用于控制 X Window System 等程序的运行。 `/etc/init.d` 子目录包含可以在启动过程中执行的 LSB 初始化脚本。
-
-`/home/_USERNAME_`
-
-保存系统上具有帐户的每个用户的私有数据。此处的 文件只能由其所有者或系统管理员修改。默认情况下，您的电子邮件目录和个人桌面配置位于此处，以隐藏的文件和目录的形式，例如 `.gconf/` 和 `.config`。
+`/home/_USERNAME_` 保存系统上具有帐户的每个用户的私有数据。此处的 文件只能由其所有者或系统管理员修改。默认情况下，您的电子邮件目录和个人桌面配置位于此处，以隐藏的文件和目录的形式，例如 `.gconf/` 和 `.config`。
 
 ![Note](./image/icon-note.svg "Note") **注意**：网络环境中的家目录
 
 如果您在网络环境中工作，您的家目录可能映射到文件系统中的目录，而不是 `/home`。
 
-`/lib`
+`/lib` 包含启动系统和运行根文件系统中的命令所需的关键共享库。Windows 中共享库的等效项是 DLL 文件。
 
-包含启动系统和运行根文件系统中的命令所需的关键共享库。Windows 中共享库的等效项是 DLL 文件。
+`/media` 包含可移动介质的挂载点，例如 CD-ROM、闪存盘和使用 USB 的数码相机。 `/media` 通常包含任何类型的驱动器，但您的系统的硬盘除外。当您的可移动介质插入或连接到系统并挂载时，您可以从此处访问它。
 
-`/media`
+`/mnt` 此目录提供临时挂载文件系统的挂载点。`root` 可以在此处挂载文件系统。
 
-包含可移动介质的挂载点，例如 CD-ROM、闪存盘和使用 USB 的数码相机。 `/media` 通常包含任何类型的驱动器，但您的系统的硬盘除外。当您的可移动介质插入或连接到系统并挂载时，您可以从此处访问它。
+`/opt` 保留用于安装第三方软件。可选软件和较大的附加程序包可以在此处找到。
 
-`/mnt`
+`/root` `root` 用户的家目录。`root` 的个人数据位于此处。
 
-此目录提供临时挂载文件系统的挂载点。`root` 可以在此处挂载文件系统。
+`/run` 由 `systemd` 和各种组件使用的 tmpfs 目录。`/var/run` 是指向 `/run` 的符号链接。
 
-`/opt`
+`/sbin` 正如 `s` 所指示的那样，此目录保存超级用户的实用程序。`/sbin` 包含启动、恢复和恢复系统所必需的二进制文件，以及 `/bin` 中的二进制文件。
 
-保留用于安装第三方软件。可选软件和较大的附加程序包可以在此处找到。
+`/srv` 保存系统提供的服务的数据，例如 FTP 和 HTTP。
 
-`/root`
+`/tmp` 此目录由需要临时存储文件的程序使用。
 
-`root` 用户的家目录。`root` 的个人数据位于此处。
+![Important](./image/icon-important.svg "Important") **重要**：启动时清理 `/tmp` 存储在 `/tmp` 中的数据不能保证在系统重新启动后幸存。它取决于，例如，在 `/etc/tmpfiles.d/tmp.conf` 中所做的设置。
 
-`/run`
+`/usr` `/usr` 与用户无关，而是 Unix 系统资源的缩写。 `/usr` 中的数据是静态的、只读的数据，可以在符合 `Filesystem Hierarchy Standard` (FHS) 的各种主机之间共享。此目录包含所有应用程序程序，包括 GNOME 等图形桌面，并在文件系统中建立二级层次结构。`/usr` 包含几个子目录，例如 `/usr/bin`、`/usr/sbin`、`/usr/local` 和 `/usr/share/doc`。
 
-由 `systemd` 和各种组件使用的 tmpfs 目录。`/var/run` 是指向 `/run` 的符号链接。
+`/usr/bin` 包含通常可访问的程序。
 
-`/sbin`
+`/usr/sbin` 包含保留给系统管理员的程序，例如修复功能。
 
-正如 `s` 所指示的那样，此目录保存超级用户的实用程序。`/sbin` 包含启动、恢复和恢复系统所必需的二进制文件，以及 `/bin` 中的二进制文件。
+`/usr/local` 在此目录中，系统管理员可以安装本地的、与发行版无关的扩展。
 
-`/srv`
-
-保存系统提供的服务的数据，例如 FTP 和 HTTP。
-
-`/tmp`
-
-此目录由需要临时存储文件的程序使用。
-
-![Important](./image/icon-important.svg "Important") **重要**：启动时清理 `/tmp`
-
-存储在 `/tmp` 中的数据不能保证在系统重新启动后幸存。它取决于，例如，在 `/etc/tmpfiles.d/tmp.conf` 中所做的设置。
-
-`/usr`
-
-`/usr` 与用户无关，而是 Unix 系统资源的缩写。 `/usr` 中的数据是静态的、只读的数据，可以在符合 `Filesystem Hierarchy Standard` (FHS) 的各种主机之间共享。此目录包含所有应用程序程序，包括 GNOME 等图形桌面，并在文件系统中建立二级层次结构。`/usr` 包含几个子目录，例如 `/usr/bin`、`/usr/sbin`、`/usr/local` 和 `/usr/share/doc`。
-
-`/usr/bin`
-
-包含通常可访问的程序。
-
-`/usr/sbin`
-
-包含保留给系统管理员的程序，例如修复功能。
-
-`/usr/local`
-
-在此目录中，系统管理员可以安装本地的、与发行版无关的扩展。
-
-`/usr/share/doc`
-
-保存各种文档文件和系统的发行说明。在 `manual` 子目录中，找到此手册的在线版本。如果安装了多种语言，此目录可能包含不同语言的手册版本。
+`/usr/share/doc` 保存各种文档文件和系统的发行说明。在 `manual` 子目录中，找到此手册的在线版本。如果安装了多种语言，此目录可能包含不同语言的手册版本。
 
 在 `packages` 下，找到安装在系统上的软件包中包含的文档。对于每个包，都会创建一个子目录 `/usr/share/doc/packages/_PACKAGENAME_`，其中通常包含包的 README 文件，有时还包含示例、配置文件或额外的脚本。
 
 如果安装了 HOWTO，`/usr/share/doc` 还包含 `howto` 子目录，其中包含有关与 Linux 软件设置和操作相关的许多任务的额外文档。
 
-`/var`
+`/var` 虽然 `/usr` 包含静态的、只读的数据，但 `/var` 用于在系统操作期间写入的数据，因此是变量数据，例如日志文件或假脱机数据。有关可以在 `/var/log/` 下找到的最重要的日志文件的概述，请参阅 [表 21.1，“日志文件”](#tab-trouble-info "Log files")。
 
-虽然 `/usr` 包含静态的、只读的数据，但 `/var` 用于在系统操作期间写入的数据，因此是变量数据，例如日志文件或假脱机数据。有关可以在 `/var/log/` 下找到的最重要的日志文件的概述，请参阅 [表 21.1，“日志文件”](#tab-trouble-info "Log files")。
-
-`/windows`
-
-仅当您同时安装了 Microsoft Windows 和 Linux 时可用。包含 Windows 分区上可用的 Windows 数据。您是否可以编辑此目录中的数据取决于 Windows 分区使用的文件系统。如果它是 FAT32，您可以打开和编辑此目录中的文件。对于 NTFS，openSUSE Leap 也包含写入访问支持。但是，NTFS-3g 文件系统驱动程序的功能有限。
+`/windows` 仅当您同时安装了 Microsoft Windows 和 Linux 时可用。包含 Windows 分区上可用的 Windows 数据。您是否可以编辑此目录中的数据取决于 Windows 分区使用的文件系统。如果它是 FAT32，您可以打开和编辑此目录中的文件。对于 NTFS，openSUSE Leap 也包含写入访问支持。但是，NTFS-3g 文件系统驱动程序的功能有限。
 
 14.2 编写 shell 脚本
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -5232,13 +4800,11 @@ Shell 脚本提供了一种方便的方法来执行各种任务：收集数据�
 
 ###### 示例 14.1：打印文本的 shell 脚本 [](#id-1.3.6.3.4.3 "Permalink")
 
-```
+`
 #!/bin/sh 1
 # Output the following line: 2
 echo "Hello World" 3
-```
-
-<table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-shebang"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>第一行以 <span class="emphasis"><em>Shebang</em></span> 字符 (<code class="literal">#!</code>) 开头，指示此文件是一个脚本。在 <span class="emphasis"><em>Shebang</em></span> 之后指定的解释器将执行该脚本。在这种情况下，指定的解释器是 <code class="command">/bin/sh</code>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-comment"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>第二行是以井号开头的注释。我们建议您注释难以理解的行。通过适当的注释，您可以记住该行的目的和功能。此外，其他读者可以更好地理解您的脚本。在开发社区中，注释被认为是良好的实践。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-echo"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>第三行使用内置命令 <code class="command">echo</code> 打印相应的文本。</p></td></tr></tbody></table>
+` <table border="0" summary="Callout list"><tbody><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-shebang"><span class="callout">1</span></a></p></td><td valign="top" align="left"><p>第一行以 <span class="emphasis"><em>Shebang</em></span> 字符 (<code class="literal">#!</code>) 开头，指示此文件是一个脚本。在 <span class="emphasis"><em>Shebang</em></span> 之后指定的解释器将执行该脚本。在这种情况下，指定的解释器是 <code class="command">/bin/sh</code>。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-comment"><span class="callout">2</span></a></p></td><td valign="top" align="left"><p>第二行是以井号开头的注释。我们建议您注释难以理解的行。通过适当的注释，您可以记住该行的目的和功能。此外，其他读者可以更好地理解您的脚本。在开发社区中，注释被认为是良好的实践。</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#co-adm-shell-echo"><span class="callout">3</span></a></p></td><td valign="top" align="left"><p>第三行使用内置命令 <code class="command">echo</code> 打印相应的文本。</p></td></tr></tbody></table>
 
 在运行此脚本之前，有一些先决条件
 
@@ -5248,9 +4814,9 @@ echo "Hello World" 3
     
 3.  脚本需要可执行权限。使用以下命令设置权限
     
-    ```
+    `
     `>` chmod +x ~/bin/hello.sh
-    ```
+    `
     
 
 如果您满足上述所有先决条件，可以通过以下方式执行脚本
@@ -5274,60 +4840,38 @@ echo "Hello World" 3
 
 要重定向这些通道，有以下几种可能性
 
-`Command > 文件`
+`Command > 文件` 将命令的输出保存到文件中，现有文件将被删除。例如，`ls` 命令将其输出写入到文件 `listing.txt` 中
 
-将命令的输出保存到文件中，现有文件将被删除。例如，`ls` 命令将其输出写入到文件 `listing.txt` 中
-
-```
+`
 `>` ls > listing.txt
-```
+` `Command >> 文件` 将命令的输出追加到文件中。例如，`ls` 命令将其输出追加到文件 `listing.txt` 中
 
-`Command >> 文件`
-
-将命令的输出追加到文件中。例如，`ls` 命令将其输出追加到文件 `listing.txt` 中
-
-```
+`
 `>` ls >> listing.txt
-```
+` `Command < 文件` 将文件作为给定命令的输入读取。例如，`read` 命令将文件内容读取到变量中
 
-`Command < 文件`
-
-将文件作为给定命令的输入读取。例如，`read` 命令将文件内容读取到变量中
-
-```
+`
 `>` read a < foo
-```
+` `Command1 | Command2` 将左侧命令的输出重定向为右侧命令的输入。例如，`cat` 命令输出 `/proc/cpuinfo` 文件的内容。此输出由 `grep` 用于过滤仅包含 `cpu` 的行
 
-`Command1 | Command2`
-
-将左侧命令的输出重定向为右侧命令的输入。例如，`cat` 命令输出 `/proc/cpuinfo` 文件的内容。此输出由 `grep` 用于过滤仅包含 `cpu` 的行
-
-```
+`
 `>` cat /proc/cpuinfo | grep cpu
-```
+` 每个通道都有一个 _文件描述符_：0（零）代表标准输入，1 代表标准输出，2 代表标准错误。允许在 `<` 或 `>` 字符之前插入此文件描述符。例如，以下行搜索以 `foo` 开头的文件，但通过将其重定向到 `/dev/null` 来抑制其错误
 
-每个通道都有一个 _文件描述符_：0（零）代表标准输入，1 代表标准输出，2 代表标准错误。允许在 `<` 或 `>` 字符之前插入此文件描述符。例如，以下行搜索以 `foo` 开头的文件，但通过将其重定向到 `/dev/null` 来抑制其错误
-
-```
+`
 `>` find / -name "foo\*" 2>/dev/null
-```
-
-14.4 使用别名
+` 14.4 使用别名
 -------------------------------------------------------------------------------------------------------------------------
 
 别名是一个或多个命令的快捷定义。别名的语法是
 
-```
+`
 alias _NAME_\=_DEFINITION_
-```
+` 例如，以下行定义了一个别名 `lt`，它输出一个长列表（选项 `-l`），按修改时间对其进行排序（`-t`），并以反向排序的顺序打印它（`-r`）
 
-例如，以下行定义了一个别名 `lt`，它输出一个长列表（选项 `-l`），按修改时间对其进行排序（`-t`），并以反向排序的顺序打印它（`-r`）
-
-```
+`
 `>` alias lt='ls -ltr'
-```
-
-要查看所有别名定义，请使用 `alias`。使用 `unalias` 和相应的别名名称删除你的别名。
+` 要查看所有别名定义，请使用 `alias`。使用 `unalias` 和相应的别名名称删除你的别名。
 
 14.5 在 Bash 中使用变量
 -------------------------------------------------------------------------------------------------------------------------------------
@@ -5336,35 +4880,21 @@ Shell 变量可以是全局变量或局部变量。全局变量或环境变量�
 
 要查看所有环境变量，请使用 `printenv` 命令。如果你需要知道一个变量的值，请将你的变量名作为参数插入
 
-```
+`
 `>` printenv PATH
-```
+` 无论全局变量还是局部变量，也可以使用 `echo` 查看
 
-无论全局变量还是局部变量，也可以使用 `echo` 查看
-
-```
+`
 `>` echo $PATH
-```
+` 要设置局部变量，请使用变量名，后跟等号，后跟值
 
-要设置局部变量，请使用变量名，后跟等号，后跟值
-
-```
+`
 `>` PROJECT="SLED"
-```
-
-不要在等号周围插入空格，否则会收到错误。要设置环境变量，请使用 `export`
-
-```
+` 不要在等号周围插入空格，否则会收到错误。要设置环境变量，请使用 `export` `
 `>` export NAME="tux"
-```
-
-要删除变量，请使用 `unset`
-
-```
+` 要删除变量，请使用 `unset` `
 `>` unset NAME
-```
-
-下表包含你可以在 shell 脚本中使用的常见环境变量
+` 下表包含你可以在 shell 脚本中使用的常见环境变量
 
 ###### 表 14.5：有用的环境变量 [](#tab-adm-envars "Permalink")
 
@@ -5374,131 +4904,85 @@ Shell 变量可以是全局变量或局部变量。全局变量或环境变量�
 
 例如，如果你有脚本 `foo.sh`，你可以这样执行它
 
-```
+`
 `>` foo.sh "Tux Penguin" 2000
-```
-
-要访问传递给你的脚本的所有参数，你需要位置参数。这些是第一个参数的 `$1`，第二个参数的 `$2`，依此类推。你最多可以使用九个参数。要获取脚本名称，请使用 `$0`。
+` 要访问传递给你的脚本的所有参数，你需要位置参数。这些是第一个参数的 `$1`，第二个参数的 `$2`，依此类推。你最多可以使用九个参数。要获取脚本名称，请使用 `$0`。
 
 以下脚本 `foo.sh` 打印从 1 到 4 的所有参数
 
-```
+`
 #!/bin/sh
 echo \\"$1\\" \\"$2\\" \\"$3\\" \\"$4\\"
-```
+` 如果你使用上述参数执行此脚本，你将得到
 
-如果你使用上述参数执行此脚本，你将得到
-
-```
+`
 "Tux Penguin" "2000" "" ""
-```
-
-### 14.5.2 使用变量替换
+` ### 14.5.2 使用变量替换
 
 变量替换将模式应用于变量的内容，无论是从左侧还是右侧。以下列表包含可能的语法形式
 
-`${VAR#pattern}`
+`${VAR#pattern}` 从左侧删除最短的匹配项
 
-从左侧删除最短的匹配项
-
-```
+`
 `>` file=/home/tux/book/book.tar.bz2
 `>` echo ${file#\*/}
 home/tux/book/book.tar.bz2
-```
+` `${VAR##pattern}` 从左侧删除最长的匹配项
 
-`${VAR##pattern}`
-
-从左侧删除最长的匹配项
-
-```
+`
 `>` file=/home/tux/book/book.tar.bz2
 `>` echo ${file##\*/}
 book.tar.bz2
-```
+` `${VAR%pattern}` 从右侧删除最短的匹配项
 
-`${VAR%pattern}`
-
-从右侧删除最短的匹配项
-
-```
+`
 `>` file=/home/tux/book/book.tar.bz2
 `>` echo ${file%.\*}
 /home/tux/book/book.tar
-```
+` `${VAR%%pattern}` 从右侧删除最长的匹配项
 
-`${VAR%%pattern}`
-
-从右侧删除最长的匹配项
-
-```
+`
 `>` file=/home/tux/book/book.tar.bz2
 `>` echo ${file%%.\*}
 /home/tux/book/book
-```
+` `${VAR/pattern_1/pattern_2}` 将 _VAR_ 的内容从 _PATTERN\_1_ 替换为 _PATTERN\_2_
 
-`${VAR/pattern_1/pattern_2}`
-
-将 _VAR_ 的内容从 _PATTERN\_1_ 替换为 _PATTERN\_2_
-
-```
+`
 `>` file=/home/tux/book/book.tar.bz2
 `>` echo ${file/tux/wilber}
 /home/wilber/book/book.tar.bz2
-```
-
-14.6 分组和组合命令
+` 14.6 分组和组合命令
 -------------------------------------------------------------------------------------------------------------------------------------
 
 Shell 允许你连接和分组命令以进行条件执行。每个命令返回一个退出代码，该代码决定其操作的成功或失败。如果为 0（零），则命令成功，其他任何值都表示特定于该命令的错误。
 
 以下列表显示了如何对命令进行分组
 
-`Command1 ; Command2`
+`Command1 ; Command2` 按顺序执行命令。不检查退出代码。以下行无论其退出代码如何，都使用 `cat` 显示文件内容，然后使用 `ls` 打印其文件属性
 
-按顺序执行命令。不检查退出代码。以下行无论其退出代码如何，都使用 `cat` 显示文件内容，然后使用 `ls` 打印其文件属性
-
-```
+`
 `>` cat filelist.txt ; ls -l filelist.txt
-```
+` `Command1 && Command2` 如果左侧命令成功（逻辑与），则运行右侧命令。以下行仅在前面的命令成功时（与此列表中的上一个条目进行比较）才显示文件内容并打印其文件属性
 
-`Command1 && Command2`
-
-如果左侧命令成功（逻辑与），则运行右侧命令。以下行仅在前面的命令成功时（与此列表中的上一个条目进行比较）才显示文件内容并打印其文件属性
-
-```
+`
 `>` cat filelist.txt && ls -l filelist.txt
-```
+` `Command1 || Command2` 当左侧命令失败时（逻辑或），运行右侧命令。以下行仅在 `/home/tux/foo` 中创建目录失败时，才在 `/home/wilber/bar` 中创建目录
 
-`Command1 || Command2`
-
-当左侧命令失败时（逻辑或），运行右侧命令。以下行仅在 `/home/tux/foo` 中创建目录失败时，才在 `/home/wilber/bar` 中创建目录
-
-```
+`
 `>` mkdir /home/tux/foo || mkdir /home/wilber/bar
-```
+` `funcname(){ ... }` 创建一个 shell 函数。你可以使用位置参数来访问其参数。以下行定义了一个函数 `hello`，用于打印一条简短消息
 
-`funcname(){ ... }`
-
-创建一个 shell 函数。你可以使用位置参数来访问其参数。以下行定义了一个函数 `hello`，用于打印一条简短消息
-
-```
+`
 `>` hello() { echo "Hello $1"; }
-```
+` 你可以这样调用这个函数
 
-你可以这样调用这个函数
-
-```
+`
 `>` hello Tux
-```
+` 它会打印
 
-它会打印
-
-```
+`
 Hello Tux
-```
-
-14.7 使用常见的流程结构
+` 14.7 使用常见的流程结构
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 为了控制你的脚本的流程，shell 具有 `while`、`if`、`for` 和 `case` 结构。
@@ -5507,43 +4991,35 @@ Hello Tux
 
 使用 `if` 命令来检查表达式。例如，以下代码测试当前用户是否为 Tux
 
-```
+`
 if test $USER = "tux"; then
   echo "Hello Tux."
 else
   echo "You are not Tux."
 fi
-```
+` 测试表达式可以尽可能复杂或简单。以下表达式检查文件 `foo.txt` 是否存在
 
-测试表达式可以尽可能复杂或简单。以下表达式检查文件 `foo.txt` 是否存在
-
-```
+`
 if test -e /tmp/foo.txt ; then
   echo "Found foo.txt"
 fi
-```
+` 测试表达式也可以用方括号缩写
 
-测试表达式也可以用方括号缩写
-
-```
+`
 if \[ -e /tmp/foo.txt \] ; then
   echo "Found foo.txt"
 fi
-```
-
-在 [https://bash.cyberciti.biz/guide/If..else..fi](https://bash.cyberciti.biz/guide/If..else..fi) 上找到更多有用的表达式。
+` 在 [https://bash.cyberciti.biz/guide/If..else..fi](https://bash.cyberciti.biz/guide/If..else..fi) 上找到更多有用的表达式。
 
 ### 14.7.2 使用 `for` 命令创建循环
 
 `for` 循环允许你对列表中的条目执行命令。例如，以下代码打印有关当前目录中 PNG 文件的某些信息
 
-```
+`
 for i in \*.png; do
  ls -l $i
 done
-```
-
-14.8 更多信息
+` 14.8 更多信息
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Bash 的重要信息在 man 页面 `man bash` 中提供。有关此主题的更多信息，请参见以下列表
@@ -6098,17 +5574,13 @@ BTT 的优势是保证了扇区写入原子性，因此即使依赖数据完整�
 
 该 `ndctl` 实用程序有一组有用的 `man` 页面，可以通过以下命令访问
 
-```
+`
 >` `ndctl help _subcommand_
-```
+` 要查看可用的子命令列表，请使用
 
-要查看可用的子命令列表，请使用
-
-```
+`
 >` `ndctl --list-cmds
-```
-
-可用的子命令包括
+` 可用的子命令包括
 
 version
 
@@ -6163,10 +5635,8 @@ help
 
 在以下示例中，系统具有三个 NVDIMM，它们位于单个三通道交错集中。
 
-```
-`#` `ndctl list --dimms`
-
-\[
+`
+`#` `ndctl list --dimms` \[
  {
   "dev":"nmem2",
   "id":"8089-00-0000-12325476"
@@ -6180,9 +5650,7 @@ help
   "id":"8089-00-0000-10325476"
  }
 \]
-```
-
-使用不同的参数，`ndctl` `list` 还会列出可用的区域。
+` 使用不同的参数，`ndctl` `list` 还会列出可用的区域。
 
 ![Note](./image/icon-note.svg "Note") **注意**
 
@@ -6190,10 +5658,8 @@ help
 
 请注意，虽然只有三个 NVDIMM，但它们显示为四个区域。
 
-```
-`#` `ndctl list --regions`
-
-\[
+`
+`#` `ndctl list --regions` \[
  {
   "dev":"region1",
   "size":68182605824,
@@ -6220,9 +5686,7 @@ help
    "type":"blk"
   }
 \]
-```
-
-空间以两种不同的形式可用：要么是三个单独的 64 区域的 BLK 类型，要么是一个组合的 189 GB 区域的 PMEM 类型，该类型将三个交错 NVDIMM 上的所有空间作为一个卷呈现。
+` 空间以两种不同的形式可用：要么是三个单独的 64 区域的 BLK 类型，要么是一个组合的 189 GB 区域的 PMEM 类型，该类型将三个交错 NVDIMM 上的所有空间作为一个卷呈现。
 
 请注意，显示的 `available_size` 值与 `size` 值相同。这意味着尚未分配任何空间。
 
@@ -6232,7 +5696,7 @@ help
 
 第一步是创建一个新的命名空间。
 
-```
+`
 `#` `ndctl create-namespace --type=_pmem_ --mode=_fsdax_ --map=_memory_`
 {
  "dev":"namespace3.0",
@@ -6241,9 +5705,7 @@ help
  "uuid":"dc8ebb84-c564-4248-9e8d-e18543c39b69",
  "blockdev":"pmem3"
 }
-```
-
-这将创建一个块设备 `/dev/pmem3`，该设备支持 DAX。设备名称中的 `3` 继承自父区域编号，在本例中为 `region3`。
+` 这将创建一个块设备 `/dev/pmem3`，该设备支持 DAX。设备名称中的 `3` 继承自父区域编号，在本例中为 `region3`。
 
 该 `--map=memory` 选项预留了 NVDIMM 上 PMEM 存储空间的一部分，以便可以用于分配内部内核数据结构，称为 `struct pages`。这允许新的 PMEM 命名空间与 `O_DIRECT I/O` 和 `RDMA` 等功能一起使用。
 
@@ -6251,17 +5713,15 @@ help
 
 接下来，我们验证新的块设备是否可供操作系统使用
 
-```
+`
 `#` `fdisk -l /dev/_pmem3_`
 Disk /dev/pmem3: 186 GiB, 199764213760 bytes, 390164480 sectors
 Units: sectors of 1 \* 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 4096 bytes
 I/O size (minimum/optimal): 4096 bytes / 4096 bytes
-```
+` 在使用之前，像任何其他驱动器一样，必须对其进行格式化。在此示例中，我们使用 XFS 对其进行格式化
 
-在使用之前，像任何其他驱动器一样，必须对其进行格式化。在此示例中，我们使用 XFS 对其进行格式化
-
-```
+`
 `#` `mkfs.xfs /dev/_pmem3_`
 meta-data=/dev/pmem3      isize=256    agcount=4, agsize=12192640 blks
          =                sectsz=4096  attr=2, projid32bit=1
@@ -6272,22 +5732,16 @@ naming   =version 2       bsize=4096   ascii-ci=0 ftype=1
 log      =internal log    bsize=4096   blocks=23813, version=2
          =                sectsz=4096  sunit=1 blks, lazy-count=1
 realtime =none            extsz=4096   blocks=0, rtextents=0
-```
+` 接下来，我们可以将新的驱动器挂载到目录
 
-接下来，我们可以将新的驱动器挂载到目录
-
-```
+`
 #` `mount -o dax /dev/_pmem3_ /mnt/_pmem3_
-```
+` 然后我们可以验证我们现在有一个支持 DAX 的设备
 
-然后我们可以验证我们现在有一个支持 DAX 的设备
-
-```
+`
 `#` `mount | grep dax`
 /dev/pmem3 on /mnt/pmem3 type xfs (rw,relatime,attr2,dax,inode64,noquota)
-```
-
-结果是，我们现在有一个使用 XFS 文件系统格式化并使用 DAX 挂载的 PMEM 命名空间。
+` 结果是，我们现在有一个使用 XFS 文件系统格式化并使用 DAX 挂载的 PMEM 命名空间。
 
 该文件系统中对 `mmap()` 的任何调用都将返回直接映射到 NVDIMM 上持久内存的虚拟地址，从而绕过页面缓存。
 
@@ -6299,29 +5753,23 @@ realtime =none            extsz=4096   blocks=0, rtextents=0
 
 首先，卸载它
 
-```
+`
 #` `umount /mnt/_pmem3_
-```
+` 然后禁用命名空间
 
-然后禁用命名空间
-
-```
+`
 `#` `ndctl disable-namespace _namespace3.0_`
 disabled 1 namespace
-```
+` 然后删除它
 
-然后删除它
-
-```
+`
 `#` `ndctl destroy-namespace _namespace3.0_`
 destroyed 1 namespace
-```
-
-### 19.5.3 创建具有 BTT 的 PMEM 命名空间
+` ### 19.5.3 创建具有 BTT 的 PMEM 命名空间
 
 BTT 提供扇区写入原子性，这使其成为需要数据保护时的不错选择，例如 Ext4 和 XFS 日志。如果发生电源故障，日志将受到保护并应可恢复。以下示例演示如何创建具有 BTT 的 PMEM 命名空间，并将其置于文件系统日志中。
 
-```
+`
 `#` `ndctl create-namespace --type=pmem --mode=sector`
 {
  "dev":"namespace3.0",
@@ -6330,19 +5778,15 @@ BTT 提供扇区写入原子性，这使其成为需要数据保护时的不错�
  "sector\_size":4096,
  "blockdev":"pmem3s"
 }
-```
+` 接下来，验证新的设备是否存在
 
-接下来，验证新的设备是否存在
-
-```
+`
 `#` `fdisk -l /dev/_pmem3s_`
 Disk /dev/pmem3s: 188.8 GiB, 202738135040 bytes, 49496615 sectors
 Units: sectors of 1 \* 4096 = 4096 bytes
 Sector size (logical/physical): 4096 bytes / 4096 bytes
 I/O size (minimum/optimal): 4096 bytes / 4096 bytes
-```
-
-与我们先前配置的具有 DAX 的 PMEM 命名空间一样，此具有 BTT 的 PMEM 命名空间消耗了 NVDIMM 上的所有可用存储。
+` 与我们先前配置的具有 DAX 的 PMEM 命名空间一样，此具有 BTT 的 PMEM 命名空间消耗了 NVDIMM 上的所有可用存储。
 
 ![Note](./image/icon-note.svg "Note") **注意**
 
@@ -6358,24 +5802,18 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 
 当您将文件系统日志放置在单独的设备上时，它必须使用与文件系统相同的块大小。最常见的是 4096，您可以使用以下命令找到块大小：
 
-```
+`
 #` `blockdev --getbsz /dev/_sda3_
-```
+` 以下示例在单独的 NVDIMM 设备上创建新的 Ext4 日志，在 SATA 设备上创建文件系统，然后将新的文件系统附加到日志。
 
-以下示例在单独的 NVDIMM 设备上创建新的 Ext4 日志，在 SATA 设备上创建文件系统，然后将新的文件系统附加到日志。
-
-```
+`
 #` `mke2fs -b 4096 -O journal_dev /dev/_pmem3s_`
 `#` `mkfs.ext4 -J device=/dev/_pmem3s_ /dev/_sda3_
-```
+` 以下示例在 SATA 驱动器上创建新的 XFS 文件系统，并在单独的 NVDIMM 设备上创建日志。
 
-以下示例在 SATA 驱动器上创建新的 XFS 文件系统，并在单独的 NVDIMM 设备上创建日志。
-
-```
+`
 #` `mkfs.xfs -l logdev=/dev/_pmem3s _ /dev/_sda3_
-```
-
-有关详细信息，请参阅 `man 8 mkfs.ext4` 和 `man 8 mkfs.ext4`。
+` 有关详细信息，请参阅 `man 8 mkfs.ext4` 和 `man 8 mkfs.ext4`。
 
 19.6 更多信息
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -6460,45 +5898,25 @@ GNOME 桌面帮助中心（帮助）提供对 GNOME 桌面文档的集中访问�
 
 在 `packages` 下，找到包含在已安装的软件软件包中包含的文档。对于每个软件包，都会创建一个子目录 `/usr/share/doc/packages/_PACKAGENAME_`。它通常包含软件包的 README 文件，有时还包含示例、配置文件或额外的脚本。以下列表介绍了在 `/usr/share/doc/packages` 下找到的典型文件。并非所有条目都是必需的，许多软件包仅包含其中的几个。
 
-`AUTHORS`
+`AUTHORS` 主要开发人员列表。
 
-主要开发人员列表。
+`BUGS` 已知错误或故障。还可能包含指向 Bugzilla 网页的链接，您可以在其中搜索所有错误。
 
-`BUGS`
+`CHANGES` , `ChangeLog` 从版本到版本的更改摘要。它对开发人员来说很有趣，因为它很详细。
 
-已知错误或故障。还可能包含指向 Bugzilla 网页的链接，您可以在其中搜索所有错误。
+`COPYING` , `LICENSE` 许可信息。
 
-`CHANGES` , `ChangeLog`
+`FAQ` 从邮件列表或新闻组收集的问题和答案。
 
-从版本到版本的更改摘要。它对开发人员来说很有趣，因为它很详细。
+`INSTALL` 如何在您的系统上安装此软件包。由于您在阅读此文件时软件包已经安装，因此可以安全地忽略此文件的内容。
 
-`COPYING` , `LICENSE`
+`README`, `README.*` 有关软件的一般信息。例如，其用途和如何使用它。
 
-许可信息。
+`TODO` 未来计划的功能。
 
-`FAQ`
+`MANIFEST` 带有简短摘要的文件列表。
 
-从邮件列表或新闻组收集的问题和答案。
-
-`INSTALL`
-
-如何在您的系统上安装此软件包。由于您在阅读此文件时软件包已经安装，因此可以安全地忽略此文件的内容。
-
-`README`, `README.*`
-
-有关软件的一般信息。例如，其用途和如何使用它。
-
-`TODO`
-
-未来计划的功能。
-
-`MANIFEST`
-
-带有简短摘要的文件列表。
-
-`NEWS`
-
-描述此版本中的新内容。
+`NEWS` 描述此版本中的新内容。
 
 20.2 Man 页面
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -6684,17 +6102,13 @@ BIOS 启动顺序
 
 当交换设备不可用并且系统无法在引导期间启用它时，引导可能会失败。尝试禁用所有交换设备，方法是在内核命令行中追加以下选项
 
-```
+`
 systemd.device\_wants\_unit=off systemd.mask=swap.target
-```
+` 您还可以尝试禁用特定的交换设备
 
-您还可以尝试禁用特定的交换设备
-
-```
+`
 systemd.mask=dev-sda1.swap
-```
-
-### 21.2.7 GRUB 2 在双引导系统重新启动时失败
+` ### 21.2.7 GRUB 2 在双引导系统重新启动时失败
 
 如果 GRUB 2 在重新启动时失败，请禁用 BIOS 中的 `快速启动` 设置。
 
@@ -6794,9 +6208,9 @@ systemd.mask=dev-sda1.swap
     
 3.  使用以下命令再次启动解锁过程
     
-    ```
+    `
     `#` systemctl restart home.mount
-    ```
+    `
     
 4.  输入您的密码以解锁加密分区。
     
@@ -6899,10 +6313,10 @@ systemd.mask=dev-sda1.swap
         
         此文件用于跟踪您当前使用的名称服务器和域。它是指向 `/run/netconfig/resolv.conf` 的符号链接，通常由 YaST 或 DHCP 自动调整。确保此文件具有以下结构，并且所有网络地址和域名都正确
         
-        ```
+        `
         search _FULLY\_QUALIFIED\_DOMAIN\_NAME_
         nameserver _IPADDRESS\_OF\_NAMESERVER_
-        ```
+        `
         
         此文件可以包含多个名称服务器地址，但至少必须有一个是正确的才能为您的主机提供名称解析。如有必要，使用 YaST 网络设置模块（主机名/DNS 选项卡）调整此文件。
         
@@ -6912,12 +6326,12 @@ systemd.mask=dev-sda1.swap
         
         此文件告诉 Linux 在哪里查找名称服务信息。它应该如下所示
         
-        ```
+        `
          ...
         hosts: files dns
         networks: files dns
         ...
-        ```
+        `
         
         DNS 条目至关重要。它告诉 Linux 使用外部名称服务器。通常，这些条目由 YaST 自动管理，但检查一下是明智的。
         
@@ -6940,9 +6354,9 @@ systemd.mask=dev-sda1.swap
     
 2.  重启 NetworkManager
     
-    ```
+    `
     `>` `sudo` systemctl restart NetworkManager
-    ```
+    `
     
 3.  以普通用户打开一个网页，例如 [https://opensuse.net.cn](https://opensuse.net.cn)，以查看您是否可以连接。
     
@@ -6970,15 +6384,15 @@ systemd.mask=dev-sda1.swap
     
 4.  运行命令以创建压缩的镜像文件
     
-    ```
+    `
     `#` dd if=/dev/_SOURCE_ | gzip > /_BACKUP\_PATH_/image.gz
-    ```
+    `
     
 5.  使用以下命令恢复硬盘
     
-    ```
+    `
     `#` gzip -dc /_BACKUP\_PATH_/image.gz | dd of=/dev/_SOURCE_
-    ```
+    `
     
 
 如果您只需要备份一个分区，请将 _SOURCE_ 占位符替换为您的相应分区。在这种情况下，您的镜像文件可以位于同一硬盘上，但位于不同的分区上。
@@ -7038,25 +6452,25 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 2.  要将位于 `/dev/sda6` 下的根文件系统挂载到救援系统，请使用以下命令
     
-    ```
+    `
     `>` `sudo` mount /dev/sda6 /mnt
-    ```
+    `
     
     系统的所有目录现在位于 `/mnt` 下
     
 3.  更改目录到挂载的根文件系统
     
-    ```
+    `
     `>` `sudo` cd /mnt
-    ```
+    `
     
 4.  在 vi 编辑器中打开有问题 的配置文件。调整并保存配置。
     
 5.  从救援系统卸载根文件系统
     
-    ```
+    `
     `>` `sudo` umount /mnt
-    ```
+    `
     
 6.  重新启动机器。
     
@@ -7067,11 +6481,9 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
 
 以下命令检查在 `/etc/fstab` 规范中找到的所有 `ext4` 文件系统
 
-```
+`
 `>` `sudo` fsck -t ext4 -A
-```
-
-![Tip](./image/icon-tip.svg "Tip") **提示**
+` ![Tip](./image/icon-tip.svg "Tip") **提示**
 
 对于 Btrfs，您可以使用 `btrfs check` 命令，该命令位于 btrfsprogs 包中。
 
@@ -7098,13 +6510,13 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
     如果您正在使用 LVM 设置（请参阅 “参考”一书，第 5 章“专家分区程序”，第 5.3 节“LVM 配置” 以获取更多常规详细信息），请导入所有现有的卷组以能够找到并挂载设备
     
-    ```
+    `
     `root`vgimport -a
-    ```
+    `
     
     运行 `lsblk` 以检查哪个节点对应于根分区。在我们的示例中，它是 `/dev/sda2`
     
-    ```
+    `
     `>` lsblk
     NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
     sda           8:0    0 149,1G  0 disk
@@ -7112,33 +6524,33 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     ├─sda2        8:2    0    20G  0 part  /
     └─sda3        8:3    0   127G  0 part
       └─cr\_home 254:0    0   127G  0 crypt /home
-    ```
+    `
     
 2.  将已安装系统中的根分区挂载
     
-    ```
+    `
     `>` `sudo` mount /dev/sda2 /mnt
-    ```
+    `
     
 3.  挂载 `/proc`、`/dev` 和 `/sys` 分区
     
-    ```
+    `
     `>` `sudo` mount -t proc none /mnt/proc
     `>` `sudo` mount --rbind /dev /mnt/dev
     `>` `sudo` mount --rbind /sys /mnt/sys
-    ```
+    `
     
 4.  现在您可以 “change root” 进入新环境，保留 `bash` shell
     
-    ```
+    `
     `>` chroot /mnt /bin/bash
-    ```
+    `
     
 5.  最后，从已安装的系统挂载剩余的分区
     
-    ```
+    `
     `>` mount -a
-    ```
+    `
     
 6.  现在您可以使用已安装的系统。重新启动系统之前，使用 `umount` `-a` 卸载分区，并使用 `exit` 退出 “change root” 环境。
     
@@ -7159,9 +6571,9 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 2.  检查 GRUB 2 启动加载程序是否已安装在系统上。如果未安装，请安装软件包 `grub2` 并运行
     
-    ```
+    `
     `>` `sudo` grub2-install /dev/sda
-    ```
+    `
     
 3.  检查以下文件是否根据 “参考”手册，第 12 章“启动加载程序 GRUB 2” 中概述的 GRUB 2 配置原则正确配置，并在必要时应用修复。
     
@@ -7176,17 +6588,17 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
     
 4.  使用以下命令序列重新安装启动加载程序
     
-    ```
+    `
     `>` `sudo` grub2-mkconfig -o /boot/grub2/grub.cfg
-    ```
+    `
     
 5.  卸载分区，退出 “更改根目录” 环境，并重新启动系统
     
-    ```
+    `
     `>` umount -a
     exit
     reboot
-    ```
+    `
     
 
 #### 21.5.2.5 修复内核安装
@@ -7199,11 +6611,9 @@ shell 和其他有用的实用程序（例如 mount 程序）位于 `/bin` 目�
 
 例如，要始终保留最后两个内核和当前正在运行的内核，请添加
 
-```
+`
 multiversion.kernels = latest,latest-1,running
-```
-
-到 `/etc/zypp/zypp.conf` 文件中。有关更多信息，请参阅 “参考”手册，第 6 章“安装多个内核版本”。
+` 到 `/etc/zypp/zypp.conf` 文件中。有关更多信息，请参阅 “参考”手册，第 6 章“安装多个内核版本”。
 
 类似的情况是，当您需要重新安装或更新不支持 openSUSE Leap 的设备的损坏驱动程序时。例如，当硬件供应商使用特定的设备（如硬件 RAID 控制器）时，该设备需要二进制驱动程序才能被操作系统识别。供应商通常会发布驱动程序更新磁盘 (DUD)，其中包含已修复或更新的所需驱动程序的版本。
 
